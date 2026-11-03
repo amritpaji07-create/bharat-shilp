@@ -1,0 +1,246 @@
+<div 
+  class="min-h-screen flex flex-col bg-[#F8F7F2] text-[#1D2939]"
+  [class.text-base]="market.fontScale() === 'large'"
+  [class.text-lg]="market.fontScale() === 'larger'"
+  [class.contrast-125]="market.highContrast()">
+
+  <!-- Top Government Announcement Bar -->
+  <app-announcement-bar />
+
+  <!-- Main Sticky Header & Navigation -->
+  <app-header />
+
+  <!-- Toast Notification Feedback Container -->
+  <app-toast-container />
+
+  <!-- Main Content Body Area -->
+  <main class="flex-1">
+    
+    <!-- VIEW: HOMEPAGE -->
+    @if (market.currentView() === 'home') {
+      
+      <!-- 1. Hero Carousel with 3 Rich Slides & Direct CTA -->
+      <app-hero-carousel />
+
+      <!-- 2. Category Grid Section -->
+      <app-category-grid />
+
+      <!-- 3. Featured Products Grid -->
+      <section class="max-w-[1320px] mx-auto px-4 sm:px-6 py-8 sm:py-12" aria-labelledby="featured-heading">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
+          <div>
+            <div class="flex items-center gap-1.5 text-xs font-bold text-[#176B45] uppercase tracking-wider">
+              <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">star</mat-icon>
+              <span>Authentic Curations</span>
+            </div>
+            <h2 id="featured-heading" class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
+              {{ market.currentLanguage() === 'en' ? 'Featured Artisan Treasures' : 'प्रमुख हस्तशिल्प धरोहर' }}
+            </h2>
+            <p class="text-xs sm:text-sm text-[#667085] mt-0.5">
+              Strictly certified GI products directly dispatched from regional master artisan clusters.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            (click)="market.setView('catalogue')"
+            class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-1 group self-start sm:self-auto cursor-pointer">
+            <span>{{ market.currentLanguage() === 'en' ? 'Explore All Products' : 'सभी उत्पाद देखें' }}</span>
+            <mat-icon class="!w-4 !h-4 !text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</mat-icon>
+          </button>
+        </div>
+
+        <!-- 4-Card Responsive Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          @for (prod of market.featuredProducts(); track prod.id) {
+            <app-product-card [product]="prod" />
+          }
+        </div>
+      </section>
+
+      <!-- 4. Verified Sellers Spotlight -->
+      <section class="bg-white py-12 sm:py-16 border-y border-slate-200">
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
+            <div>
+              <div class="text-xs font-bold text-[#176B45] uppercase tracking-wider">Direct From Rural Clusters</div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
+                {{ market.currentLanguage() === 'en' ? 'Meet Verified Producer Cooperatives' : 'सत्यापित उत्पादक सहकारी समितियों से मिलें' }}
+              </h2>
+            </div>
+
+            <button
+              type="button"
+              (click)="market.setView('sellers')"
+              class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-1 cursor-pointer">
+              <span>View All 500+ Registered Groups</span>
+              <mat-icon class="!w-4 !h-4 !text-[16px]">arrow_forward</mat-icon>
+            </button>
+          </div>
+
+          <!-- 3-Card Seller Row -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @for (seller of topSellers(); track seller.id) {
+              <div class="p-6 rounded-2xl bg-[#F8F7F2] border border-slate-200 hover:border-[#176B45] transition-all flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-bold text-[#176B45] uppercase tracking-wider text-[10px]">{{ seller.type }}</span>
+                    <span class="text-amber-500 font-bold flex items-center gap-0.5">
+                      <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">star</mat-icon>
+                      <span>{{ seller.rating }}</span>
+                    </span>
+                  </div>
+
+                  <h3 class="text-base font-bold text-[#15365B] mt-2">
+                    {{ seller.name }}
+                  </h3>
+                  <div class="text-xs text-[#667085] mt-0.5">
+                    {{ seller.district }}, {{ seller.state }}
+                  </div>
+
+                  <p class="text-xs text-[#1D2939] mt-3 leading-relaxed line-clamp-2">
+                    {{ seller.description }}
+                  </p>
+
+                  <div class="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                    <span class="text-[#667085]">Active Artisans:</span>
+                    <span class="font-bold text-[#15365B]">{{ seller.memberCount }} Craftspeople</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  (click)="market.setSearchQuery(seller.name); market.setView('catalogue')"
+                  class="w-full py-2 px-3 bg-white hover:bg-[#176B45] hover:text-white border border-slate-300 hover:border-[#176B45] text-[#15365B] text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer">
+                  <span>Explore Their Creations</span>
+                  <mat-icon class="!w-3.5 !h-3.5 !text-[15px]">arrow_forward</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Interactive Bharat Craft Atlas (Google Map Integration) -->
+      <app-craft-map />
+
+      <!-- 6. Bestselling Products Section -->
+      <section class="max-w-[1320px] mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
+          <div>
+            <div class="flex items-center gap-1.5 text-xs font-bold text-amber-800 uppercase tracking-wider">
+              <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">trending_up</mat-icon>
+              <span>Most Loved by Citizens</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
+              {{ market.currentLanguage() === 'en' ? 'Bestselling Handcrafted Specialties' : 'सर्वाधिक लोकप्रिय हस्तशिल्प' }}
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            (click)="market.setView('catalogue')"
+            class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-1 cursor-pointer">
+            <span>Browse Full Catalogue</span>
+            <mat-icon class="!w-4 !h-4 !text-[16px]">arrow_forward</mat-icon>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          @for (prod of market.bestsellers(); track prod.id) {
+            <app-product-card [product]="prod" />
+          }
+        </div>
+      </section>
+
+      <!-- 7. Government Initiatives Banner & Testimonials -->
+      <app-initiative-section />
+
+    }
+
+    <!-- VIEW: PRODUCT DETAIL (FULL PAGE) -->
+    @if (market.currentView() === 'product-detail') {
+      <app-product-detail-page />
+    }
+
+    <!-- VIEW: CRAFT MAP (FULL PAGE) -->
+    @if (market.currentView() === 'craft-map') {
+      <app-craft-map />
+    }
+
+    <!-- VIEW: CATALOGUE (ALL PRODUCTS & FILTERS) -->
+    @if (market.currentView() === 'catalogue') {
+      <app-product-catalogue />
+    }
+
+    <!-- VIEW: SELLERS DIRECTORY -->
+    @if (market.currentView() === 'sellers') {
+      <app-seller-directory />
+    }
+
+    <!-- VIEW: INITIATIVES PAGE -->
+    @if (market.currentView() === 'initiatives') {
+      <app-initiative-section />
+    }
+
+    <!-- VIEW: ABOUT & AUTHENTICITY -->
+    @if (market.currentView() === 'about') {
+      <app-about-section />
+    }
+
+    <!-- VIEW: WISHLIST -->
+    @if (market.currentView() === 'wishlist') {
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-6 py-8">
+        <div class="mb-6">
+          <h1 class="text-2xl sm:text-3xl font-black text-[#15365B]">
+            Your Saved Heritage Crafts
+          </h1>
+          <p class="text-xs sm:text-sm text-[#667085] mt-1">
+            Items you have bookmarked for yourself or as gifts for loved ones.
+          </p>
+        </div>
+
+        @if (wishlistProducts().length === 0) {
+          <div class="bg-white p-16 rounded-2xl border border-slate-200 text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center">
+              <mat-icon class="!w-8 !h-8 !text-[32px]">favorite_border</mat-icon>
+            </div>
+            <h3 class="text-base font-bold text-[#15365B]">Your wishlist is currently empty</h3>
+            <p class="text-xs text-[#667085] max-w-sm mx-auto">
+              Explore authentic Chanderi sarees, Bastar Dhokra lamps, and wild forest honey to save them here.
+            </p>
+            <button
+              type="button"
+              (click)="market.setView('catalogue')"
+              class="px-5 py-2.5 bg-[#176B45] text-white text-xs font-bold rounded-lg hover:bg-[#15365B] transition-colors cursor-pointer">
+              Explore Crafts
+            </button>
+          </div>
+        } @else {
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            @for (p of wishlistProducts(); track p.id) {
+              <app-product-card [product]="p" />
+            }
+          </div>
+        }
+      </div>
+    }
+
+    <!-- VIEW: MY ACCOUNT (FULL DEDICATED PAGE) -->
+    @if (market.currentView() === 'account') {
+      <app-account-page />
+    }
+
+  </main>
+
+  <!-- Complete Official Trust Footer -->
+  <app-trust-footer />
+
+  <!-- Fixed Mobile Touch Navigation Bar (< 15% mobile viewport cap) -->
+  <app-mobile-nav />
+
+  <!-- Modals & Drawers -->
+  <app-cart-drawer />
+  <app-checkout-modal />
+
+</div>
