@@ -1,0 +1,79 @@
+<section #section id="pick-a-silk-section" class="pick-silk-section" aria-labelledby="pick-a-silk-heading">
+  <div class="pick-silk-shell">
+    <header class="silk-category-heading silk-section-heading">
+      <span class="silk-eyebrow">Find your weave</span>
+      <h2 id="pick-a-silk-heading" class="silk-main-title">Pick a Silk<span class="text-[#8B1D2C]">.</span></h2>
+      <p class="silk-subtitle">Explore the colors and character of India’s celebrated silk traditions.</p>
+    </header>
+
+    <div class="category-controls">
+      <span class="category-count">
+        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ 08</i>
+      </span>
+      <div class="category-arrows">
+        <button type="button" class="silk-arrow" aria-label="Previous silk category" (click)="previousCategory()">←</button>
+        <button type="button" class="silk-arrow" aria-label="Next silk category" (click)="nextCategory()">→</button>
+      </div>
+    </div>
+
+    <!-- 3D Fan Perspective Cards Deck (Video 00:10 - 00:11) -->
+    <div class="deck-perspective-stage">
+      <div #categoryTrack class="category-track" aria-label="Silk categories fan">
+        @for (category of categories; track category.id; let index = $index) {
+          <button
+            #categoryButton
+            type="button"
+            class="silk-category-card"
+            [class.is-active]="selectedIndex() === index"
+            [style.--card-accent]="category.accent"
+            [attr.aria-pressed]="selectedIndex() === index"
+            [attr.aria-label]="'Explore ' + category.name"
+            (click)="selectCategory(index)">
+            
+            <!-- Card Header Ribbon with Bold Name -->
+            <div class="card-ribbon">
+              <span class="category-number">{{ (index + 1).toString().padStart(2, '0') }}</span>
+              <span class="category-name">{{ category.name }}</span>
+            </div>
+
+            <!-- Model Cutout -->
+            <div class="card-art-wrap">
+              <img
+                [src]="category.image"
+                [alt]="category.name + ' styling'"
+                width="1024"
+                height="1536"
+                loading="lazy"
+                class="category-model-img" />
+            </div>
+
+            <!-- Bottom Circular Tag Button -->
+            <div class="card-bottom-bar">
+              @if (category.tag) {
+                <span class="category-tag-pill">{{ category.tag }}</span>
+              }
+              <span class="category-plus" aria-hidden="true">+</span>
+            </div>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Selected Silk Informational Drawer -->
+    @if (activeCategory(); as active) {
+      <div class="selected-category-note" aria-live="polite">
+        <div class="note-info">
+          <div class="note-kicker">
+            <span class="dot-indicator" [style.background]="active.accent"></span>
+            <span>Selected Silk Weave · Look {{ (selectedIndex() + 1).toString().padStart(2, '0') }}</span>
+          </div>
+          <h3 class="note-title">{{ active.name }}</h3>
+          <p class="note-desc">{{ active.note }}</p>
+        </div>
+        <button type="button" class="category-explore" (click)="exploreCategory()">
+          Explore Handloom <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+    }
+  </div>
+</section>

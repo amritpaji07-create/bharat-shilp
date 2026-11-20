@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, computed, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, computed, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { MarketplaceService } from './services/marketplace.service';
 import { AnnouncementBar } from './components/announcement-bar/announcement-bar';
@@ -20,6 +20,11 @@ import { TrustFooter } from './components/trust-footer/trust-footer';
 import { MobileNav } from './components/mobile-nav/mobile-nav';
 import { ToastContainer } from './components/toast-container/toast-container';
 import { SupportModal } from './components/support-modal/support-modal';
+import { TryTheLookComponent } from './components/silk-experience/try-the-look/try-the-look';
+import { PickASilkComponent } from './components/silk-experience/pick-a-silk/pick-a-silk';
+import { SilkRailComponent } from './components/silk-experience/silk-rail/silk-rail';
+import { SilkReelsComponent } from './components/silk-experience/silk-reels/silk-reels';
+import { SilkWeaveComponent } from './components/silk-experience/silk-weave/silk-weave';
 import { MatIconModule } from '@angular/material/icon';
 import { BRASS_DHOKRA_IMAGE, HANDLOOM_IMAGE, HERO_IMAGE, ORGANIC_HONEY_IMAGE } from './data/mock-data';
 import { Product } from './models/marketplace.model';
@@ -47,6 +52,11 @@ import { Product } from './models/marketplace.model';
     MobileNav,
     ToastContainer,
     SupportModal,
+    TryTheLookComponent,
+    PickASilkComponent,
+    SilkRailComponent,
+    SilkReelsComponent,
+    SilkWeaveComponent,
     MatIconModule
   ],
   templateUrl: './app.html',
@@ -54,38 +64,77 @@ import { Product } from './models/marketplace.model';
 })
 export class App implements AfterViewInit, OnDestroy {
   readonly market = inject(MarketplaceService);
+  private readonly changeDetector = inject(ChangeDetectorRef);
   readonly heritageCardsVisible = signal(false);
+  readonly agarbattiVisible = signal(false);
+  readonly silkExperienceVisible = signal(true);
   readonly selectedTreasureId = signal<string | null>(null);
   readonly selectedTreasure = computed(() =>
     this.artisanTreasures.find(treasure => treasure.id === this.selectedTreasureId()) ?? null
   );
 
   @ViewChild('heritageSection') private heritageSection?: ElementRef<HTMLElement>;
-  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  private heritageObserver?: IntersectionObserver;
+  @ViewChild('featuredTreasures') private featuredTreasures?: ElementRef<HTMLElement>;
+  @ViewChild('silkExperienceSections') private silkExperienceSections?: ElementRef<HTMLElement>;
+  @ViewChild('agarbattiSection')
+  set agarbattiSection(section: ElementRef<HTMLElement> | undefined) {
+    this.agarbattiObserver?.disconnect();
+    this.agarbattiObserver = undefined;
 
-  ngAfterViewInit(): void {
-    if (!this.isBrowser || !this.heritageSection) {
+    if (!section || !this.isBrowser) {
+      this.agarbattiVisible.set(false);
+      this.agarbattiVideo?.nativeElement.pause();
       return;
     }
 
     if (typeof IntersectionObserver === 'undefined') {
-      this.heritageCardsVisible.set(true);
+      this.agarbattiVisible.set(true);
+      this.playAgarbattiVideo();
       return;
     }
 
-    this.heritageObserver = new IntersectionObserver(([entry]) => {
-      if (entry?.isIntersecting) {
-        this.heritageCardsVisible.set(true);
-        this.heritageObserver?.disconnect();
-        this.heritageObserver = undefined;
+    this.agarbattiObserver = new IntersectionObserver(([entry]) => {
+      const isVisible = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.18);
+      this.agarbattiVisible.set(isVisible);
+      if (isVisible) {
+        this.playAgarbattiVideo();
+      } else {
+        this.agarbattiVideo?.nativeElement.pause();
       }
-    }, { threshold: 0.2 });
-    this.heritageObserver.observe(this.heritageSection.nativeElement);
+    }, { threshold: 0.18 });
+    this.agarbattiObserver.observe(section.nativeElement);
+  }
+
+  @ViewChild('agarbattiVideo') private agarbattiVideo?: ElementRef<HTMLVideoElement>;
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private heritageObserver?: IntersectionObserver;
+  private agarbattiObserver?: IntersectionObserver;
+
+  ngAfterViewInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    if (this.heritageSection) {
+      if (typeof IntersectionObserver === 'undefined') {
+        this.heritageCardsVisible.set(true);
+      } else {
+        this.heritageObserver = new IntersectionObserver(([entry]) => {
+          if (entry?.isIntersecting) {
+            this.heritageCardsVisible.set(true);
+            this.heritageObserver?.disconnect();
+            this.heritageObserver = undefined;
+          }
+        }, { threshold: 0.2 });
+        this.heritageObserver.observe(this.heritageSection.nativeElement);
+      }
+    }
+
   }
 
   ngOnDestroy(): void {
     this.heritageObserver?.disconnect();
+    this.agarbattiObserver?.disconnect();
   }
 
   readonly brassImage = BRASS_DHOKRA_IMAGE;
@@ -218,6 +267,27 @@ export class App implements AfterViewInit, OnDestroy {
     this.selectedTreasureId.update(current => current === id ? null : id);
   }
 
+  scrollToSilkSection(sectionId: string): void {
+    const el = document.getElementById(sectionId);
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  openTreasure(id: string): void {
+    if (id !== 'handloom-sarees') {
+      this.selectedTreasureId.set(id);
+      return;
+    }
+
+    this.selectedTreasureId.set(null);
+    this.silkExperienceVisible.set(true);
+    this.changeDetector.detectChanges();
+    this.silkExperienceSections?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  closeSilkExperience(): void {
+    this.featuredTreasures?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   playTreasureVideo(video: HTMLVideoElement): void {
     video.muted = true;
     void video.play().catch(() => undefined);
@@ -226,5 +296,13 @@ export class App implements AfterViewInit, OnDestroy {
   pauseTreasureVideo(video: HTMLVideoElement): void {
     video.pause();
     video.currentTime = 0;
+  }
+
+  private playAgarbattiVideo(): void {
+    const video = this.agarbattiVideo?.nativeElement;
+    if (video) {
+      video.muted = true;
+      void video.play().catch(() => undefined);
+    }
   }
 }

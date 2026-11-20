@@ -1,0 +1,116 @@
+<section id="silk-reels-section" class="silk-reels-section" aria-labelledby="silk-reels-heading">
+  <div class="reels-shell">
+    <header class="reels-heading">
+      <span class="silk-eyebrow">The Reel Vault</span>
+      <h2 id="silk-reels-heading" class="silk-main-title">Silk, in motion<span class="text-[#8B1D2C]">.</span></h2>
+      <p class="silk-subtitle">Watch the drape, fall, and shine in short real-time clips.</p>
+    </header>
+
+    <div class="reels-controls">
+      <span class="reels-count">
+        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ {{ reels.length.toString().padStart(2, '0') }}</i>
+      </span>
+      <div class="reels-arrows">
+        <button type="button" class="silk-arrow" aria-label="Previous reel" (click)="previousReel()">←</button>
+        <button type="button" class="silk-arrow" aria-label="Next reel" (click)="nextReel()">→</button>
+      </div>
+    </div>
+
+    <!-- 3D Perspective Phone Reels Carousel (Video 00:25 - 00:32) -->
+    <div class="reels-stage">
+      <div class="reels-track">
+        @for (reel of reels; track reel.id; let index = $index) {
+          <div
+            class="phone-frame-card"
+            [class.is-center]="selectedIndex() === index"
+            [class.is-left]="selectedIndex() === index + 1 || (selectedIndex() === 0 && index === reels.length - 1)"
+            [class.is-right]="selectedIndex() === index - 1 || (selectedIndex() === reels.length - 1 && index === 0)"
+            (click)="selectReel(index)">
+            
+            <!-- Smartphone Shell -->
+            <div class="phone-bezel">
+              <div class="phone-notch">
+                <span class="notch-speaker"></span>
+                <span class="notch-cam"></span>
+              </div>
+
+              <!-- Video Stream -->
+              <div class="phone-screen">
+                <video
+                  #reelVideo
+                  [src]="reel.videoUrl"
+                  loop
+                  playsinline
+                  [muted]="isMuted()"
+                  preload="metadata"
+                  class="reel-video-tag"
+                  (click)="togglePlay(); $event.stopPropagation()">
+                </video>
+
+                <!-- Reels Overlay Header -->
+                <div class="reel-top-bar">
+                  <div class="reel-profile">
+                    <img [src]="reel.avatar" [alt]="reel.title" class="reel-avatar" />
+                    <div>
+                      <div class="reel-handle">
+                        {{ reel.handle }}
+                        <span class="verified-badge">✓</span>
+                      </div>
+                      <div class="reel-sound">{{ reel.soundTrack }}</div>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="reel-sound-btn"
+                    [attr.aria-label]="isMuted() ? 'Unmute video' : 'Mute video'"
+                    (click)="toggleSound(); $event.stopPropagation()">
+                    @if (isMuted()) {
+                      <span class="sound-icon">🔇</span>
+                    } @else {
+                      <span class="sound-icon">🔊</span>
+                    }
+                  </button>
+                </div>
+
+                <!-- Play/Pause Overlay Flash -->
+                @if (!isPlaying() && selectedIndex() === index) {
+                  <button type="button" class="play-overlay-btn" (click)="togglePlay(); $event.stopPropagation()">
+                    ▶
+                  </button>
+                }
+
+                <!-- Reels Overlay Bottom Info & Quick Buy -->
+                <div class="reel-bottom-sheet">
+                  <div class="reel-info">
+                    <h3 class="reel-title">{{ reel.title }}</h3>
+                    <p class="reel-caption">{{ reel.subtitle }}</p>
+                  </div>
+
+                  <!-- Sound Wave Visualizer & Actions -->
+                  <div class="reel-action-bar">
+                    <div class="sound-wave-bars" [class.is-playing]="isPlaying() && !isMuted()">
+                      <span class="wave-bar"></span>
+                      <span class="wave-bar"></span>
+                      <span class="wave-bar"></span>
+                      <span class="wave-bar"></span>
+                    </div>
+
+                    <div class="reel-pricing">
+                      <span class="reel-price">₹{{ reel.price.toLocaleString('en-IN') }}</span>
+                      <button
+                        type="button"
+                        class="btn-reel-buy"
+                        (click)="addToBag(reel); $event.stopPropagation()">
+                        Add to Bag
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

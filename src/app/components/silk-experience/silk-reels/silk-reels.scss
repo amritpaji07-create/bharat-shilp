@@ -1,0 +1,404 @@
+:host {
+  display: block;
+}
+
+.silk-reels-section {
+  position: relative;
+  overflow: hidden;
+  background: #181416;
+  padding: clamp(3.5rem, 6vw, 6.5rem) 0;
+  color: #f5f0eb;
+  border-bottom: 1px solid #33272d;
+}
+
+.reels-shell {
+  width: min(1440px, 100% - 2.5rem);
+  margin: 0 auto;
+}
+
+.reels-heading {
+  text-align: center;
+  margin: 0 auto 2.5rem;
+}
+
+.silk-eyebrow {
+  display: inline-block;
+  color: #e59999;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.silk-main-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.silk-subtitle {
+  color: #b5a49c;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  margin-top: 0.6rem;
+}
+
+.reels-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.reels-count {
+  color: #e59999;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  i {
+    color: #8c7873;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.reels-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.silk-arrow {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid #4a3a41;
+  background: #251d21;
+  color: #f5f0eb;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: #8B1D2C;
+    border-color: #8B1D2C;
+    transform: translateY(-2px);
+  }
+}
+
+/* 3D Phone Reels Stage */
+.reels-stage {
+  position: relative;
+  perspective: 1400px;
+  overflow: hidden;
+  padding: 1.5rem 0 2rem;
+}
+
+.reels-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 580px;
+}
+
+.phone-frame-card {
+  position: relative;
+  flex: 0 0 clamp(240px, 24vw, 320px);
+  height: clamp(480px, 46vw, 580px);
+  border-radius: 2.4rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+
+  &:not(.is-center) {
+    opacity: 0.45;
+    filter: brightness(0.65) blur(1px);
+    transform: scale(0.85);
+
+    &.is-left {
+      transform: scale(0.88) rotateY(18deg) translateZ(-40px);
+    }
+    &.is-right {
+      transform: scale(0.88) rotateY(-18deg) translateZ(-40px);
+    }
+  }
+
+  &.is-center {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.02) translateZ(40px);
+    z-index: 10;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(139, 29, 44, 0.28);
+  }
+}
+
+.phone-bezel {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  border-radius: 2.4rem;
+  border: 4px solid #3d2b33;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 18px;
+  background: #000000;
+  border-radius: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.notch-speaker {
+  width: 32px;
+  height: 3px;
+  background: #2b2b2b;
+  border-radius: 2px;
+}
+
+.notch-cam {
+  width: 7px;
+  height: 7px;
+  background: #1a2234;
+  border-radius: 50%;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #110c0e;
+  overflow: hidden;
+}
+
+.reel-video-tag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlays */
+.reel-top-bar {
+  position: absolute;
+  top: 36px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 100%);
+  padding-bottom: 12px;
+}
+
+.reel-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reel-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #8B1D2C;
+  object-fit: cover;
+}
+
+.reel-handle {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.verified-badge {
+  background: #1d9bf0;
+  color: #ffffff;
+  font-size: 0.55rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.reel-sound {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reel-sound-btn {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.play-overlay-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 6;
+  backdrop-filter: blur(4px);
+}
+
+/* Bottom Sheet */
+.reel-bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 65%, transparent 100%);
+  padding: 24px 14px 16px;
+  z-index: 5;
+}
+
+.reel-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.reel-caption {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin: 0 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reel-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sound-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+
+  &.is-playing .wave-bar {
+    animation: waveBounce 0.8s ease-in-out infinite alternate;
+  }
+}
+
+.wave-bar {
+  width: 3px;
+  height: 6px;
+  background: #e59999;
+  border-radius: 2px;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes waveBounce {
+  0% {
+    height: 4px;
+  }
+  100% {
+    height: 18px;
+  }
+}
+
+.reel-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reel-price {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.btn-reel-buy {
+  background: #8B1D2C;
+  color: #ffffff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #a92437;
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 768px) {
+  .reels-track {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 1rem;
+  }
+
+  .phone-frame-card {
+    flex-basis: 78vw;
+    height: 490px;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}

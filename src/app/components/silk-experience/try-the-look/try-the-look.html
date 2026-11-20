@@ -1,0 +1,101 @@
+<section #section id="try-the-look-section" class="silk-look-section" aria-labelledby="try-the-look-heading">
+  <div class="look-shell">
+    <header class="look-heading">
+      <span class="silk-eyebrow">A closer look at silk</span>
+      <h2 id="try-the-look-heading" class="silk-main-title">Try the Look<span class="text-[#8B1D2C]">.</span></h2>
+      <p class="look-subtitle">Eight looks, styled head to toe. Tap a look to see the pieces.</p>
+    </header>
+
+    <div class="look-layout">
+      <!-- Left / Center: Model Track -->
+      <div class="look-stage" aria-label="Selectable saree looks">
+        <div class="look-controls">
+          <span class="look-count">
+            {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ 08</i>
+          </span>
+          <div class="look-arrows">
+            <button type="button" class="silk-arrow" aria-label="Previous look" (click)="previousLook()">←</button>
+            <button type="button" class="silk-arrow" aria-label="Next look" (click)="nextLook()">→</button>
+          </div>
+        </div>
+
+        <div #modelTrack class="look-track">
+          @for (look of looks; track look.id; let index = $index) {
+            <button
+              #lookButton
+              type="button"
+              class="look-model-card"
+              [class.is-active]="selectedIndex() === index"
+              [attr.aria-label]="'Select ' + look.name + ' look'"
+              [attr.aria-pressed]="selectedIndex() === index"
+              (click)="selectLook(index)">
+              <span class="model-number">{{ (index + 1).toString().padStart(2, '0') }}</span>
+              <div class="model-img-wrapper">
+                <img
+                  [src]="look.image"
+                  [alt]="look.name + ' styled look'"
+                  width="1024"
+                  height="1536"
+                  [loading]="index === 0 ? 'eager' : 'lazy'"
+                  class="model-img" />
+              </div>
+              <div class="model-badge">{{ look.name }}</div>
+            </button>
+          }
+        </div>
+        <p class="look-hint">Tap a look or use arrows to view outfit ensemble</p>
+      </div>
+
+      <!-- Right: Outfit Decomposition (Video 00:04 - 00:09) -->
+      @if (activeLook(); as look) {
+        <aside class="look-breakdown-panel" aria-live="polite">
+          <div class="breakdown-header">
+            <span class="breakdown-kicker">Styled Ensemble · {{ look.category }}</span>
+            <h3 class="breakdown-look-title">{{ look.name }}</h3>
+            <p class="breakdown-desc">{{ look.description }}</p>
+          </div>
+
+          <!-- Pieces list: Saree, Blouse, Jewellery -->
+          <div class="pieces-list">
+            @for (piece of look.pieces; track piece.name) {
+              <div class="piece-card">
+                <div class="piece-thumb">
+                  <img [src]="piece.image" [alt]="piece.name" width="60" height="90" />
+                </div>
+                <div class="piece-content">
+                  <span class="piece-type-badge">{{ piece.type }}</span>
+                  <div class="piece-name">{{ piece.name }}</div>
+                  @if (piece.description) {
+                    <div class="piece-desc">{{ piece.description }}</div>
+                  }
+                  <div class="piece-bottom">
+                    <span class="piece-price">₹{{ piece.price.toLocaleString('en-IN') }}</span>
+                    <button type="button" class="btn-piece-add" (click)="addIndividualPiece(piece, look)">
+                      + Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Total Look Price & CTAs -->
+          <div class="breakdown-footer">
+            <div class="total-row">
+              <span class="total-label">Complete Look Total</span>
+              <span class="total-amount">₹{{ look.totalPrice.toLocaleString('en-IN') }}</span>
+            </div>
+            <div class="breakdown-actions">
+              <button type="button" class="btn-full-look" (click)="addEntireLook(look)">
+                Add Complete Look to Bag
+              </button>
+              <button type="button" class="btn-saree-only" (click)="addSareeOnly(look)">
+                Add Saree Only (₹{{ look.pieces[0].price.toLocaleString('en-IN') }})
+              </button>
+            </div>
+          </div>
+        </aside>
+      }
+    </div>
+  </div>
+</section>

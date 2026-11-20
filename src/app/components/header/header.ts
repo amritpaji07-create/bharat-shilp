@@ -70,6 +70,15 @@ interface MegaMenuColumn {
                 <span>Home</span>
               </button>
 
+              <!-- Silk Studio Interactive Showcase Pill -->
+              <button
+                type="button"
+                (click)="scrollToSilkStudio(); closeMegaMenu()"
+                class="flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-[#8B1D2C]/30 bg-[#fff4f5] px-2.5 text-[11px] font-extrabold uppercase tracking-wide text-[#8B1D2C] shadow-xs transition hover:bg-[#8B1D2C] hover:text-white xl:px-3 xl:text-xs cursor-pointer">
+                <span class="inline-block h-2 w-2 rounded-full bg-[#8B1D2C] animate-pulse"></span>
+                <span>Silk Studio</span>
+              </button>
+
               <!-- 2. Categories Dropdown Trigger -->
               <button
                 type="button"
@@ -539,6 +548,14 @@ interface MegaMenuColumn {
                   <mat-icon class="!h-4 !w-4 !text-[16px]">groups</mat-icon>
                   <span>Artisans</span>
                 </button>
+
+                <button
+                  type="button"
+                  (click)="scrollToSilkStudio(); isMobileMenuOpen.set(false)"
+                  class="col-span-2 flex items-center justify-center gap-2 rounded-xl p-3 text-center text-xs font-bold uppercase tracking-wide border border-[#8B1D2C]/40 bg-[#fff4f5] text-[#8B1D2C] shadow-xs">
+                  <span class="inline-block h-2 w-2 rounded-full bg-[#8B1D2C] animate-pulse"></span>
+                  <span>✨ Explore Interactive Silk Studio & Rail</span>
+                </button>
               </div>
 
               <!-- Shop by Category Accordion Section -->
@@ -666,6 +683,14 @@ interface MegaMenuColumn {
 })
 export class Header implements OnDestroy {
   readonly market = inject(MarketplaceService);
+
+  scrollToSilkStudio(): void {
+    this.market.setView('home');
+    setTimeout(() => {
+      const el = document.getElementById('silk-experience-sections');
+      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+  }
 
   readonly isSearchOpen = signal(false);
   readonly isMobileMenuOpen = signal(false);

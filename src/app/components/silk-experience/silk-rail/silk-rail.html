@@ -1,0 +1,102 @@
+<section #section id="silk-rail-section" class="silk-rail-section" aria-labelledby="silk-rail-heading">
+  <div class="rail-shell">
+    <header class="rail-heading silk-section-heading">
+      <span class="silk-eyebrow">A boutique edit</span>
+      <h2 id="silk-rail-heading" class="silk-main-title">Every silk, on the rail<span class="text-[#8B1D2C]">.</span></h2>
+      <p class="silk-subtitle">Discover the colors, craft and character of Indian silk.</p>
+    </header>
+
+    <!-- Category Switcher Filter Pills -->
+    <div class="rail-category-bar" role="tablist" aria-label="Rail Categories">
+      @for (cat of categories; track cat.id) {
+        <button
+          type="button"
+          role="tab"
+          class="rail-pill"
+          [class.is-active]="selectedCategory() === cat.id"
+          [attr.aria-selected]="selectedCategory() === cat.id"
+          (click)="setCategory(cat.id)">
+          {{ cat.label }} <span class="pill-badge">({{ cat.count }})</span>
+        </button>
+      }
+    </div>
+
+    <!-- Controls & Index -->
+    <div class="rail-controls">
+      <span class="rail-count">
+        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ {{ displayedSarees().length.toString().padStart(2, '0') }}</i>
+      </span>
+      <div class="rail-arrows">
+        <button type="button" class="silk-arrow" aria-label="Previous saree" (click)="previousSaree()">←</button>
+        <button type="button" class="silk-arrow" aria-label="Next saree" (click)="nextSaree()">→</button>
+      </div>
+    </div>
+
+    <!-- The Metallic Rail & Hanging Garments -->
+    <div class="rail-stage">
+      <div class="rail-track-rod-wrap">
+        <img class="rail-line" [src]="railImage" alt="Metallic silk hanger rail" width="1600" height="180" />
+      </div>
+
+      <div #railTrack class="rail-track" aria-label="Sarees hanging on rail">
+        @for (saree of displayedSarees(); track saree.id; let index = $index) {
+          <div
+            class="rail-saree-slot"
+            [class.is-focused]="selectedIndex() === index"
+            [class.is-other-focused]="selectedIndex() !== null && selectedIndex() !== index"
+            (mouseenter)="onHover(index)"
+            (mouseleave)="onHover(null)">
+            <button
+              #railCard
+              type="button"
+              class="rail-saree-card"
+              [class.is-active]="selectedIndex() === index"
+              [attr.aria-label]="'Select ' + saree.name"
+              [attr.aria-pressed]="selectedIndex() === index"
+              (click)="selectSaree(index)">
+              <div class="hanger-swing-wrapper">
+                <img
+                  [src]="saree.image"
+                  [alt]="saree.name + ' hanging on rail'"
+                  width="327"
+                  height="639"
+                  loading="lazy"
+                  class="saree-garment-img" />
+              </div>
+              <span class="rail-saree-name">{{ saree.name }}</span>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Floating Luxury Product Detail Pill (matches 00:14 in video) -->
+    @if (activeSaree(); as active) {
+      <div class="floating-product-card" aria-live="polite">
+        <div class="floating-card-body">
+          <div class="floating-thumb">
+            <img [src]="active.image" [alt]="active.name" width="90" height="180" />
+          </div>
+          <div class="floating-info">
+            <div class="floating-meta">
+              <span class="floating-cat">{{ active.category }}</span>
+              <span class="floating-dot">·</span>
+              <span class="floating-look">Look {{ (selectedIndex() + 1).toString().padStart(2, '0') }}</span>
+            </div>
+            <h3 class="floating-title">{{ active.name }}</h3>
+            <p class="floating-desc">{{ active.description }}</p>
+            <div class="floating-price">₹{{ active.price.toLocaleString('en-IN') }}</div>
+          </div>
+          <div class="floating-actions">
+            <button type="button" class="btn-add-bag" (click)="addToBag(active)">
+              Add to Bag
+            </button>
+            <button type="button" class="btn-try-look" (click)="tryThisLook(active)">
+              Try this Look <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

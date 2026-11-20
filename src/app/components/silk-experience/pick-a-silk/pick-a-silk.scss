@@ -1,0 +1,308 @@
+:host {
+  display: block;
+}
+
+.pick-silk-section {
+  position: relative;
+  overflow: hidden;
+  background: #f5f1ea;
+  padding: clamp(3.5rem, 6vw, 6.5rem) 0;
+  color: #2b1f1a;
+  border-bottom: 1px solid #ebd8c8;
+}
+
+.pick-silk-shell {
+  width: min(1440px, 100% - 2.5rem);
+  margin: 0 auto;
+}
+
+.silk-section-heading {
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.silk-eyebrow {
+  display: inline-block;
+  color: #8B1D2C;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.silk-main-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  color: #1e1518;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.silk-subtitle {
+  color: #72635c;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  margin-top: 0.6rem;
+}
+
+.category-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  padding: 0 0.5rem;
+}
+
+.category-count {
+  color: #8B1D2C;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  i {
+    color: #a89a8f;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.category-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.silk-arrow {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid #dcd2c7;
+  background: #ffffff;
+  color: #3b2c26;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: #8B1D2C;
+    border-color: #8B1D2C;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+}
+
+/* 3D Perspective Deck Stage */
+.deck-perspective-stage {
+  perspective: 1200px;
+  padding: 1.5rem 0.5rem 2rem;
+}
+
+.category-track {
+  display: flex;
+  gap: 1.1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding: 1.5rem 0.75rem 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #c8a362 transparent;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c8a362;
+    border-radius: 9999px;
+  }
+}
+
+.silk-category-card {
+  position: relative;
+  flex: 0 0 clamp(190px, 18vw, 240px);
+  height: clamp(380px, 38vw, 470px);
+  border: none;
+  border-radius: 1.25rem;
+  background: var(--card-accent);
+  color: #ffffff;
+  cursor: pointer;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: rotateY(-5deg) scale(0.97);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover, &.is-active {
+    z-index: 5;
+    transform: rotateY(0deg) translateY(-14px) scale(1.03);
+    box-shadow: 0 24px 44px rgba(0, 0, 0, 0.22);
+
+    .category-model-img {
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .category-plus {
+      transform: rotate(45deg);
+      background: #ffffff;
+      color: var(--card-accent);
+    }
+  }
+}
+
+.card-ribbon {
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.category-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.12em;
+}
+
+.category-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-art-wrap {
+  position: absolute;
+  inset: 2.8rem 0 3.2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.category-model-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-bottom-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+}
+
+.category-tag-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+}
+
+.category-plus {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+/* Selected Info Drawer */
+.selected-category-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.8rem;
+  background: #ffffff;
+  border: 1px solid #ebd9c8;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 28px rgba(45, 25, 30, 0.05);
+}
+
+.note-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #8B1D2C;
+}
+
+.dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.note-title {
+  margin: 0.25rem 0 0.35rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1e1518;
+}
+
+.note-desc {
+  margin: 0;
+  color: #6e6059;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+.category-explore {
+  flex: none;
+  background: #8B1D2C;
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(139, 29, 44, 0.22);
+
+  &:hover {
+    background: #6e1421;
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .selected-category-note {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+}

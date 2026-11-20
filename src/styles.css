@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Yatra+One&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "tailwindcss";
 
@@ -6,6 +6,7 @@
   :root {
     --font-primary: 'Outfit', system-ui, -apple-system, sans-serif;
     --font-hindi: 'Noto Sans Devanagari', 'Outfit', sans-serif;
+    --font-hindi-display: 'Yatra One', var(--font-hindi);
     --font-heritage: 'Bricolage Grotesque', var(--font-primary);
   }
   
@@ -15,6 +16,14 @@
 
   [lang="hi"], .hindi, [class*="ह"] {
     font-family: var(--font-hindi);
+  }
+
+  .agarbatti-hindi-title {
+    font-family: var(--font-hindi-display);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    font-weight: 400;
+    letter-spacing: 0.015em;
+    line-height: 1.45;
   }
 }
 
@@ -65,3 +74,154 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.agarbatti-section {
+  --agarbatti-ink: #193c2c;
+}
+
+.silk-eyebrow {
+  margin: 0 0 0.65rem;
+  color: #936b42;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.silk-section-heading h2,
+.look-heading h2 {
+  margin: 0;
+  color: #57283a;
+  font-family: Georgia, serif;
+  font-size: clamp(2.35rem, 5vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.silk-section-heading p:last-child {
+  margin: 0.75rem 0 0;
+  color: #756b62;
+  font-size: 0.95rem;
+}
+
+.silk-arrow {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border: 1px solid #d8cbbd;
+  border-radius: 50%;
+  background: transparent;
+  color: #57283a;
+  font-size: 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.silk-arrow:hover {
+  background: #57283a;
+  color: #fff;
+}
+
+.detail-kicker {
+  margin: 0 0 0.35rem;
+  color: #986e40;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+app-try-the-look .look-details .look-product-image {
+  min-height: 0;
+  overflow: hidden;
+}
+
+app-try-the-look .look-details .look-product-image img {
+  width: auto;
+  max-width: 100%;
+  min-height: 0;
+}
+
+.agarbatti-reveal-panel {
+  background-image: linear-gradient(rgba(241, 234, 219, 0.76), rgba(241, 234, 219, 0.8)), url("/assets/images/ag-background.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.agarbatti-orbit {
+  position: absolute;
+  top: 50%;
+  left: -18rem;
+  width: 42rem;
+  height: 42rem;
+  border: 1px solid rgba(168, 110, 44, 0.12);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.agarbatti-orbit::before,
+.agarbatti-orbit::after {
+  position: absolute;
+  inset: 3rem;
+  border: 1px solid rgba(168, 110, 44, 0.1);
+  border-radius: inherit;
+  content: "";
+}
+
+.agarbatti-orbit::after {
+  inset: 6rem;
+}
+
+.agarbatti-media-ring {
+  position: absolute;
+  inset: -0.75rem;
+  border: 1px solid rgba(168, 110, 44, 0.32);
+  border-radius: 7rem 2.5rem 7rem 2.5rem / 7rem 2.5rem 7rem 2.5rem;
+  opacity: 0;
+  transform: scale(0.94) rotate(1.5deg);
+  transition: opacity 1000ms ease 700ms, transform 1400ms cubic-bezier(0.2, 0.8, 0.2, 1) 550ms;
+  pointer-events: none;
+}
+
+.agarbatti-media-frame {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 7rem 2.5rem 7rem 2.5rem / 7rem 2.5rem 7rem 2.5rem;
+  clip-path: ellipse(0% 0% at 50% 50%);
+  transform: scale(0.92);
+  transition: clip-path 1800ms cubic-bezier(0.2, 0.75, 0.2, 1) 150ms, transform 1600ms cubic-bezier(0.2, 0.75, 0.2, 1) 150ms;
+}
+
+.agarbatti-copy {
+  opacity: 0;
+  transform: translate3d(38px, 0, 0);
+  transition: opacity 1300ms ease 700ms, transform 1500ms cubic-bezier(0.2, 0.8, 0.2, 1) 700ms;
+}
+
+.agarbatti-visible .agarbatti-media-frame {
+  clip-path: ellipse(100% 100% at 50% 50%);
+  transform: scale(1);
+}
+
+.agarbatti-visible .agarbatti-media-ring {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.agarbatti-visible .agarbatti-copy {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agarbatti-media-frame,
+  .agarbatti-media-ring,
+  .agarbatti-copy {
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+}
+
