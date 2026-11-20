@@ -166,4 +166,4 @@ export interface ArtisanCluster {
   distanceKm?: number;
 }
 
-export type PageView = 'home' | 'catalogue' | 'sellers' | 'initiatives' | 'about' | 'orders' | 'wishlist' | 'product-detail' | 'craft-map' | 'account';
+export type PageView = 'home' | 'catalogue' | 'sellers' | 'initiatives' | 'about' | 'orders' | 'wishlist' | 'product-detail' | 'craft-map' | 'account' | 'silk-studio';

@@ -1,30 +1,53 @@
+export type { Product } from './marketplace.model';
+
+export interface SilkMood {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+}
+
 export interface SilkPiece {
-  type: 'Saree' | 'Blouse' | 'Jewellery';
+  id: string;
+  type: string;
+  brand?: string;
   name: string;
   price: number;
   image: string;
   description?: string;
+  liked?: boolean;
 }
 
 export interface SilkLook {
   id: string;
+  index: number;
   name: string;
-  category: string;
+  title?: string;
+  sareeTitle?: string;
   image: string;
   productImage: string;
-  catalogueProductId?: string;
+  category: string;
   description: string;
   pieces: SilkPiece[];
+  originalTotalPrice?: number;
   totalPrice: number;
+  bundlePrice: number;
+  discountNote?: string;
+  catalogueProductId?: string;
 }
 
 export interface SilkCategory {
   id: string;
   name: string;
-  image: string;
+  subName?: string;
+  colorName?: string;
   accent: string;
-  note: string;
+  textColor?: string;
+  image: string;
+  price: number;
+  note?: string;
   tag?: string;
+  liked?: boolean;
 }
 
 export interface RailCategory {
@@ -33,28 +56,36 @@ export interface RailCategory {
   count: number;
 }
 
-export interface RailSaree {
+export interface RailItem {
   id: string;
   name: string;
+  price: number;
   category: string;
   categoryType: string;
-  price: number;
+  categoryLabel?: string;
   image: string;
+  backImage?: string;
   description: string;
+  sizes: number[];
   catalogueProductId?: string;
   lookId?: string;
 }
 
+export type RailSaree = RailItem;
+
 export interface SilkReel {
   id: string;
+  reelNumber?: string;
+  duration?: string;
+  fabricType?: string;
   title: string;
-  subtitle: string;
+  location?: string;
   videoUrl: string;
   price: number;
-  avatar: string;
-  handle: string;
-  soundTrack: string;
-  catalogueProductId?: string;
+  avatar?: string;
+  handle?: string;
+  soundTrack?: string;
+  subtitle?: string;
 }
 
 export interface SilkSpool {
@@ -67,8 +98,13 @@ export interface SilkSpool {
   origin: string;
 }
 
-export interface SilkCustomWeave {
-  strandA: SilkSpool;
-  strandB: SilkSpool;
-  strandC: SilkSpool;
+export interface BridalSaree {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  palluNote: string;
+  fabric: string;
+  tag?: string;
+  liked?: boolean;
 }

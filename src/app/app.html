@@ -68,7 +68,7 @@
               (blur)="pauseTreasureVideo(treasureVideo)"
               tabindex="0"
               role="button"
-              [attr.aria-expanded]="selectedTreasureId() === treasure.id || (treasure.id === 'handloom-sarees' && silkExperienceVisible())">
+              [attr.aria-expanded]="treasure.id === 'handloom-sarees' ? null : selectedTreasureId() === treasure.id">
 
               <img
                 [src]="treasure.image"
@@ -185,53 +185,6 @@
             </div>
           </div>
         </div>
-      }
-
-      @if (silkExperienceVisible()) {
-        <section #silkExperienceSections id="silk-experience-sections" aria-label="Interactive silk experience" class="relative bg-[#fbf9f5] border-t border-[#ebd8c8]">
-          <!-- Luxury Experience Quick Navigation Bar -->
-          <div class="sticky top-[76px] sm:top-[90px] z-30 flex items-center justify-center border-b border-[#ebd8c8] bg-white/85 py-3 backdrop-blur-md px-4 shadow-[0_4px_20px_rgba(45,25,30,0.04)]">
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
-              <span class="hidden sm:inline-block text-[11px] font-bold uppercase tracking-[0.16em] text-[#8B1D2C] mr-2">Silk Studio:</span>
-              <button
-                type="button"
-                (click)="scrollToSilkSection('try-the-look-section')"
-                class="rounded-full border border-[#ebd8c8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4a3932] transition hover:border-[#8B1D2C] hover:text-[#8B1D2C] hover:bg-[#fff9f9] shadow-xs cursor-pointer">
-                Try the Look
-              </button>
-              <button
-                type="button"
-                (click)="scrollToSilkSection('pick-a-silk-section')"
-                class="rounded-full border border-[#ebd8c8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4a3932] transition hover:border-[#8B1D2C] hover:text-[#8B1D2C] hover:bg-[#fff9f9] shadow-xs cursor-pointer">
-                Pick a Silk
-              </button>
-              <button
-                type="button"
-                (click)="scrollToSilkSection('silk-rail-section')"
-                class="rounded-full border border-[#8B1D2C] bg-[#8B1D2C] px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-[#6e1421] shadow-xs cursor-pointer">
-                Every Silk on the Rail
-              </button>
-              <button
-                type="button"
-                (click)="scrollToSilkSection('silk-reels-section')"
-                class="rounded-full border border-[#ebd8c8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4a3932] transition hover:border-[#8B1D2C] hover:text-[#8B1D2C] hover:bg-[#fff9f9] shadow-xs cursor-pointer">
-                Silk in Motion
-              </button>
-              <button
-                type="button"
-                (click)="scrollToSilkSection('silk-weave-section')"
-                class="rounded-full border border-[#ebd8c8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4a3932] transition hover:border-[#8B1D2C] hover:text-[#8B1D2C] hover:bg-[#fff9f9] shadow-xs cursor-pointer">
-                Three Silks Weave
-              </button>
-            </div>
-          </div>
-
-          <app-try-the-look />
-          <app-pick-a-silk />
-          <app-silk-rail />
-          <app-silk-reels />
-          <app-silk-weave />
-        </section>
       }
 
       <section
@@ -410,6 +363,11 @@
     <!-- VIEW: PRODUCT DETAIL (FULL PAGE) -->
     @if (market.currentView() === 'product-detail') {
       <app-product-detail-page />
+    }
+
+    <!-- VIEW: SILK STUDIO (FULL PAGE) -->
+    @if (market.currentView() === 'silk-studio') {
+      <app-silk-studio />
     }
 
     <!-- VIEW: CRAFT MAP (FULL PAGE) -->

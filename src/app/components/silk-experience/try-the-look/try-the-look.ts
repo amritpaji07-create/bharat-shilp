@@ -27,8 +27,10 @@ import { loadSilkGsap, SilkGsapRuntime } from '../../../shared/silk-gsap';
 })
 export class TryTheLookComponent implements AfterViewInit, OnDestroy {
   readonly looks = SILK_LOOKS;
-  readonly selectedIndex = signal(0);
-  readonly activeLook = computed(() => this.looks[this.selectedIndex()]);
+  // Default to index 6 (Look 7: Ivory Elephant matching NOOLAM spec 03-try-the-look.png)
+  readonly selectedIndex = signal(6);
+  readonly activeLook = computed(() => this.looks[this.selectedIndex()] ?? this.looks[0]);
+  readonly likedPieces = signal<Set<string>>(new Set());
   readonly market = inject(MarketplaceService);
 
   @ViewChild('section') private section?: ElementRef<HTMLElement>;
@@ -41,6 +43,7 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
+    this.scrollModelIntoView(this.selectedIndex());
     void this.initGsap();
   }
 
@@ -76,6 +79,22 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
 
   nextLook(): void {
     this.selectLook(this.selectedIndex() + 1);
+  }
+
+  toggleLikePiece(pieceId: string): void {
+    this.likedPieces.update(set => {
+      const next = new Set(set);
+      if (next.has(pieceId)) {
+        next.delete(pieceId);
+      } else {
+        next.add(pieceId);
+      }
+      return next;
+    });
+  }
+
+  isPieceLiked(pieceId: string): boolean {
+    return this.likedPieces().has(pieceId);
   }
 
   private scrollModelIntoView(index: number): void {

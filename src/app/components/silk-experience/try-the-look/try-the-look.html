@@ -1,18 +1,20 @@
 <section #section id="try-the-look-section" class="silk-look-section" aria-labelledby="try-the-look-heading">
   <div class="look-shell">
     <header class="look-heading">
-      <span class="silk-eyebrow">A closer look at silk</span>
-      <h2 id="try-the-look-heading" class="silk-main-title">Try the Look<span class="text-[#8B1D2C]">.</span></h2>
-      <p class="look-subtitle">Eight looks, styled head to toe. Tap a look to see the pieces.</p>
+      <span class="silk-eyebrow">HEAD-TO-TOE STYLING</span>
+      <h2 id="try-the-look-heading" class="silk-main-title">Try the <span class="highlight-maroon">Look.</span></h2>
+      <p class="look-subtitle">Eight Kanjivaram looks, styled head to toe. Tap a look to see the pieces.</p>
     </header>
 
     <div class="look-layout">
       <!-- Left / Center: Model Track -->
       <div class="look-stage" aria-label="Selectable saree looks">
         <div class="look-controls">
-          <span class="look-count">
-            {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ 08</i>
-          </span>
+          <div class="look-counter-block">
+            <span class="look-counter-text">
+              <strong>{{ activeLook().index }}</strong> of {{ looks.length }} &nbsp;·&nbsp; <span class="active-look-name">{{ activeLook().name }}</span>
+            </span>
+          </div>
           <div class="look-arrows">
             <button type="button" class="silk-arrow" aria-label="Previous look" (click)="previousLook()">←</button>
             <button type="button" class="silk-arrow" aria-label="Next look" (click)="nextLook()">→</button>
@@ -26,54 +28,72 @@
               type="button"
               class="look-model-card"
               [class.is-active]="selectedIndex() === index"
+              [class.is-blurred]="selectedIndex() !== index"
               [attr.aria-label]="'Select ' + look.name + ' look'"
               [attr.aria-pressed]="selectedIndex() === index"
               (click)="selectLook(index)">
-              <span class="model-number">{{ (index + 1).toString().padStart(2, '0') }}</span>
               <div class="model-img-wrapper">
                 <img
                   [src]="look.image"
                   [alt]="look.name + ' styled look'"
                   width="1024"
                   height="1536"
-                  [loading]="index === 0 ? 'eager' : 'lazy'"
+                  [loading]="index === 6 ? 'eager' : 'lazy'"
                   class="model-img" />
+                <div class="model-shadow" aria-hidden="true"></div>
               </div>
-              <div class="model-badge">{{ look.name }}</div>
+              <div class="model-name-pill">{{ look.name }}</div>
             </button>
           }
         </div>
-        <p class="look-hint">Tap a look or use arrows to view outfit ensemble</p>
+        <p class="look-hint">
+          <span class="hint-dot"></span> Scroll or drag to explore looks
+        </p>
       </div>
 
-      <!-- Right: Outfit Decomposition (Video 00:04 - 00:09) -->
+      <!-- Right: Outfit Decomposition (6-Piece Ensemble) -->
       @if (activeLook(); as look) {
         <aside class="look-breakdown-panel" aria-live="polite">
           <div class="breakdown-header">
-            <span class="breakdown-kicker">Styled Ensemble · {{ look.category }}</span>
-            <h3 class="breakdown-look-title">{{ look.name }}</h3>
+            <div class="breakdown-header-top">
+              <span class="breakdown-kicker">IN THIS LOOK</span>
+              <span class="pieces-count-pill">6 pieces</span>
+            </div>
+            <h3 class="breakdown-look-title">{{ look.title || look.name }}</h3>
             <p class="breakdown-desc">{{ look.description }}</p>
           </div>
 
-          <!-- Pieces list: Saree, Blouse, Jewellery -->
+          <!-- 6 Pieces List -->
           <div class="pieces-list">
-            @for (piece of look.pieces; track piece.name) {
+            @for (piece of look.pieces; track piece.name; let pieceIndex = $index) {
               <div class="piece-card">
+                <span class="piece-index">{{ pieceIndex + 1 }}</span>
                 <div class="piece-thumb">
-                  <img [src]="piece.image" [alt]="piece.name" width="60" height="90" />
+                  <img [src]="piece.image" [alt]="piece.name" width="70" height="70" loading="lazy" />
                 </div>
                 <div class="piece-content">
-                  <span class="piece-type-badge">{{ piece.type }}</span>
-                  <div class="piece-name">{{ piece.name }}</div>
-                  @if (piece.description) {
-                    <div class="piece-desc">{{ piece.description }}</div>
-                  }
-                  <div class="piece-bottom">
-                    <span class="piece-price">₹{{ piece.price.toLocaleString('en-IN') }}</span>
-                    <button type="button" class="btn-piece-add" (click)="addIndividualPiece(piece, look)">
-                      + Add
-                    </button>
-                  </div>
+                  <span class="piece-brand">{{ piece.brand || 'NOOLAM' }}</span>
+                  <h4 class="piece-name">{{ piece.name }}</h4>
+                  <div class="piece-price">₹{{ piece.price.toLocaleString('en-IN') }}</div>
+                </div>
+                <div class="piece-actions">
+                  <button
+                    type="button"
+                    class="piece-btn-heart"
+                    [class.is-liked]="isPieceLiked(piece.id)"
+                    [attr.aria-label]="'Save ' + piece.name + ' to wishlist'"
+                    (click)="toggleLikePiece(piece.id)">
+                    <svg width="18" height="18" viewBox="0 0 24 24" [attr.fill]="isPieceLiked(piece.id) ? '#7a1c28' : 'none'" stroke="currentColor" stroke-width="1.8">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    class="piece-btn-add"
+                    [attr.aria-label]="'Add ' + piece.name + ' to bag'"
+                    (click)="addIndividualPiece(piece, look)">
+                    +
+                  </button>
                 </div>
               </div>
             }
@@ -81,16 +101,28 @@
 
           <!-- Total Look Price & CTAs -->
           <div class="breakdown-footer">
-            <div class="total-row">
-              <span class="total-label">Complete Look Total</span>
-              <span class="total-amount">₹{{ look.totalPrice.toLocaleString('en-IN') }}</span>
+            <div class="bundle-price-box">
+              <div class="bundle-labels">
+                <span class="bundle-title">Complete Look Bundle</span>
+                <span class="bundle-tag">Save 10%</span>
+              </div>
+              <div class="bundle-amounts">
+                <span class="original-amount">₹{{ look.totalPrice.toLocaleString('en-IN') }}</span>
+                <span class="bundle-amount">₹{{ look.bundlePrice.toLocaleString('en-IN') }}</span>
+              </div>
             </div>
+
             <div class="breakdown-actions">
               <button type="button" class="btn-full-look" (click)="addEntireLook(look)">
-                Add Complete Look to Bag
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Add full look to bag · ₹{{ look.bundlePrice.toLocaleString('en-IN') }}
               </button>
               <button type="button" class="btn-saree-only" (click)="addSareeOnly(look)">
-                Add Saree Only (₹{{ look.pieces[0].price.toLocaleString('en-IN') }})
+                Add saree only · ₹{{ look.pieces[0].price.toLocaleString('en-IN') }}
               </button>
             </div>
           </div>

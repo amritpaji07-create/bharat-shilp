@@ -685,11 +685,8 @@ export class Header implements OnDestroy {
   readonly market = inject(MarketplaceService);
 
   scrollToSilkStudio(): void {
-    this.market.setView('home');
-    setTimeout(() => {
-      const el = document.getElementById('silk-experience-sections');
-      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 60);
+    this.market.setView('silk-studio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   readonly isSearchOpen = signal(false);

@@ -101,9 +101,9 @@ export class SilkReelsComponent implements AfterViewInit, OnDestroy {
       id: reel.id,
       name: `${reel.title} Handloom Silk`,
       price: reel.price,
-      image: reel.avatar,
+      image: reel.avatar ?? 'assets/silk-experience/silk-reels/reel-01-ponni.png',
       category: 'Silk Reel',
-      description: reel.subtitle
+      description: reel.subtitle ?? reel.title
     });
     this.market.addToCart(product, 1);
   }

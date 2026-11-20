@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, computed, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, computed, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { MarketplaceService } from './services/marketplace.service';
 import { AnnouncementBar } from './components/announcement-bar/announcement-bar';
@@ -20,11 +20,7 @@ import { TrustFooter } from './components/trust-footer/trust-footer';
 import { MobileNav } from './components/mobile-nav/mobile-nav';
 import { ToastContainer } from './components/toast-container/toast-container';
 import { SupportModal } from './components/support-modal/support-modal';
-import { TryTheLookComponent } from './components/silk-experience/try-the-look/try-the-look';
-import { PickASilkComponent } from './components/silk-experience/pick-a-silk/pick-a-silk';
-import { SilkRailComponent } from './components/silk-experience/silk-rail/silk-rail';
-import { SilkReelsComponent } from './components/silk-experience/silk-reels/silk-reels';
-import { SilkWeaveComponent } from './components/silk-experience/silk-weave/silk-weave';
+import { SilkStudioComponent } from './components/silk-experience/silk-studio/silk-studio';
 import { MatIconModule } from '@angular/material/icon';
 import { BRASS_DHOKRA_IMAGE, HANDLOOM_IMAGE, HERO_IMAGE, ORGANIC_HONEY_IMAGE } from './data/mock-data';
 import { Product } from './models/marketplace.model';
@@ -52,11 +48,7 @@ import { Product } from './models/marketplace.model';
     MobileNav,
     ToastContainer,
     SupportModal,
-    TryTheLookComponent,
-    PickASilkComponent,
-    SilkRailComponent,
-    SilkReelsComponent,
-    SilkWeaveComponent,
+    SilkStudioComponent,
     MatIconModule
   ],
   templateUrl: './app.html',
@@ -64,18 +56,14 @@ import { Product } from './models/marketplace.model';
 })
 export class App implements AfterViewInit, OnDestroy {
   readonly market = inject(MarketplaceService);
-  private readonly changeDetector = inject(ChangeDetectorRef);
   readonly heritageCardsVisible = signal(false);
   readonly agarbattiVisible = signal(false);
-  readonly silkExperienceVisible = signal(true);
   readonly selectedTreasureId = signal<string | null>(null);
   readonly selectedTreasure = computed(() =>
     this.artisanTreasures.find(treasure => treasure.id === this.selectedTreasureId()) ?? null
   );
 
   @ViewChild('heritageSection') private heritageSection?: ElementRef<HTMLElement>;
-  @ViewChild('featuredTreasures') private featuredTreasures?: ElementRef<HTMLElement>;
-  @ViewChild('silkExperienceSections') private silkExperienceSections?: ElementRef<HTMLElement>;
   @ViewChild('agarbattiSection')
   set agarbattiSection(section: ElementRef<HTMLElement> | undefined) {
     this.agarbattiObserver?.disconnect();
@@ -267,25 +255,13 @@ export class App implements AfterViewInit, OnDestroy {
     this.selectedTreasureId.update(current => current === id ? null : id);
   }
 
-  scrollToSilkSection(sectionId: string): void {
-    const el = document.getElementById(sectionId);
-    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
   openTreasure(id: string): void {
-    if (id !== 'handloom-sarees') {
+    if (id === 'handloom-sarees') {
+      this.selectedTreasureId.set(null);
+      this.market.setView('silk-studio');
+    } else {
       this.selectedTreasureId.set(id);
-      return;
     }
-
-    this.selectedTreasureId.set(null);
-    this.silkExperienceVisible.set(true);
-    this.changeDetector.detectChanges();
-    this.silkExperienceSections?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  closeSilkExperience(): void {
-    this.featuredTreasures?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   playTreasureVideo(video: HTMLVideoElement): void {

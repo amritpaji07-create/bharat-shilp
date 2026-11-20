@@ -1,14 +1,14 @@
 <section #section id="pick-a-silk-section" class="pick-silk-section" aria-labelledby="pick-a-silk-heading">
   <div class="pick-silk-shell">
     <header class="silk-category-heading silk-section-heading">
-      <span class="silk-eyebrow">Find your weave</span>
-      <h2 id="pick-a-silk-heading" class="silk-main-title">Pick a Silk<span class="text-[#8B1D2C]">.</span></h2>
+      <span class="silk-eyebrow">PALETTE & TEXTURE</span>
+      <h2 id="pick-a-silk-heading" class="silk-main-title">Pick a <span class="highlight-maroon">Silk.</span></h2>
       <p class="silk-subtitle">Explore the colors and character of India’s celebrated silk traditions.</p>
     </header>
 
     <div class="category-controls">
       <span class="category-count">
-        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ 08</i>
+        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ {{ categories.length.toString().padStart(2, '0') }}</i>
       </span>
       <div class="category-arrows">
         <button type="button" class="silk-arrow" aria-label="Previous silk category" (click)="previousCategory()">←</button>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <!-- 3D Fan Perspective Cards Deck (Video 00:10 - 00:11) -->
+    <!-- 3D Fan Perspective Cards Deck on Curved Arc -->
     <div class="deck-perspective-stage">
       <div #categoryTrack class="category-track" aria-label="Silk categories fan">
         @for (category of categories; track category.id; let index = $index) {
@@ -25,18 +25,31 @@
             type="button"
             class="silk-category-card"
             [class.is-active]="selectedIndex() === index"
-            [style.--card-accent]="category.accent"
+            [style.background-color]="category.accent"
             [attr.aria-pressed]="selectedIndex() === index"
-            [attr.aria-label]="'Explore ' + category.name"
-            (click)="selectCategory(index)">
+            [attr.aria-label]="'Select ' + category.name"
+            (click)="selectCategory(index)"
+            (mousemove)="onMouseMove($event, categoryButton)"
+            (mouseleave)="onMouseLeave(categoryButton)">
             
-            <!-- Card Header Ribbon with Bold Name -->
-            <div class="card-ribbon">
-              <span class="category-number">{{ (index + 1).toString().padStart(2, '0') }}</span>
-              <span class="category-name">{{ category.name }}</span>
+            <!-- Top Right Heart Button -->
+            <button
+              type="button"
+              class="card-heart-btn"
+              [class.is-liked]="isLiked(category.id)"
+              [attr.aria-label]="'Wishlist ' + category.name"
+              (click)="toggleLike(category.id, $event)">
+              <svg width="20" height="20" viewBox="0 0 24 24" [attr.fill]="isLiked(category.id) ? '#ff4060' : 'none'" stroke="#ffffff" stroke-width="2">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+
+            <!-- Huge Condensed Title BEHIND Model -->
+            <div class="card-giant-title" aria-hidden="true">
+              {{ category.name }}
             </div>
 
-            <!-- Model Cutout -->
+            <!-- Model Cutout in Foreground with Soft Shadow -->
             <div class="card-art-wrap">
               <img
                 [src]="category.image"
@@ -45,33 +58,49 @@
                 height="1536"
                 loading="lazy"
                 class="category-model-img" />
+              <div class="model-stage-shadow"></div>
             </div>
 
-            <!-- Bottom Circular Tag Button -->
+            <!-- Bottom Bar: Price Left, Round Black Plus Right -->
             <div class="card-bottom-bar">
-              @if (category.tag) {
-                <span class="category-tag-pill">{{ category.tag }}</span>
-              }
-              <span class="category-plus" aria-hidden="true">+</span>
+              <div class="card-price-block">
+                <span class="card-color-sub">{{ category.colorName }}</span>
+                <span class="card-price">₹{{ category.price.toLocaleString('en-IN') }}</span>
+              </div>
+              <button
+                type="button"
+                class="card-btn-plus"
+                [attr.aria-label]="'Add ' + category.name + ' to bag'"
+                (click)="addCategoryToBag(category, $event)">
+                +
+              </button>
             </div>
           </button>
         }
       </div>
     </div>
 
-    <!-- Selected Silk Informational Drawer -->
+    <!-- Interaction Hint Line -->
+    <p class="tilt-hint-line">
+      <span class="hint-sparkle">✦</span> Tilt a card, press it, poke the silk.
+    </p>
+
+    <!-- Selected Silk Note / Detail Bar -->
     @if (activeCategory(); as active) {
       <div class="selected-category-note" aria-live="polite">
         <div class="note-info">
           <div class="note-kicker">
             <span class="dot-indicator" [style.background]="active.accent"></span>
-            <span>Selected Silk Weave · Look {{ (selectedIndex() + 1).toString().padStart(2, '0') }}</span>
+            <span>NOOLAM SILK ARCHIVE &nbsp;·&nbsp; {{ active.colorName }}</span>
           </div>
           <h3 class="note-title">{{ active.name }}</h3>
           <p class="note-desc">{{ active.note }}</p>
         </div>
-        <button type="button" class="category-explore" (click)="exploreCategory()">
-          Explore Handloom <span aria-hidden="true">↗</span>
+        <button
+          type="button"
+          class="category-bag-btn"
+          (click)="addCategoryToBag(active, $event)">
+          Add to Bag · ₹{{ active.price.toLocaleString('en-IN') }}
         </button>
       </div>
     }

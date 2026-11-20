@@ -1,12 +1,12 @@
 <section #section id="silk-rail-section" class="silk-rail-section" aria-labelledby="silk-rail-heading">
   <div class="rail-shell">
     <header class="rail-heading silk-section-heading">
-      <span class="silk-eyebrow">A boutique edit</span>
-      <h2 id="silk-rail-heading" class="silk-main-title">Every silk, on the rail<span class="text-[#8B1D2C]">.</span></h2>
+      <span class="silk-eyebrow">BOUTIQUE RAIL</span>
+      <h2 id="silk-rail-heading" class="silk-main-title">Every silk, on the <span class="highlight-maroon">rail.</span></h2>
       <p class="silk-subtitle">Discover the colors, craft and character of Indian silk.</p>
     </header>
 
-    <!-- Category Switcher Filter Pills -->
+    <!-- Category Filter Pills (7 chips) -->
     <div class="rail-category-bar" role="tablist" aria-label="Rail Categories">
       @for (cat of categories; track cat.id) {
         <button
@@ -21,29 +21,41 @@
       }
     </div>
 
-    <!-- Controls & Index -->
-    <div class="rail-controls">
-      <span class="rail-count">
-        {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ {{ displayedSarees().length.toString().padStart(2, '0') }}</i>
-      </span>
-      <div class="rail-arrows">
-        <button type="button" class="silk-arrow" aria-label="Previous saree" (click)="previousSaree()">←</button>
-        <button type="button" class="silk-arrow" aria-label="Next saree" (click)="nextSaree()">→</button>
+    <!-- Controls, Captions & Index -->
+    <div class="rail-controls-bar">
+      <div class="rail-caption-left">
+        <span class="collection-caption">Explore the collection · {{ displayedSarees().length }} pieces</span>
+        <span class="studio-caption">AI-generated studio imagery</span>
+      </div>
+      <div class="rail-controls-right">
+        <span class="rail-count">
+          {{ (selectedIndex() + 1).toString().padStart(2, '0') }} <i>/ {{ displayedSarees().length.toString().padStart(2, '0') }}</i>
+        </span>
+        <div class="rail-arrows">
+          <button type="button" class="silk-arrow" aria-label="Previous garment" (click)="previousSaree()">←</button>
+          <button type="button" class="silk-arrow" aria-label="Next garment" (click)="nextSaree()">→</button>
+        </div>
       </div>
     </div>
 
-    <!-- The Metallic Rail & Hanging Garments -->
+    <!-- The Chrome Rail & Hanging Garments -->
     <div class="rail-stage">
-      <div class="rail-track-rod-wrap">
-        <img class="rail-line" [src]="railImage" alt="Metallic silk hanger rail" width="1600" height="180" />
+      <div class="rail-rod-container" aria-hidden="true">
+        <div class="chrome-rod"></div>
       </div>
 
-      <div #railTrack class="rail-track" aria-label="Sarees hanging on rail">
+      <div
+        #railTrack
+        class="rail-track"
+        role="region"
+        tabindex="0"
+        aria-label="Garments hanging on the rail. Scroll horizontally to explore."
+        (wheel)="onTrackWheel($event)">
         @for (saree of displayedSarees(); track saree.id; let index = $index) {
           <div
             class="rail-saree-slot"
-            [class.is-focused]="selectedIndex() === index"
-            [class.is-other-focused]="selectedIndex() !== null && selectedIndex() !== index"
+            [class.is-focused]="focusIndex() === index"
+            [class.is-active]="selectedIndex() === index"
             (mouseenter)="onHover(index)"
             (mouseleave)="onHover(null)">
             <button
@@ -51,52 +63,146 @@
               type="button"
               class="rail-saree-card"
               [class.is-active]="selectedIndex() === index"
-              [attr.aria-label]="'Select ' + saree.name"
-              [attr.aria-pressed]="selectedIndex() === index"
-              (click)="selectSaree(index)">
+              [attr.aria-label]="'View details for ' + saree.name"
+              (click)="openModal(saree)">
+              <!-- Wooden Hanger & Garment -->
               <div class="hanger-swing-wrapper">
+                <div class="wooden-hanger" aria-hidden="true">
+                  <div class="hanger-hook"></div>
+                  <div class="hanger-body"></div>
+                </div>
                 <img
                   [src]="saree.image"
                   [alt]="saree.name + ' hanging on rail'"
-                  width="327"
-                  height="639"
+                  width="320"
+                  height="600"
                   loading="lazy"
                   class="saree-garment-img" />
               </div>
-              <span class="rail-saree-name">{{ saree.name }}</span>
             </button>
           </div>
         }
       </div>
     </div>
 
-    <!-- Floating Luxury Product Detail Pill (matches 00:14 in video) -->
+    <!-- Hovered / Selected Garment Info Pill under Rail -->
     @if (activeSaree(); as active) {
-      <div class="floating-product-card" aria-live="polite">
-        <div class="floating-card-body">
-          <div class="floating-thumb">
-            <img [src]="active.image" [alt]="active.name" width="90" height="180" />
-          </div>
-          <div class="floating-info">
-            <div class="floating-meta">
-              <span class="floating-cat">{{ active.category }}</span>
-              <span class="floating-dot">·</span>
-              <span class="floating-look">Look {{ (selectedIndex() + 1).toString().padStart(2, '0') }}</span>
-            </div>
-            <h3 class="floating-title">{{ active.name }}</h3>
-            <p class="floating-desc">{{ active.description }}</p>
-            <div class="floating-price">₹{{ active.price.toLocaleString('en-IN') }}</div>
-          </div>
-          <div class="floating-actions">
-            <button type="button" class="btn-add-bag" (click)="addToBag(active)">
-              Add to Bag
-            </button>
-            <button type="button" class="btn-try-look" (click)="tryThisLook(active)">
-              Try this Look <span aria-hidden="true">→</span>
-            </button>
-          </div>
+      <div class="rail-info-strip" aria-live="polite">
+        <div class="strip-text">
+          <span class="strip-name">{{ active.name }}</span>
+          <span class="strip-dot">·</span>
+          <span class="strip-price">₹{{ active.price.toLocaleString('en-IN') }}.00</span>
         </div>
+        <button type="button" class="strip-btn-detail" (click)="openModal(active)">
+          Inspect Piece ↗
+        </button>
       </div>
     }
   </div>
+
+  <!-- Rack Detail Modal (Full-Screen Overlay with Blur) -->
+  @if (isModalOpen() && modalItem(); as item) {
+    <div class="rack-detail-modal-overlay" role="dialog" aria-modal="true" [attr.aria-label]="item.name + ' detail view'">
+      <!-- Modal Close Button -->
+      <button type="button" class="modal-close-btn" aria-label="Close modal" (click)="closeModal()">
+        CLOSE ×
+      </button>
+
+      <!-- Prev / Next Navigation Arrows -->
+      <button type="button" class="modal-nav-arrow arrow-left" aria-label="Previous item" (click)="modalPreviousItem()">
+        ‹
+      </button>
+      <button type="button" class="modal-nav-arrow arrow-right" aria-label="Next item" (click)="modalNextItem()">
+        ›
+      </button>
+
+      <!-- Center Modal Content -->
+      <div class="modal-content-container">
+        <!-- Center Large Garment with Wooden Hanger -->
+        <div class="modal-garment-stage">
+          <div class="modal-hanger" aria-hidden="true">
+            <div class="modal-hook"></div>
+            <div class="modal-hanger-bar"></div>
+          </div>
+          <div class="modal-img-wrap">
+            <img
+              [src]="modalSide() === 'front' ? item.image : (item.backImage || item.image)"
+              [alt]="item.name + ' ' + modalSide() + ' view'"
+              class="modal-garment-img" />
+          </div>
+
+          <!-- Front / Back View Toggle Pill -->
+          <div class="modal-view-toggle">
+            <button
+              type="button"
+              class="toggle-btn"
+              [class.is-selected]="modalSide() === 'front'"
+              (click)="toggleModalSide('front')">
+              Front
+            </button>
+            <button
+              type="button"
+              class="toggle-btn"
+              [class.is-selected]="modalSide() === 'back'"
+              (click)="toggleModalSide('back')">
+              Back
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Product Detail Panel -->
+        <div class="modal-details-panel">
+          <span class="modal-brand-tag">NOOLAM &nbsp;·&nbsp; KANCHIPURAM</span>
+          <h2 class="modal-product-name">{{ item.name }}</h2>
+          <div class="modal-product-price">₹{{ item.price.toLocaleString('en-IN') }}.00</div>
+          <p class="modal-description">{{ item.description }}</p>
+
+          <!-- Size Selector (34 - 42) -->
+          <div class="modal-sizes-block">
+            <div class="sizes-header">
+              <span class="sizes-label">SELECT SIZE (CHEST / BLOUSE)</span>
+              <a href="javascript:void(0)" class="size-guide-link">Size Guide</a>
+            </div>
+            <div class="sizes-chips">
+              @for (size of item.sizes; track size) {
+                <button
+                  type="button"
+                  class="size-chip"
+                  [class.is-active]="selectedSize() === size"
+                  (click)="selectSize(size)">
+                  {{ size }}
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="modal-actions-row">
+            <button
+              type="button"
+              class="modal-btn-add-bag"
+              [disabled]="!selectedSize()"
+              (click)="addToBag(item)">
+              {{ selectedSize() ? 'ADD TO BAG' : 'SELECT A SIZE' }}
+            </button>
+
+            <button
+              type="button"
+              class="modal-btn-wishlist"
+              [class.is-liked]="isModalLiked()"
+              aria-label="Save to Wishlist"
+              (click)="toggleModalLike()">
+              <svg width="22" height="22" viewBox="0 0 24 24" [attr.fill]="isModalLiked() ? '#7a1c28' : 'none'" stroke="currentColor" stroke-width="2">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+          </div>
+
+          <a href="javascript:void(0)" class="modal-availability-link">
+            See availability in Chennai & Kanchipuram flagship stores →
+          </a>
+        </div>
+      </div>
+    </div>
+  }
 </section>

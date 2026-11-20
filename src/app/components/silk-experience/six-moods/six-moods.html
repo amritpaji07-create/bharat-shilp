@@ -1,0 +1,47 @@
+<section id="six-moods-section" class="six-moods-section" aria-labelledby="six-moods-title">
+  <div class="moods-container">
+    <header class="moods-header">
+      <div class="moods-header-left">
+        <span class="moods-eyebrow">THE NOOLAM ARCHIVE</span>
+        <h2 id="six-moods-title" class="moods-title">
+          Six Moods. <span class="gradient-text">Timeless Drapes</span>
+        </h2>
+      </div>
+      <div class="moods-header-right">
+        <p class="moods-tagline">Woven by hand, worn for a lifetime.</p>
+      </div>
+    </header>
+
+    <div class="moods-grid">
+      @for (mood of moods; track mood.id) {
+        <article class="mood-card">
+          <!-- Gopuram Arch Container with Finial -->
+          <div class="arch-frame">
+            <!-- Temple Finial Ornament -->
+            <div class="arch-finial" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.5 6H10.5L12 2Z" fill="#C9983A" />
+                <circle cx="12" cy="7" r="2" fill="#C9983A" />
+                <path d="M12 9C9 9 7 11 7 14H17C17 11 15 9 12 9Z" fill="#C9983A" />
+                <circle cx="12" cy="3" r="1.5" fill="#FFE29A" />
+              </svg>
+            </div>
+
+            <!-- Golden Gopuram Arched Window -->
+            <div class="arch-window">
+              <img
+                [src]="mood.image"
+                [alt]="mood.title"
+                loading="lazy"
+                class="arch-img" />
+              <div class="arch-overlay" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <h3 class="mood-label">{{ mood.title }}</h3>
+          <p class="mood-sub">{{ mood.subtitle }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

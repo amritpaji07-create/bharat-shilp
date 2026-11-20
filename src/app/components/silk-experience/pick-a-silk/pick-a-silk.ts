@@ -13,7 +13,7 @@ import {
   inject,
   signal
 } from '@angular/core';
-import { SILK_CATEGORIES } from '../../../data/silk-experience.data';
+import { SILK_CATEGORIES, createSilkProduct } from '../../../data/silk-experience.data';
 import { SilkCategory } from '../../../models/silk-experience.model';
 import { MarketplaceService } from '../../../services/marketplace.service';
 import { loadSilkGsap, SilkGsapRuntime } from '../../../shared/silk-gsap';
@@ -28,7 +28,8 @@ import { loadSilkGsap, SilkGsapRuntime } from '../../../shared/silk-gsap';
 export class PickASilkComponent implements AfterViewInit, OnDestroy {
   readonly categories = SILK_CATEGORIES;
   readonly selectedIndex = signal(0);
-  readonly activeCategory = computed(() => this.categories[this.selectedIndex()]);
+  readonly activeCategory = computed(() => this.categories[this.selectedIndex()] ?? this.categories[0]);
+  readonly likedCategories = signal<Set<string>>(new Set());
   readonly market = inject(MarketplaceService);
 
   @ViewChild('section') private section?: ElementRef<HTMLElement>;
@@ -78,6 +79,51 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
     this.selectCategory(this.selectedIndex() + 1);
   }
 
+  toggleLike(categoryId: string, event: MouseEvent): void {
+    event.stopPropagation();
+    this.likedCategories.update(set => {
+      const next = new Set(set);
+      if (next.has(categoryId)) {
+        next.delete(categoryId);
+      } else {
+        next.add(categoryId);
+      }
+      return next;
+    });
+  }
+
+  isLiked(categoryId: string): boolean {
+    return this.likedCategories().has(categoryId);
+  }
+
+  addCategoryToBag(category: SilkCategory, event: MouseEvent): void {
+    event.stopPropagation();
+    const product = createSilkProduct({
+      id: `pick-${category.id}`,
+      name: category.name,
+      price: category.price,
+      image: category.image,
+      category: category.colorName || 'Silk Saree',
+      description: category.note || `${category.name} pure handloom silk saree.`
+    });
+    this.market.addToCart(product, 1);
+  }
+
+  onMouseMove(event: MouseEvent, card: HTMLButtonElement): void {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+  }
+
+  onMouseLeave(card: HTMLButtonElement): void {
+    card.style.transform = '';
+  }
+
   private scrollCategoryIntoView(index: number): void {
     const el = this.categoryButtons?.get(index)?.nativeElement;
     if (el && this.categoryTrack?.nativeElement) {
@@ -86,13 +132,6 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
         inline: 'center',
         block: 'nearest'
       });
-    }
-  }
-
-  exploreCategory(): void {
-    const catalogEl = document.getElementById('handloom-catalog') || document.querySelector('app-product-catalogue');
-    if (catalogEl) {
-      catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }
