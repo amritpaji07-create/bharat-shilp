@@ -26,98 +26,237 @@
       <!-- 2. Category Grid Section -->
       <app-category-grid />
 
-      <!-- 3. Featured Products Grid -->
-      <section class="max-w-[1320px] mx-auto px-4 sm:px-6 py-8 sm:py-12" aria-labelledby="featured-heading">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
-          <div>
-            <div class="flex items-center gap-1.5 text-xs font-bold text-[#176B45] uppercase tracking-wider">
-              <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">star</mat-icon>
+      <!-- 3. Featured Artisan Treasures -->
+      <section class="featured-treasures max-w-[1320px] mx-auto px-4 sm:px-6 py-10 sm:py-16" aria-labelledby="featured-heading">
+        <div class="relative flex flex-col items-center gap-4 mb-7 text-center sm:mb-9">
+          <div class="max-w-3xl">
+            <div class="mx-auto inline-flex items-center gap-2 rounded-full border border-[#B7DDC8] bg-[#EAF7EF] px-4 py-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.16em] text-[#176B45] shadow-[0_6px_18px_rgba(23,107,69,0.10)]">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#176B45] text-white shadow-sm">
+                <mat-icon class="!h-3.5 !w-3.5 !text-[14px]">verified</mat-icon>
+              </span>
               <span>Authentic Curations</span>
             </div>
-            <h2 id="featured-heading" class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
+            <h2 id="featured-heading" class="mt-2 text-2xl sm:text-3xl lg:text-[42px] leading-tight font-black text-[#15365B]">
               {{ market.currentLanguage() === 'en' ? 'Featured Artisan Treasures' : 'प्रमुख हस्तशिल्प धरोहर' }}
             </h2>
-            <p class="text-xs sm:text-sm text-[#667085] mt-0.5">
-              Strictly certified GI products directly dispatched from regional master artisan clusters.
+            <p class="mt-2 text-xs sm:text-sm text-[#667085] leading-relaxed">
+              Discover 100% natural and authentic craft from India’s finest artisan communities.
             </p>
           </div>
 
           <button
             type="button"
             (click)="market.setView('catalogue')"
-            class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-1 group self-start sm:self-auto cursor-pointer">
+            class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-2 cursor-pointer">
             <span>{{ market.currentLanguage() === 'en' ? 'Explore All Products' : 'सभी उत्पाद देखें' }}</span>
-            <mat-icon class="!w-4 !h-4 !text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</mat-icon>
+            <mat-icon class="!w-4 !h-4 !text-[16px]">arrow_forward</mat-icon>
           </button>
         </div>
 
-        <!-- 4-Card Responsive Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-          @for (prod of market.featuredProducts(); track prod.id) {
-            <app-product-card [product]="prod" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          @for (treasure of artisanTreasures; track treasure.id) {
+            <article
+              #treasureCard
+              class="treasure-card group relative min-h-[450px] overflow-hidden rounded-[22px] bg-[#102D21] cursor-pointer border border-white/70 shadow-[0_10px_35px_rgba(21,54,91,0.10)] sm:min-h-[558px] lg:min-h-[738px]"
+              [class.is-open]="selectedTreasureId() === treasure.id"
+              (click)="selectedTreasureId.set(treasure.id)"
+              (keydown.enter)="selectedTreasureId.set(treasure.id)"
+              (keydown.space)="selectedTreasureId.set(treasure.id)"
+              (mouseenter)="playTreasureVideo(treasureVideo)"
+              (mouseleave)="pauseTreasureVideo(treasureVideo)"
+              (focus)="playTreasureVideo(treasureVideo)"
+              (blur)="pauseTreasureVideo(treasureVideo)"
+              tabindex="0"
+              role="button"
+              [attr.aria-expanded]="selectedTreasureId() === treasure.id">
+
+              <img
+                [src]="treasure.image"
+                [alt]="treasure.title"
+                loading="lazy"
+                class="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-0"
+              />
+
+              <video
+                #treasureVideo
+                [src]="treasure.video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              ></video>
+
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B2118] via-[#0B2118]/25 to-transparent"></div>
+
+              <div class="absolute left-4 right-4 top-4 flex items-center justify-between">
+                <span class="rounded-full border border-white/45 bg-[#15365B]/75 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md">
+                  {{ treasure.eyebrow }}
+                </span>
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#15365B] shadow-lg">
+                  <mat-icon class="!h-5 !w-5 !text-[20px]">arrow_outward</mat-icon>
+                </span>
+              </div>
+
+              <div class="absolute bottom-0 left-0 right-0 p-5 text-white transition-transform duration-500 group-hover:-translate-y-1">
+                <p lang="hi" class="hindi mb-1 text-[11px] font-bold leading-relaxed text-white/80">
+                  {{ treasure.hindiTitle }}
+                </p>
+                <h3 class="text-[24px] font-black leading-tight">{{ treasure.title }}</h3>
+
+                <div class="mt-3 flex items-end justify-between border-t border-white/25 pt-3">
+                  <div>
+                    <span class="block text-[10px] uppercase tracking-wider text-white/70">Starting from</span>
+                    <span class="text-xl font-black">₹{{ treasure.variants[0].price }}</span>
+                  </div>
+                  <span class="rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-[#15365B]">
+                    {{ treasure.variants.length }} choices
+                  </span>
+                </div>
+
+              </div>
+            </article>
           }
         </div>
       </section>
 
-      <!-- 4. Verified Sellers Spotlight -->
-      <section class="bg-white py-12 sm:py-16 border-y border-slate-200">
-        <div class="max-w-[1320px] mx-auto px-4 sm:px-6">
-          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
-            <div>
-              <div class="text-xs font-bold text-[#176B45] uppercase tracking-wider">Direct From Rural Clusters</div>
-              <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
-                {{ market.currentLanguage() === 'en' ? 'Meet Verified Producer Cooperatives' : 'सत्यापित उत्पादक सहकारी समितियों से मिलें' }}
-              </h2>
-            </div>
-
+      @if (selectedTreasure(); as treasure) {
+        <div
+          class="fixed inset-0 z-[100] flex items-center justify-center bg-[#081912]/75 p-3 sm:p-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          [attr.aria-label]="treasure.title + ' details'"
+          (click)="selectedTreasureId.set(null)">
+          <div
+            class="treasure-dialog relative grid max-h-[90vh] w-full max-w-[980px] overflow-y-auto rounded-[28px] bg-[#FFFDF8] shadow-[0_28px_90px_rgba(0,0,0,0.35)] md:grid-cols-[1.08fr_0.92fr]"
+            (click)="$event.stopPropagation()">
             <button
               type="button"
-              (click)="market.setView('sellers')"
-              class="text-xs sm:text-sm font-bold text-[#176B45] hover:text-[#15365B] flex items-center gap-1 cursor-pointer">
-              <span>View All 500+ Registered Groups</span>
-              <mat-icon class="!w-4 !h-4 !text-[16px]">arrow_forward</mat-icon>
+              (click)="selectedTreasureId.set(null)"
+              class="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#15365B] shadow-lg hover:bg-[#15365B] hover:text-white"
+              aria-label="Close product dialog">
+              <mat-icon class="!h-5 !w-5 !text-[20px]">close</mat-icon>
             </button>
-          </div>
 
-          <!-- 3-Card Seller Row -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @for (seller of topSellers(); track seller.id) {
-              <div class="p-6 rounded-2xl bg-[#F8F7F2] border border-slate-200 hover:border-[#176B45] transition-all flex flex-col justify-between space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="font-bold text-[#176B45] uppercase tracking-wider text-[10px]">{{ seller.type }}</span>
-                    <span class="text-amber-500 font-bold flex items-center gap-0.5">
-                      <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">star</mat-icon>
-                      <span>{{ seller.rating }}</span>
-                    </span>
-                  </div>
+            <div class="relative min-h-[320px] overflow-hidden bg-[#102D21] md:min-h-[560px]">
+              <video
+                #dialogVideo
+                [src]="treasure.video"
+                muted
+                loop
+                autoplay
+                playsinline
+                class="absolute inset-0 h-full w-full object-cover"
+              ></video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+              <span class="absolute bottom-5 left-5 rounded-full border border-white/40 bg-black/35 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                {{ treasure.eyebrow }}
+              </span>
+            </div>
 
-                  <h3 class="text-base font-bold text-[#15365B] mt-2">
-                    {{ seller.name }}
-                  </h3>
-                  <div class="text-xs text-[#667085] mt-0.5">
-                    {{ seller.district }}, {{ seller.state }}
-                  </div>
+            <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+              <p lang="hi" class="hindi text-sm font-bold leading-relaxed text-[#176B45]">{{ treasure.hindiTitle }}</p>
+              <h3 class="mt-1 text-3xl font-black leading-tight text-[#15365B] sm:text-[38px]">{{ treasure.title }}</h3>
+              <p class="mt-4 text-sm leading-7 text-[#667085]">{{ treasure.description }}</p>
 
-                  <p class="text-xs text-[#1D2939] mt-3 leading-relaxed line-clamp-2">
-                    {{ seller.description }}
-                  </p>
-
-                  <div class="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs">
-                    <span class="text-[#667085]">Active Artisans:</span>
-                    <span class="font-bold text-[#15365B]">{{ seller.memberCount }} Craftspeople</span>
-                  </div>
+              <div class="mt-6 border-y border-[#DDE5DD] py-5">
+                <p class="mb-3 text-xs font-black uppercase tracking-[0.16em] text-[#176B45]">Natural benefits</p>
+                <div class="space-y-3">
+                  @for (benefit of treasure.benefits; track benefit) {
+                    <div class="flex items-start gap-3 text-sm font-semibold text-[#15365B]">
+                      <mat-icon class="!mt-0.5 !h-5 !w-5 !text-[20px] text-[#176B45]">check_circle</mat-icon>
+                      <span>{{ benefit }}</span>
+                    </div>
+                  }
                 </div>
-
-                <button
-                  type="button"
-                  (click)="market.setSearchQuery(seller.name); market.setView('catalogue')"
-                  class="w-full py-2 px-3 bg-white hover:bg-[#176B45] hover:text-white border border-slate-300 hover:border-[#176B45] text-[#15365B] text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer">
-                  <span>Explore Their Creations</span>
-                  <mat-icon class="!w-3.5 !h-3.5 !text-[15px]">arrow_forward</mat-icon>
-                </button>
               </div>
-            }
+
+              <div class="mt-5 space-y-2">
+                @for (variant of treasure.variants; track variant.name) {
+                  <button
+                    type="button"
+                    (click)="market.setView('catalogue'); selectedTreasureId.set(null)"
+                    class="flex w-full items-center justify-between rounded-xl border border-[#DDE5DD] bg-white px-4 py-3 text-sm font-bold text-[#15365B] transition-all hover:border-[#176B45] hover:bg-[#176B45] hover:text-white">
+                    <span>{{ variant.name }}</span>
+                    <span>₹{{ variant.price }}</span>
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Heritage & Authenticity -->
+      <section
+        #heritageSection
+        [class.heritage-cards-visible]="heritageCardsVisible()"
+        class="relative isolate min-h-[700px] overflow-hidden px-4 sm:min-h-[740px]"
+        aria-label="Explore our heritage">
+        <div class="absolute inset-0 -z-10" aria-hidden="true">
+          <img
+            src="/assets/images/heritage.png"
+            alt=""
+            loading="lazy"
+            class="h-full w-full object-cover object-[center_78%]"
+          />
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.16)_0%,rgba(255,252,245,0.08)_55%,rgba(255,252,245,0.2)_100%)]"></div>
+        </div>
+        <svg class="pointer-events-none absolute inset-x-0 top-0 z-10 h-[160px] w-full" viewBox="0 0 1000 160" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <path d="M0 24 C40 24 65 84 150 84 C220 84 250 84 280 84 C330 84 340 144 400 144 C500 144 555 144 655 144 C700 144 720 84 760 84 C850 84 930 84 950 84 C970 84 975 24 1000 24" stroke="#79502E" stroke-width="4" stroke-linecap="round" />
+          <path d="M0 21 C40 21 65 81 150 81 C220 81 250 81 280 81 C330 81 340 141 400 141 C500 141 555 141 655 141 C700 141 720 81 760 81 C850 81 930 81 950 81 C970 81 975 21 1000 21" stroke="#E8C28A" stroke-opacity=".65" stroke-width="1" stroke-linecap="round" />
+        </svg>
+        <div class="absolute left-1/2 top-12 z-20 w-full max-w-[1220px] -translate-x-1/2 px-4 sm:top-14 sm:px-6" aria-label="Our heritage values">
+          <div class="no-scrollbar overflow-x-auto pb-3">
+            <div class="relative mx-auto min-w-[900px] pt-10 xl:min-w-0">
+              <div class="grid grid-cols-4 items-start gap-x-4 sm:gap-x-6">
+                @for (card of heritageCards; track card.title; let index = $index) {
+                  <div
+                    class="heritage-card-arrive relative z-20 mx-auto w-full max-w-[260px]"
+                    [class.from-left]="index % 2 === 0"
+                    [class.from-right]="index % 2 !== 0"
+                    [class.heritage-drop-1]="index === 1"
+                    [class.heritage-drop-2]="index === 2"
+                    [style.animation-delay.ms]="index * 600">
+                    <article
+                      class="heritage-card relative w-full rounded-[22px] border border-[#E8E2D6] bg-[#FFFEFA]/95 p-3 pt-4 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-2 hover:rotate-0 sm:rounded-[24px] sm:p-3.5 sm:pt-4"
+                      [class.-rotate-2]="index === 0"
+                      [class.rotate-1]="index === 1"
+                      [class.-rotate-1]="index === 2"
+                      [class.rotate-2]="index === 3">
+                      <span
+                        class="heritage-pin"
+                        [style.animation-delay.ms]="index * 600 + 800"
+                        aria-hidden="true">
+                        <span class="heritage-pin-stem"></span>
+                        <span class="heritage-pin-head"><span class="heritage-pin-glint"></span></span>
+                      </span>
+                      <img
+                        [src]="card.image"
+                        [alt]="card.alt"
+                        loading="lazy"
+                        class="h-[104px] w-full rounded-[16px] object-cover sm:h-[126px] sm:rounded-[18px]"
+                      />
+                      <h3 class="heritage-card-title mt-2.5 text-center text-[15px] leading-tight text-[#183B29] sm:mt-3 sm:text-lg">
+                        {{ card.title }}
+                      </h3>
+                      <p class="mx-auto mt-2 mb-1 max-w-[230px] text-center text-[11px] leading-[1.4] text-[#526052] sm:text-xs">
+                        {{ card.description }}
+                      </p>
+                    </article>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex justify-center sm:mt-6">
+            <button
+              type="button"
+              (click)="market.setView('about')"
+              class="inline-flex items-center gap-3 whitespace-nowrap rounded-full bg-[#B96508] px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_10px_24px_rgba(169,96,13,0.36)] transition hover:-translate-y-0.5 hover:bg-[#A65305] hover:shadow-[0_14px_28px_rgba(169,96,13,0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A9600D] sm:px-9 sm:py-4 sm:text-base">
+              <span>Explore Our Heritage</span>
+              <mat-icon class="!h-4 !w-4 !text-[16px]">arrow_forward</mat-icon>
+            </button>
           </div>
         </div>
       </section>
@@ -126,16 +265,19 @@
       <app-craft-map />
 
       <!-- 6. Bestselling Products Section -->
-      <section class="max-w-[1320px] mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <section class="max-w-[1460px] mx-auto px-4 sm:px-6 py-10 sm:py-14" aria-labelledby="bestselling-heading">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8">
           <div>
             <div class="flex items-center gap-1.5 text-xs font-bold text-amber-800 uppercase tracking-wider">
               <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">trending_up</mat-icon>
-              <span>Most Loved by Citizens</span>
+              <span>Most Loved by Craft Lovers</span>
             </div>
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
+            <h2 id="bestselling-heading" class="text-xl sm:text-2xl lg:text-3xl font-black text-[#15365B] mt-0.5">
               {{ market.currentLanguage() === 'en' ? 'Bestselling Handcrafted Specialties' : 'सर्वाधिक लोकप्रिय हस्तशिल्प' }}
             </h2>
+            <p class="mt-1 text-xs sm:text-sm text-[#667085]">
+              Sarees, coconut-shell crafts, forest honey, and pottery — two artisan picks from each.
+            </p>
           </div>
 
           <button
@@ -147,9 +289,9 @@
           </button>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-          @for (prod of market.bestsellers(); track prod.id) {
-            <app-product-card [product]="prod" />
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          @for (prod of bestsellingProducts(); track prod.id) {
+            <app-product-card [product]="prod" [compact]="true" />
           }
         </div>
       </section>

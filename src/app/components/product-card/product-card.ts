@@ -18,7 +18,10 @@ import { MatIconModule } from '@angular/material/icon';
       class="group bg-white rounded-xl border border-[#E5E7EB] hover:border-[#176B45]/50 hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden relative cursor-pointer focus-visible:outline-[#176B45]">
       
       <!-- Top Image Slot with Styled CSS/SVG Fallback -->
-      <div class="relative aspect-4/3 overflow-hidden bg-[#F8F7F2] p-2.5 sm:aspect-square sm:p-3">
+      <div
+        class="relative aspect-4/3 overflow-hidden bg-[#F8F7F2] p-2.5 sm:aspect-square sm:p-3"
+        [style.aspect-ratio]="compact() ? '4 / 3' : null"
+        [style.padding]="compact() ? '0.5rem' : null">
         <span class="pointer-events-none absolute inset-8 z-0 rounded-full bg-white/80 blur-2xl" aria-hidden="true"></span>
         <img
           [src]="product().primaryImage"
@@ -70,7 +73,9 @@ import { MatIconModule } from '@angular/material/icon';
       </div>
 
       <!-- Content Area -->
-      <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-2 bg-gradient-to-br from-emerald-50 via-white to-amber-50/80 group-hover:from-emerald-100 group-hover:to-amber-100">
+      <div
+        class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-2 bg-gradient-to-br from-emerald-50 via-white to-amber-50/80 group-hover:from-emerald-100 group-hover:to-amber-100"
+        [style.padding]="compact() ? '0.75rem' : null">
         
         <!-- Clean unboxed metadata with middot separator -->
         <div class="flex items-center gap-1.5 text-[11px] text-[#667085] leading-none">
@@ -136,6 +141,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ProductCard {
   readonly product = input.required<Product>();
+  readonly compact = input(false);
   readonly market = inject(MarketplaceService);
   private previewTimer: ReturnType<typeof setTimeout> | null = null;
 

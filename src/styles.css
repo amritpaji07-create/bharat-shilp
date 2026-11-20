@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "tailwindcss";
 
@@ -6,10 +6,15 @@
   :root {
     --font-primary: 'Outfit', system-ui, -apple-system, sans-serif;
     --font-hindi: 'Noto Sans Devanagari', 'Outfit', sans-serif;
+    --font-heritage: 'Bricolage Grotesque', var(--font-primary);
   }
   
   body {
     font-family: var(--font-primary);
+  }
+
+  [lang="hi"], .hindi, [class*="ह"] {
+    font-family: var(--font-hindi);
   }
 }
 

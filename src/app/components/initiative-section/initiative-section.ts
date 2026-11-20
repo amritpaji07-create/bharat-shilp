@@ -60,87 +60,24 @@ function sampleReview(
   selector: 'app-initiative-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule],
+  styles: [`
+    @keyframes customerTrackUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50%); }
+    }
+    @keyframes customerTrackDown {
+      from { transform: translateY(-50%); }
+      to { transform: translateY(0); }
+    }
+    .customer-track-up { animation: customerTrackUp 28s linear infinite; }
+    .customer-track-down { animation: customerTrackDown 32s linear infinite; }
+    .customer-network:hover .customer-track-up,
+    .customer-network:hover .customer-track-down { animation-play-state: paused; }
+  `],
   template: `
-    <!-- Government Initiatives Showcase -->
-    <section class="bg-[#15365B] text-white py-12 sm:py-16" aria-labelledby="initiatives-heading">
-      <div class="max-w-[1320px] mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
-            <mat-icon class="!w-3.5 !h-3.5 !text-[14px]">policy</mat-icon>
-            <span>Government of India Schemes</span>
-          </div>
-          <h2 id="initiatives-heading" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
-            Empowering Rural India Through Digital Commerce
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            Shreem unites flagship national missions on a single secure public e-marketplace, eliminating commission layers and giving rural producers direct market access.
-          </p>
-        </div>
-
-        <!-- 4 Major Government Scheme Pillars -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/40 transition-colors space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold">
-              <mat-icon class="!w-5 !h-5 !text-[20px]">hub</mat-icon>
-            </div>
-            <h3 class="text-base font-bold text-white">One District One Product (ODOP)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Fosters balanced regional development across all 766 districts of India by unlocking unique indigenous crafts and agrarian specialties.
-            </p>
-            <div class="text-[11px] text-amber-300 font-semibold pt-1">
-              766 Districts Covered
-            </div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-400/40 transition-colors space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-400/20 text-emerald-300 flex items-center justify-center font-bold">
-              <mat-icon class="!w-5 !h-5 !text-[20px]">groups_3</mat-icon>
-            </div>
-            <h3 class="text-base font-bold text-white">DAY-NRLM (Aajeevika)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Deendayal Antyodaya Yojana mobilizes over 9.5 crore rural women into Self Help Groups (SHGs) for economic self-reliance and entrepreneurship.
-            </p>
-            <div class="text-[11px] text-emerald-300 font-semibold pt-1">
-              48,000+ Verified SHG Clusters
-            </div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-sky-400/40 transition-colors space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-sky-400/20 text-sky-300 flex items-center justify-center font-bold">
-              <mat-icon class="!w-5 !h-5 !text-[20px]">nature_people</mat-icon>
-            </div>
-            <h3 class="text-base font-bold text-white">TRIFED (Tribal Livelihoods)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Ministry of Tribal Affairs federation protecting forest produce gatherers and tribal bell-metal craftsmen from middlemen exploitation.
-            </p>
-            <div class="text-[11px] text-sky-300 font-semibold pt-1">
-              100% Minimum Support Price Assured
-            </div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-rose-400/40 transition-colors space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-rose-400/20 text-rose-300 flex items-center justify-center font-bold">
-              <mat-icon class="!w-5 !h-5 !text-[20px]">local_shipping</mat-icon>
-            </div>
-            <h3 class="text-base font-bold text-white">Department of Posts Integration</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Dak Ghar Niryat Kendra enables rural post offices to pick up packaged crafts straight from remote villages and deliver across India.
-            </p>
-            <div class="text-[11px] text-rose-300 font-semibold pt-1">
-              19,100+ Pin Codes Connected
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
     <!-- Community Reviews -->
     <section
-      class="relative bg-gradient-to-b from-[#F6FAF7] to-white py-12 sm:py-16"
+      class="relative bg-gradient-to-b from-[#F6FAF7] to-white py-12 pb-20 sm:py-16 sm:pb-24"
       aria-labelledby="trust-heading"
       (click)="dismissReview()">
       <div class="mx-auto max-w-[1480px] px-4 sm:px-6">
@@ -248,31 +185,99 @@ function sampleReview(
       </div>
     </section>
 
-    <!-- Citizen Newsletter Subscription -->
-    <section class="max-w-[1320px] mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
-      <div class="bg-gradient-to-r from-[#15365B] to-[#176B45] text-white p-8 sm:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
-        <div class="space-y-1 text-center md:text-left max-w-lg">
-          <h3 class="text-xl sm:text-2xl font-black">Stay Connected with Indian Heritage</h3>
-          <p class="text-xs sm:text-sm text-slate-200">
-            Receive monthly updates on newly onboarded artisan clusters, ODOP exhibitions, and seasonal harvests.
-          </p>
-        </div>
+    <!-- Connected Customer Network -->
+    <section class="customer-network relative isolate h-[520px] overflow-hidden bg-[#F8FAFC] sm:h-[610px]" aria-labelledby="network-heading">
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,1)_0%,rgba(255,255,255,0.98)_16%,rgba(255,255,255,0.78)_34%,rgba(248,250,252,0.26)_58%,rgba(248,250,252,0.98)_100%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,250,252,0.98)_0%,rgba(248,250,252,0.82)_7%,transparent_19%,transparent_81%,rgba(248,250,252,0.82)_93%,rgba(248,250,252,0.98)_100%),linear-gradient(180deg,rgba(248,250,252,0.96)_0%,rgba(248,250,252,0.38)_5%,transparent_18%,transparent_82%,rgba(248,250,252,0.38)_95%,rgba(248,250,252,0.96)_100%)]"></div>
+        <div class="absolute inset-x-0 -top-1 h-40 bg-gradient-to-b from-white via-white/90 to-transparent"></div>
+        <div class="absolute inset-x-0 -bottom-1 h-40 bg-gradient-to-t from-white via-white/90 to-transparent"></div>
+      </div>
 
-        <div class="flex items-center gap-2 w-full md:w-auto">
-          <input
-            type="email"
-            placeholder="Enter your email address..."
-            class="px-4 py-2.5 text-xs bg-white text-[#1D2939] rounded-lg focus:outline-none w-full sm:w-72"
-          />
+      <div class="pointer-events-none absolute inset-0 grid grid-cols-4 gap-3 px-3 opacity-75 sm:grid-cols-6 sm:gap-4 sm:px-6 lg:grid-cols-8" aria-hidden="true">
+        <div class="h-full overflow-hidden">
+          <div class="customer-track-up flex flex-col gap-4">
+            @for (image of ['/assets/images/T1.jpg', '/assets/images/T5.jpg', '/assets/images/T9.jpg', '/assets/images/T1.jpg', '/assets/images/T5.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-32 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-40" />
+            }
+          </div>
+        </div>
+        <div class="mt-8 h-full overflow-hidden">
+          <div class="customer-track-down flex flex-col gap-4">
+            @for (image of ['/assets/images/T2.jpg', '/assets/images/T6.jpg', '/assets/images/T10.jpg', '/assets/images/T2.jpg', '/assets/images/T6.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-36 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-44" />
+            }
+          </div>
+        </div>
+        <div class="h-full overflow-hidden">
+          <div class="customer-track-up flex flex-col gap-4">
+            @for (image of ['/assets/images/T3.jpg', '/assets/images/T7.jpg', '/assets/images/T1.jpg', '/assets/images/T3.jpg', '/assets/images/T7.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-32 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-40" />
+            }
+          </div>
+        </div>
+        <div class="mt-12 h-full overflow-hidden">
+          <div class="customer-track-down flex flex-col gap-4">
+            @for (image of ['/assets/images/T4.jpg', '/assets/images/T8.jpg', '/assets/images/T2.jpg', '/assets/images/T4.jpg', '/assets/images/T8.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-36 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-44" />
+            }
+          </div>
+        </div>
+        <div class="hidden h-full overflow-hidden sm:block">
+          <div class="customer-track-up flex flex-col gap-4">
+            @for (image of ['/assets/images/T5.jpg', '/assets/images/T9.jpg', '/assets/images/T3.jpg', '/assets/images/T5.jpg', '/assets/images/T9.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-40 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
+            }
+          </div>
+        </div>
+        <div class="hidden h-full overflow-hidden sm:block">
+          <div class="customer-track-down mt-10 flex flex-col gap-4">
+            @for (image of ['/assets/images/T6.jpg', '/assets/images/T10.jpg', '/assets/images/T4.jpg', '/assets/images/T6.jpg', '/assets/images/T10.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-44 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
+            }
+          </div>
+        </div>
+        <div class="hidden h-full overflow-hidden lg:block">
+          <div class="customer-track-up flex flex-col gap-4">
+            @for (image of ['/assets/images/T7.jpg', '/assets/images/T1.jpg', '/assets/images/T5.jpg', '/assets/images/T7.jpg', '/assets/images/T1.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-40 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
+            }
+          </div>
+        </div>
+        <div class="hidden h-full overflow-hidden lg:block">
+          <div class="customer-track-down mt-8 flex flex-col gap-4">
+            @for (image of ['/assets/images/T8.jpg', '/assets/images/T2.jpg', '/assets/images/T6.jpg', '/assets/images/T8.jpg', '/assets/images/T2.jpg']; track $index) {
+              <img [src]="image" alt="" loading="lazy" class="h-44 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 z-10 flex items-center justify-center px-5 text-center">
+        <div class="max-w-4xl">
+          <div class="mb-4 inline-flex items-center rounded-full border border-[#D8DFF8] bg-[#EEF2FF]/90 px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-[#4F5FC7] backdrop-blur-sm sm:text-xs">
+            The Shreem marketplace
+          </div>
+          <h2 id="network-heading" class="text-6xl font-black leading-none tracking-[-0.055em] text-[#182F88] sm:text-8xl lg:text-[112px]">
+            2,400+
+          </h2>
+          <p class="mt-2 text-2xl font-black tracking-tight text-[#15365B] sm:text-4xl lg:text-[46px]">
+            shoppers choosing <span class="font-medium italic text-[#15365B]">handmade treasures.</span>
+          </p>
+          <p class="mx-auto mt-4 max-w-2xl text-xs leading-6 text-[#667085] sm:text-sm">
+            Shop handloom textiles, tribal crafts, home accents and regional specialties—thoughtfully made by artisans across India.
+          </p>
           <button
             type="button"
-            (click)="onSubscribe()"
-            class="px-5 py-2.5 bg-[#D99A32] hover:bg-amber-600 text-white font-bold text-xs rounded-lg transition-colors shrink-0 cursor-pointer">
-            Subscribe
+            (click)="market.setView('catalogue')"
+            class="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#15365B] px-5 py-3 text-xs font-bold text-white shadow-[0_12px_28px_rgba(21,54,91,0.18)] transition hover:bg-[#176B45]">
+            <span>Explore the collection</span>
+            <mat-icon class="!h-4 !w-4 !text-[16px]">arrow_forward</mat-icon>
           </button>
         </div>
       </div>
     </section>
+
   `
 })
 export class InitiativeSection {
@@ -326,10 +331,6 @@ export class InitiativeSection {
       'The colours are cheerful and the finishing feels thoughtful and personal.'
     )
   ];
-
-  onSubscribe() {
-    this.market.showToast('Subscribed to Shreem official updates!', 'success');
-  }
 
   showReview(review: CommunityReview) {
     this.activeReview.set(review);
