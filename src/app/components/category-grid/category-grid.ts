@@ -173,7 +173,7 @@ export class CategoryGrid implements OnInit {
       slug: 'handicrafts-pottery',
       background: '#fff0e3',
       accent: '#e98934',
-      cardImage: '/assets/images/card1_opt.png'
+      cardImage: 'assets/images/card1_opt.png'
     },
     {
       id: 'apparel-textiles',
@@ -182,7 +182,7 @@ export class CategoryGrid implements OnInit {
       slug: 'handloom-textiles',
       background: '#e5f4e4',
       accent: '#4d9b63',
-      cardImage: '/assets/images/card2_opt.png'
+      cardImage: 'assets/images/card2_opt.png'
     },
     {
       id: 'jewellery',
@@ -191,7 +191,7 @@ export class CategoryGrid implements OnInit {
       slug: 'tribal-metalcraft',
       background: '#fde5e5',
       accent: '#e66d6e',
-      cardImage: '/assets/images/card3_opt.png'
+      cardImage: 'assets/images/card3_opt.png'
     },
     {
       id: 'gifts',
@@ -200,7 +200,7 @@ export class CategoryGrid implements OnInit {
       slug: 'handicrafts-pottery',
       background: '#eee8ff',
       accent: '#9072d9',
-      cardImage: '/assets/images/card4_opt.png'
+      cardImage: 'assets/images/card4_opt.png'
     },
     {
       id: 'sustainable',
@@ -209,7 +209,7 @@ export class CategoryGrid implements OnInit {
       slug: 'organic-food',
       background: '#e1f4f8',
       accent: '#55b6c4',
-      cardImage: '/assets/images/card5_opt.png'
+      cardImage: 'assets/images/card5_opt.png'
     }
   ];
 

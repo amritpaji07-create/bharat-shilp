@@ -197,56 +197,56 @@ function sampleReview(
       <div class="pointer-events-none absolute inset-0 grid grid-cols-4 gap-3 px-3 opacity-75 sm:grid-cols-6 sm:gap-4 sm:px-6 lg:grid-cols-8" aria-hidden="true">
         <div class="h-full overflow-hidden">
           <div class="customer-track-up flex flex-col gap-4">
-            @for (image of ['/assets/images/T1.jpg', '/assets/images/T5.jpg', '/assets/images/T9.jpg', '/assets/images/T1.jpg', '/assets/images/T5.jpg']; track $index) {
+            @for (image of ['assets/images/T1.jpg', 'assets/images/T5.jpg', 'assets/images/T9.jpg', 'assets/images/T1.jpg', 'assets/images/T5.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-32 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-40" />
             }
           </div>
         </div>
         <div class="mt-8 h-full overflow-hidden">
           <div class="customer-track-down flex flex-col gap-4">
-            @for (image of ['/assets/images/T2.jpg', '/assets/images/T6.jpg', '/assets/images/T10.jpg', '/assets/images/T2.jpg', '/assets/images/T6.jpg']; track $index) {
+            @for (image of ['assets/images/T2.jpg', 'assets/images/T6.jpg', 'assets/images/T10.jpg', 'assets/images/T2.jpg', 'assets/images/T6.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-36 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-44" />
             }
           </div>
         </div>
         <div class="h-full overflow-hidden">
           <div class="customer-track-up flex flex-col gap-4">
-            @for (image of ['/assets/images/T3.jpg', '/assets/images/T7.jpg', '/assets/images/T1.jpg', '/assets/images/T3.jpg', '/assets/images/T7.jpg']; track $index) {
+            @for (image of ['assets/images/T3.jpg', 'assets/images/T7.jpg', 'assets/images/T1.jpg', 'assets/images/T3.jpg', 'assets/images/T7.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-32 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-40" />
             }
           </div>
         </div>
         <div class="mt-12 h-full overflow-hidden">
           <div class="customer-track-down flex flex-col gap-4">
-            @for (image of ['/assets/images/T4.jpg', '/assets/images/T8.jpg', '/assets/images/T2.jpg', '/assets/images/T4.jpg', '/assets/images/T8.jpg']; track $index) {
+            @for (image of ['assets/images/T4.jpg', 'assets/images/T8.jpg', 'assets/images/T2.jpg', 'assets/images/T4.jpg', 'assets/images/T8.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-36 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%] sm:h-44" />
             }
           </div>
         </div>
         <div class="hidden h-full overflow-hidden sm:block">
           <div class="customer-track-up flex flex-col gap-4">
-            @for (image of ['/assets/images/T5.jpg', '/assets/images/T9.jpg', '/assets/images/T3.jpg', '/assets/images/T5.jpg', '/assets/images/T9.jpg']; track $index) {
+            @for (image of ['assets/images/T5.jpg', 'assets/images/T9.jpg', 'assets/images/T3.jpg', 'assets/images/T5.jpg', 'assets/images/T9.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-40 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
             }
           </div>
         </div>
         <div class="hidden h-full overflow-hidden sm:block">
           <div class="customer-track-down mt-10 flex flex-col gap-4">
-            @for (image of ['/assets/images/T6.jpg', '/assets/images/T10.jpg', '/assets/images/T4.jpg', '/assets/images/T6.jpg', '/assets/images/T10.jpg']; track $index) {
+            @for (image of ['assets/images/T6.jpg', 'assets/images/T10.jpg', 'assets/images/T4.jpg', 'assets/images/T6.jpg', 'assets/images/T10.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-44 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
             }
           </div>
         </div>
         <div class="hidden h-full overflow-hidden lg:block">
           <div class="customer-track-up flex flex-col gap-4">
-            @for (image of ['/assets/images/T7.jpg', '/assets/images/T1.jpg', '/assets/images/T5.jpg', '/assets/images/T7.jpg', '/assets/images/T1.jpg']; track $index) {
+            @for (image of ['assets/images/T7.jpg', 'assets/images/T1.jpg', 'assets/images/T5.jpg', 'assets/images/T7.jpg', 'assets/images/T1.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-40 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
             }
           </div>
         </div>
         <div class="hidden h-full overflow-hidden lg:block">
           <div class="customer-track-down mt-8 flex flex-col gap-4">
-            @for (image of ['/assets/images/T8.jpg', '/assets/images/T2.jpg', '/assets/images/T6.jpg', '/assets/images/T8.jpg', '/assets/images/T2.jpg']; track $index) {
+            @for (image of ['assets/images/T8.jpg', 'assets/images/T2.jpg', 'assets/images/T6.jpg', 'assets/images/T8.jpg', 'assets/images/T2.jpg']; track $index) {
               <img [src]="image" alt="" loading="lazy" class="h-44 w-full rounded-2xl object-cover object-top opacity-[0.10] grayscale-[85%]" />
             }
           </div>
@@ -284,13 +284,13 @@ export class InitiativeSection {
   readonly market = inject(MarketplaceService);
   readonly activeReview = signal<CommunityReview | null>(null);
   readonly communityReviews: CommunityReview[] = [
-    verifiedReview('rev-01', '/assets/images/T1.jpg', 'left'),
-    verifiedReview('rev-02', '/assets/images/T2.jpg', 'right'),
-    verifiedReview('rev-04', '/assets/images/T3.jpg', 'left'),
-    verifiedReview('rev-06', '/assets/images/T4.jpg', 'right'),
+    verifiedReview('rev-01', 'assets/images/T1.jpg', 'left'),
+    verifiedReview('rev-02', 'assets/images/T2.jpg', 'right'),
+    verifiedReview('rev-04', 'assets/images/T3.jpg', 'left'),
+    verifiedReview('rev-06', 'assets/images/T4.jpg', 'right'),
     sampleReview(
       'sample-01',
-      '/assets/images/T5.jpg',
+      'assets/images/T5.jpg',
       'left',
       'Naina Kapoor',
       'Jaipur',
@@ -298,11 +298,11 @@ export class InitiativeSection {
       'Hand-painted Blue Pottery Vase',
       'The blue floral finish adds a lovely handmade touch to my entryway.'
     ),
-    verifiedReview('rev-03', '/assets/images/T6.jpg', 'left'),
-    verifiedReview('rev-05', '/assets/images/T7.jpg', 'right'),
+    verifiedReview('rev-03', 'assets/images/T6.jpg', 'left'),
+    verifiedReview('rev-05', 'assets/images/T7.jpg', 'right'),
     sampleReview(
       'sample-02',
-      '/assets/images/T8.jpg',
+      'assets/images/T8.jpg',
       'left',
       'Aarav Menon',
       'Bengaluru',
@@ -312,7 +312,7 @@ export class InitiativeSection {
     ),
     sampleReview(
       'sample-03',
-      '/assets/images/T9.jpg',
+      'assets/images/T9.jpg',
       'right',
       'Kabir Joshi',
       'Mumbai',
@@ -322,7 +322,7 @@ export class InitiativeSection {
     ),
     sampleReview(
       'sample-04',
-      '/assets/images/T10.jpg',
+      'assets/images/T10.jpg',
       'left',
       'Ishaan Bhatt',
       'Ahmedabad',

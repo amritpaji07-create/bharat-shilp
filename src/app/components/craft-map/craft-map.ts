@@ -918,7 +918,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 14, y: 565, w: 172, h: 54 },
       cardAnchor: [186, 592],
       curve: 'M 201,598 C 160,598 175,592 186,592',
-      image: '/assets/images/card1_opt.png'
+      image: 'assets/images/card1_opt.png'
     },
     {
       id: 'bhopal',
@@ -929,7 +929,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 310, y: 440, w: 172, h: 54 },
       cardAnchor: [396, 470],
       curve: 'M 359,516 C 340,490 370,470 396,470',
-      image: '/assets/monuments/madhya-pradesh.jpg'
+      image: 'assets/monuments/madhya-pradesh.jpg'
     },
     {
       id: 'gwalior',
@@ -940,7 +940,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 235, y: 170, w: 172, h: 54 },
       cardAnchor: [407, 197],
       curve: 'M 432,239 C 390,239 390,197 407,197',
-      image: '/assets/images/card2_opt.png'
+      image: 'assets/images/card2_opt.png'
     },
     {
       id: 'jabalpur',
@@ -951,7 +951,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 675, y: 520, w: 175, h: 54 },
       cardAnchor: [675, 547],
       curve: 'M 612,543 C 640,543 650,547 675,547',
-      image: '/assets/images/category_brass_dhokra_1793447459537.jpg'
+      image: 'assets/images/category_brass_dhokra_1793447459537.jpg'
     },
     {
       id: 'ujjain',
@@ -962,7 +962,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 14, y: 460, w: 172, h: 54 },
       cardAnchor: [186, 487],
       curve: 'M 190,532 C 160,532 170,487 186,487',
-      image: '/assets/images/card4_opt.png'
+      image: 'assets/images/card4_opt.png'
     },
     {
       id: 'chhatarpur',
@@ -973,7 +973,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 645, y: 310, w: 185, h: 54 },
       cardAnchor: [645, 337],
       curve: 'M 581,374 C 615,374 625,337 645,337',
-      image: '/assets/monuments/madhya-pradesh.jpg'
+      image: 'assets/monuments/madhya-pradesh.jpg'
     },
     {
       id: 'ashoknagar',
@@ -984,7 +984,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 470, y: 320, w: 182, h: 54 },
       cardAnchor: [470, 347],
       curve: 'M 406,395 C 440,395 445,347 470,347',
-      image: '/assets/images/category_handloom_saree_1793447459310.jpg'
+      image: 'assets/images/category_handloom_saree_1793447459310.jpg'
     },
     {
       id: 'khargone-west-nimar',
@@ -995,7 +995,7 @@ export class CraftMap implements OnInit, OnDestroy {
       cardPos: { x: 50, y: 735, w: 185, h: 54 },
       cardAnchor: [235, 762],
       curve: 'M 200,683 C 200,720 180,750 235,762',
-      image: '/assets/images/card3_opt.png'
+      image: 'assets/images/card3_opt.png'
     }
   ];
 

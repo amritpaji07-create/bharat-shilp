@@ -208,7 +208,7 @@ export class HeroCarousel implements OnInit, OnDestroy {
       secondaryCtaText: 'Explore Artisans',
       secondaryCtaIcon: 'eco',
       secondaryAction: () => this.market.setView('sellers'),
-      image: '/assets/images/HERO.png',
+      image: 'assets/images/HERO.png',
       imageAlt: 'Handcrafted Indian pottery, woven baskets, brass decor and textiles',
       tagText: 'Certified GI Regional Crafts',
       tagIcon: 'verified'

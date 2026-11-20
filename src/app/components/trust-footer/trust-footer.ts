@@ -10,7 +10,7 @@ import { MarketplaceService } from '../../services/marketplace.service';
     <footer class="bg-[#8BDEFA] text-xs text-[#102719]">
       <div class="relative">
         <img
-          src="/assets/images/footer.png"
+          src="assets/images/footer.png"
           alt=""
           class="block h-auto w-full"
         />

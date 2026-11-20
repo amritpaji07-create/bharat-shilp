@@ -124,25 +124,25 @@ export class App implements AfterViewInit, OnDestroy {
     {
       title: 'Source to Table',
       description: 'Direct relationships with heritage grain farmers, ensuring sustainable sourcing.',
-      image: '/assets/images/coconut.png',
+      image: 'assets/images/coconut.png',
       alt: 'Farm-fresh produce'
     },
     {
       title: 'Time-Honored Techniques',
       description: 'Slow Bilona churning, traditional stone-milling, and authentic methods.',
-      image: '/assets/images/pot.png',
+      image: 'assets/images/pot.png',
       alt: 'Traditional artisan pottery'
     },
     {
       title: 'Unwavering Purity',
       description: 'No refined oils, no additives—just pure, wholesome ingredients.',
-      image: '/assets/images/honey.png',
+      image: 'assets/images/honey.png',
       alt: 'Pure forest honey'
     },
     {
       title: 'Commitment to Community',
       description: 'Fair trade practices and direct support to rural farming families.',
-      image: '/assets/images/saree.jpg',
+      image: 'assets/images/saree.jpg',
       alt: 'Handwoven textile by rural artisans'
     }
   ];
@@ -153,8 +153,8 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Handloom Sarees',
       hindiTitle: 'हथकरघा साड़ियां',
       eyebrow: '100% Authentic Weave',
-      image: '/assets/images/saree.jpg',
-      video: '/assets/images/saree video.mp4',
+      image: 'assets/images/saree.jpg',
+      video: 'assets/images/saree video.mp4',
       description: 'Pure handwoven sarees from traditional Indian weaving clusters, with natural fibres and GI-backed provenance.',
       accent: '#7A1F45',
       benefits: ['Natural & breathable fibres', 'Handwoven by master artisans', 'GI-backed regional provenance'],
@@ -169,8 +169,8 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Traditional Pottery',
       hindiTitle: 'पारंपरिक मिट्टी के बर्तन',
       eyebrow: 'Hand-shaped & Natural',
-      image: '/assets/images/pot.png',
-      video: '/assets/images/pot video.mp4',
+      image: 'assets/images/pot.png',
+      video: 'assets/images/pot video.mp4',
       description: 'Hand-shaped clay and blue pottery crafted by regional artisans using traditional techniques and mineral pigments.',
       accent: '#1D5A6F',
       benefits: ['Made with natural clay and minerals', 'Hand-shaped, no mass moulding', 'Safe, lead-conscious artisan finish'],
@@ -185,8 +185,8 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Forest Honey',
       hindiTitle: 'वन शहद',
       eyebrow: 'Pure & Naturally Harvested',
-      image: '/assets/images/honey.png',
-      video: '/assets/images/honey video.mp4',
+      image: 'assets/images/honey.png',
+      video: 'assets/images/honey video.mp4',
       description: 'Raw, unheated forest honey gathered sustainably by tribal communities and packed without artificial additives.',
       accent: '#A66A18',
       benefits: ['Raw and naturally unprocessed', 'No added sugar or preservatives', 'Rich in natural pollen and enzymes'],
@@ -201,8 +201,8 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Natural Coconut',
       hindiTitle: 'प्राकृतिक नारियल',
       eyebrow: 'Farm Fresh & 100% Natural',
-      image: '/assets/images/coconut.png',
-      video: '/assets/images/coconut video.mp4',
+      image: 'assets/images/coconut.png',
+      video: 'assets/images/coconut video.mp4',
       description: 'Fresh, farm-sourced coconut and coconut products made naturally in small batches by coastal producer groups.',
       accent: '#4B7134',
       benefits: ['Naturally sourced from farms', 'No artificial flavour or colour', 'Small-batch coastal produce'],

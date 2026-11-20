@@ -1,14 +1,14 @@
 import { Category, Product, Seller, Order, Address, ArtisanCluster } from '../models/marketplace.model';
 
-export const HERO_IMAGE = '/assets/images/hero_indian_handicrafts_1793447457647.jpg';
-export const HANDLOOM_IMAGE = '/assets/images/category_handloom_saree_1793447459310.jpg';
-export const BRASS_DHOKRA_IMAGE = '/assets/images/category_brass_dhokra_1793447459537.jpg';
-export const ORGANIC_HONEY_IMAGE = '/assets/images/category_organic_honey_1793447459115.jpg';
-export const JAIPUR_BLUE_POTTERY_IMAGE = '/assets/images/jaipur_blue_pottery_1793450789528.jpg';
-export const KASHMIRI_SHAWL_IMAGE = '/assets/images/kashmiri_pashmina_shawl_1793450789122.jpg';
-export const CHANNAPATNA_TOYS_IMAGE = '/assets/images/channapatna_wooden_toys_1793450789922.jpg';
-export const MADHUBANI_PAINTING_IMAGE = '/assets/images/madhubani_folk_painting_1793450790489.jpg';
-export const COLD_PRESSED_OIL_IMAGE = '/assets/images/cold_pressed_oil_ayurveda_1793450792142.jpg';
+export const HERO_IMAGE = 'assets/images/hero_indian_handicrafts_1793447457647.jpg';
+export const HANDLOOM_IMAGE = 'assets/images/category_handloom_saree_1793447459310.jpg';
+export const BRASS_DHOKRA_IMAGE = 'assets/images/category_brass_dhokra_1793447459537.jpg';
+export const ORGANIC_HONEY_IMAGE = 'assets/images/category_organic_honey_1793447459115.jpg';
+export const JAIPUR_BLUE_POTTERY_IMAGE = 'assets/images/jaipur_blue_pottery_1793450789528.jpg';
+export const KASHMIRI_SHAWL_IMAGE = 'assets/images/kashmiri_pashmina_shawl_1793450789122.jpg';
+export const CHANNAPATNA_TOYS_IMAGE = 'assets/images/channapatna_wooden_toys_1793450789922.jpg';
+export const MADHUBANI_PAINTING_IMAGE = 'assets/images/madhubani_folk_painting_1793450790489.jpg';
+export const COLD_PRESSED_OIL_IMAGE = 'assets/images/cold_pressed_oil_ayurveda_1793450792142.jpg';
 
 export const CATEGORIES: Category[] = [
   {
@@ -47,7 +47,7 @@ export const CATEGORIES: Category[] = [
     hindiName: 'नारियल के खोल का शिल्प',
     slug: 'coconut-shell-crafts',
     count: 2,
-    image: '/assets/images/coconut.png',
+    image: 'assets/images/coconut.png',
     icon: 'eco',
     description: 'Hand-carved coconut-shell bowls, tableware, and sustainable coastal crafts.'
   },
@@ -196,7 +196,7 @@ export const SELLERS: Seller[] = [
     description: 'A coastal cooperative turning reclaimed coconut shells into durable, hand-finished tableware.',
     story: 'Artisans clean, shape, and polish discarded coconut shells by hand, creating useful pieces while reducing craft waste.',
     craftSpecialty: 'Hand-carved Coconut Shell Tableware',
-    heroImage: '/assets/images/coconut.png'
+    heroImage: 'assets/images/coconut.png'
   }
 ];
 
@@ -563,8 +563,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 19,
     rating: 4.8,
     reviewCount: 86,
-    primaryImage: '/assets/images/saree.jpg',
-    galleryImages: ['/assets/images/saree.jpg', HANDLOOM_IMAGE],
+    primaryImage: 'assets/images/saree.jpg',
+    galleryImages: ['assets/images/saree.jpg', HANDLOOM_IMAGE],
     sellerId: 'chanderi-weavers-coop',
     sellerName: 'Pragati Mahila Chanderi Bunkar Samiti',
     sellerType: 'SHG',
@@ -599,8 +599,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 25,
     rating: 4.8,
     reviewCount: 56,
-    primaryImage: '/assets/images/coconut.png',
-    galleryImages: ['/assets/images/coconut.png'],
+    primaryImage: 'assets/images/coconut.png',
+    galleryImages: ['assets/images/coconut.png'],
     sellerId: 'kerala-coconut-shell-coop',
     sellerName: 'Kerala Coastal Coconut Shell Artisans Cooperative',
     sellerType: 'Cooperative',
@@ -632,8 +632,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 25,
     rating: 4.7,
     reviewCount: 38,
-    primaryImage: '/assets/images/coconut.png',
-    galleryImages: ['/assets/images/coconut.png'],
+    primaryImage: 'assets/images/coconut.png',
+    galleryImages: ['assets/images/coconut.png'],
     sellerId: 'kerala-coconut-shell-coop',
     sellerName: 'Kerala Coastal Coconut Shell Artisans Cooperative',
     sellerType: 'Cooperative',
@@ -665,8 +665,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 20,
     rating: 4.8,
     reviewCount: 92,
-    primaryImage: '/assets/images/honey.png',
-    galleryImages: ['/assets/images/honey.png', ORGANIC_HONEY_IMAGE],
+    primaryImage: 'assets/images/honey.png',
+    galleryImages: ['assets/images/honey.png', ORGANIC_HONEY_IMAGE],
     sellerId: 'jharkhand-van-coop',
     sellerName: 'Jharkhand Forest Minor Produce Co-op',
     sellerType: 'Cooperative',
@@ -700,8 +700,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 25,
     rating: 4.8,
     reviewCount: 43,
-    primaryImage: '/assets/images/1.jpg',
-    galleryImages: ['/assets/images/1.jpg', JAIPUR_BLUE_POTTERY_IMAGE],
+    primaryImage: 'assets/images/1.jpg',
+    galleryImages: ['assets/images/1.jpg', JAIPUR_BLUE_POTTERY_IMAGE],
     sellerId: 'jaipur-blue-pottery-guild',
     sellerName: 'Jaipur Heritage Blue Pottery Guild',
     sellerType: 'Artisan Guild',
@@ -826,7 +826,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2008,
     lat: 34.0837,
     lng: 74.7973,
-    image: '/assets/images/kashmiri_pashmina_shawl_1793450789122.jpg',
+    image: 'assets/images/kashmiri_pashmina_shawl_1793450789122.jpg',
     description: 'Centuries-old artisanal hand spinning of Changthangi cashmere goat wool and intricate needle embroidery.',
     specialtyTag: 'GI Certified Pashmina',
     masterArtisanName: 'Ghulam Rasool Mir (National Awardee)',
@@ -853,7 +853,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2010,
     lat: 19.5997,
     lng: 81.6687,
-    image: '/assets/images/cat_tribal_craft_1793598233574.jpg',
+    image: 'assets/images/cat_tribal_craft_1793598233574.jpg',
     description: '4,000-year-old unbroken ancient Indus metallurgy technique molded from natural beeswax and river clay.',
     specialtyTag: 'Tribal Bell Metal',
     masterArtisanName: 'Sukhlal Kashyap (Ghadwa Master Craftsman)',
@@ -880,7 +880,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2005,
     lat: 24.7126,
     lng: 78.1357,
-    image: '/assets/images/category_handloom_saree_1793447459310.jpg',
+    image: 'assets/images/category_handloom_saree_1793447459310.jpg',
     description: 'Legendary sheer gossamer silk fabrics handwoven with golden Ashrafi butis on traditional wooden pit looms.',
     specialtyTag: 'GI Silk Mark Weave',
     masterArtisanName: 'Smt. Kamlesh Bai (SHG President)',
@@ -907,7 +907,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2008,
     lat: 26.9124,
     lng: 75.7873,
-    image: '/assets/images/jaipur_blue_pottery_1793450789528.jpg',
+    image: 'assets/images/jaipur_blue_pottery_1793450789528.jpg',
     description: 'Handcrafted using crushed quartz stone, glass powder, and gum, hand-painted with cobalt blue oxides.',
     specialtyTag: 'Quartz Glazed Pottery',
     masterArtisanName: 'Bhanwar Lal Kumhar',
@@ -934,7 +934,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2006,
     lat: 12.6518,
     lng: 77.2089,
-    image: '/assets/images/channapatna_wooden_toys_1793450789922.jpg',
+    image: 'assets/images/channapatna_wooden_toys_1793450789922.jpg',
     description: 'Organic Wrightia tinctoria (Ivory Wood) hand-turned on lathes and polished with non-toxic herbal vegetable dyes.',
     specialtyTag: 'ODOP Lacquer Toy',
     masterArtisanName: 'S. N. Ramachandrappa',
@@ -961,7 +961,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2007,
     lat: 26.3547,
     lng: 86.0718,
-    image: '/assets/images/madhubani_folk_painting_1793450790489.jpg',
+    image: 'assets/images/madhubani_folk_painting_1793450790489.jpg',
     description: 'Ancestral ritual painting performed with bamboo twigs and natural mineral pigments depicting sacred nature.',
     specialtyTag: 'GI Folk Painting',
     masterArtisanName: 'Baua Devi (Padma Shri Awardee)',
@@ -986,7 +986,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     artisanCount: 320,
     lat: 23.3441,
     lng: 85.3096,
-    image: '/assets/images/category_organic_honey_1793447459115.jpg',
+    image: 'assets/images/category_organic_honey_1793447459115.jpg',
     description: 'Sustainably collected wild forest Apis dorsata honey from Sal and Palash forests by tribal honey collectors.',
     specialtyTag: 'Organic Forest Produce',
     masterArtisanName: 'Birsa Munda FPO Collective',
@@ -1013,7 +1013,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2006,
     lat: 31.9579,
     lng: 77.1095,
-    image: '/assets/images/cat_handicraft_wood_1793598197065.jpg',
+    image: 'assets/images/cat_handicraft_wood_1793598197065.jpg',
     description: 'Traditional geometric dovetail patterns hand-knitted in pure Himalayan Merino wool on pit looms.',
     specialtyTag: 'GI Handspun Wool',
     masterArtisanName: 'Kishori Lal Thakur',
@@ -1040,7 +1040,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2007,
     lat: 26.1738,
     lng: 91.5670,
-    image: '/assets/images/category_handloom_saree_1793447459310.jpg',
+    image: 'assets/images/category_handloom_saree_1793447459310.jpg',
     description: 'Naturally shimmering golden silk yarn obtained from wild silkworms, endemic only to the Brahmaputra valley.',
     specialtyTag: 'GI Golden Muga',
     masterArtisanName: 'Hemanta Kalita (Sualkuchi Master Weaver)',
@@ -1067,7 +1067,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2011,
     lat: 23.2420,
     lng: 69.6669,
-    image: '/assets/images/cat_stationery_paper_1793598247640.jpg',
+    image: 'assets/images/cat_stationery_paper_1793598247640.jpg',
     description: 'Castor oil paste manipulated with a stylus onto textiles alongside 16-stage natural indigo block printing.',
     specialtyTag: 'GI Heritage Block Print',
     masterArtisanName: 'Abdul Gafur Khatri (Padma Shri Awardee)',
@@ -1094,7 +1094,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2007,
     lat: 10.7870,
     lng: 79.1378,
-    image: '/assets/images/madhubani_folk_painting_1793450790489.jpg',
+    image: 'assets/images/madhubani_folk_painting_1793450790489.jpg',
     description: 'Classical South Indian paintings crafted on seasoned teakwood boards with chalk gesso and pure 22K gold foil.',
     specialtyTag: 'GI Gold Foil Art',
     masterArtisanName: 'S. Rajagopalan (Sthapati Guild)',
@@ -1121,7 +1121,7 @@ export const ARTISAN_CLUSTERS: ArtisanCluster[] = [
     giYear: 2018,
     lat: 29.5971,
     lng: 79.6591,
-    image: '/assets/images/cat_spices_agri_1793598210912.jpg',
+    image: 'assets/images/cat_spices_agri_1793598210912.jpg',
     description: 'Wild stinging nettle fiber naturally spun into sustainable fabrics alongside GI-tagged Lakadong turmeric and mountain bay leaf.',
     specialtyTag: 'Organic Mountain Flora',
     masterArtisanName: 'Devbhumi Mahila FPO Federation',

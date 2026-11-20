@@ -144,7 +144,7 @@ const RAW_DISTRICTS = [
       374
     ],
     "landmarkName": "Kandariya Mahadeva Temple",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": true,
     "cardPos": {
       "x": 645,
@@ -388,7 +388,7 @@ const RAW_DISTRICTS = [
       479
     ],
     "landmarkName": "Agar Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -422,7 +422,7 @@ const RAW_DISTRICTS = [
       641
     ],
     "landmarkName": "Alirajpur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -456,7 +456,7 @@ const RAW_DISTRICTS = [
       562
     ],
     "landmarkName": "Anuppur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -490,7 +490,7 @@ const RAW_DISTRICTS = [
       686
     ],
     "landmarkName": "Balaghat Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -524,7 +524,7 @@ const RAW_DISTRICTS = [
       695
     ],
     "landmarkName": "Barwani Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -558,7 +558,7 @@ const RAW_DISTRICTS = [
       686
     ],
     "landmarkName": "Betul Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -592,7 +592,7 @@ const RAW_DISTRICTS = [
       198
     ],
     "landmarkName": "Bhind Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -626,7 +626,7 @@ const RAW_DISTRICTS = [
       740
     ],
     "landmarkName": "Burhanpur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -660,7 +660,7 @@ const RAW_DISTRICTS = [
       661
     ],
     "landmarkName": "Chhindwara Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -694,7 +694,7 @@ const RAW_DISTRICTS = [
       480
     ],
     "landmarkName": "Damoh Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -728,7 +728,7 @@ const RAW_DISTRICTS = [
       267
     ],
     "landmarkName": "Datia Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -762,7 +762,7 @@ const RAW_DISTRICTS = [
       594
     ],
     "landmarkName": "Dewas Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -832,7 +832,7 @@ const RAW_DISTRICTS = [
       579
     ],
     "landmarkName": "Dindori Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -866,7 +866,7 @@ const RAW_DISTRICTS = [
       400
     ],
     "landmarkName": "Guna Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -900,7 +900,7 @@ const RAW_DISTRICTS = [
       649
     ],
     "landmarkName": "Harda Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -934,7 +934,7 @@ const RAW_DISTRICTS = [
       580
     ],
     "landmarkName": "Jhabua Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -968,7 +968,7 @@ const RAW_DISTRICTS = [
       487
     ],
     "landmarkName": "Katni Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1002,7 +1002,7 @@ const RAW_DISTRICTS = [
       680
     ],
     "landmarkName": "Khandwa (East Nimar) Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1036,7 +1036,7 @@ const RAW_DISTRICTS = [
       606
     ],
     "landmarkName": "Mandla Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1070,7 +1070,7 @@ const RAW_DISTRICTS = [
       438
     ],
     "landmarkName": "Mandsaur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1104,7 +1104,7 @@ const RAW_DISTRICTS = [
       199
     ],
     "landmarkName": "Morena Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1140,7 +1140,7 @@ const RAW_DISTRICTS = [
       611
     ],
     "landmarkName": "Sethani Ghat",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1174,7 +1174,7 @@ const RAW_DISTRICTS = [
       574
     ],
     "landmarkName": "Narsimhapur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1208,7 +1208,7 @@ const RAW_DISTRICTS = [
       395
     ],
     "landmarkName": "Neemuch Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1242,7 +1242,7 @@ const RAW_DISTRICTS = [
       415
     ],
     "landmarkName": "Panna Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1276,7 +1276,7 @@ const RAW_DISTRICTS = [
       544
     ],
     "landmarkName": "Raisen Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1310,7 +1310,7 @@ const RAW_DISTRICTS = [
       475
     ],
     "landmarkName": "Rajgarh Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1344,7 +1344,7 @@ const RAW_DISTRICTS = [
       514
     ],
     "landmarkName": "Ratlam Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1380,7 +1380,7 @@ const RAW_DISTRICTS = [
       379
     ],
     "landmarkName": "Rewa Royal Fort",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1416,7 +1416,7 @@ const RAW_DISTRICTS = [
       477
     ],
     "landmarkName": "Lakha Banjara Lake",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1450,7 +1450,7 @@ const RAW_DISTRICTS = [
       403
     ],
     "landmarkName": "Satna Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1484,7 +1484,7 @@ const RAW_DISTRICTS = [
       568
     ],
     "landmarkName": "Sehore Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1518,7 +1518,7 @@ const RAW_DISTRICTS = [
       640
     ],
     "landmarkName": "Seoni Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1552,7 +1552,7 @@ const RAW_DISTRICTS = [
       500
     ],
     "landmarkName": "Shahdol Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1586,7 +1586,7 @@ const RAW_DISTRICTS = [
       527
     ],
     "landmarkName": "Shajapur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1620,7 +1620,7 @@ const RAW_DISTRICTS = [
       271
     ],
     "landmarkName": "Sheopur Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1654,7 +1654,7 @@ const RAW_DISTRICTS = [
       313
     ],
     "landmarkName": "Shivpuri Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1688,7 +1688,7 @@ const RAW_DISTRICTS = [
       437
     ],
     "landmarkName": "Sidhi Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1722,7 +1722,7 @@ const RAW_DISTRICTS = [
       437
     ],
     "landmarkName": "Singrauli Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1756,7 +1756,7 @@ const RAW_DISTRICTS = [
       354
     ],
     "landmarkName": "Tikamgarh Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1790,7 +1790,7 @@ const RAW_DISTRICTS = [
       507
     ],
     "landmarkName": "Umaria Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,
@@ -1824,7 +1824,7 @@ const RAW_DISTRICTS = [
       472
     ],
     "landmarkName": "Vidisha Heritage Hub",
-    "landmarkImage": "/assets/monuments/madhya-pradesh.jpg",
+    "landmarkImage": "assets/monuments/madhya-pradesh.jpg",
     "isFlagship": false,
     "cardPos": null,
     "curve": null,

@@ -42,7 +42,7 @@ interface MegaMenuColumn {
               aria-label="Shreem Homepage">
               
               <img
-                src="/assets/hero/shreem-logo.png"
+                src="assets/hero/shreem-logo.png"
                 alt="Shreem logo"
                 class="h-[68px] w-[68px] shrink-0 rounded-full object-contain transition-transform group-hover:scale-105 sm:h-20 sm:w-20"
               />
@@ -449,7 +449,7 @@ interface MegaMenuColumn {
                   
                   <!-- Banner Photo with Multiply Blend -->
                   <img
-                    src="/assets/mega-menu/promo_artisan_banner.jpg"
+                    src="assets/mega-menu/promo_artisan_banner.jpg"
                     alt="Indian artisan weaving"
                     class="absolute inset-0 h-full w-full object-cover object-center opacity-90 mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
                   />
@@ -691,7 +691,7 @@ export class Header implements OnDestroy {
     id: 'category',
     icon: 'grid_view',
     title: 'Shop by Category',
-    vignetteImage: '/assets/images/card%201.png',
+    vignetteImage: 'assets/images/card%201.png',
     links: [
       {
         label: 'New Arrivals',
@@ -760,7 +760,7 @@ export class Header implements OnDestroy {
     id: 'collections',
     icon: 'local_offer',
     title: 'Collections',
-    vignetteImage: '/assets/images/card%202.png',
+    vignetteImage: 'assets/images/card%202.png',
     links: [
       {
         label: 'Festive Collection',
@@ -821,7 +821,7 @@ export class Header implements OnDestroy {
     id: 'artisans',
     icon: 'workspace_premium',
     title: 'Artisan & Brands',
-    vignetteImage: '/assets/images/card%203.png',
+    vignetteImage: 'assets/images/card%203.png',
     links: [
       {
         label: 'Our Artisans',
@@ -870,7 +870,7 @@ export class Header implements OnDestroy {
     id: 'support',
     icon: 'headset_mic',
     title: 'Help & Support',
-    vignetteImage: '/assets/images/card%204.png',
+    vignetteImage: 'assets/images/card%204.png',
     links: [
       {
         label: 'Track Your Order',
@@ -916,7 +916,7 @@ export class Header implements OnDestroy {
     id: 'account',
     icon: 'person_outline',
     title: 'My Account',
-    vignetteImage: '/assets/images/card%205.png',
+    vignetteImage: 'assets/images/card%205.png',
     links: [
       {
         label: 'Login / Sign Up',
