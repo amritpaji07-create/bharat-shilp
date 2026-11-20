@@ -70,20 +70,13 @@ export class SilkRailComponent implements AfterViewInit, OnDestroy {
       this.runtime = await loadSilkGsap();
       if (this.destroyed || !this.runtime || !this.section) return;
       const { gsap } = this.runtime;
-      gsap.from(this.section.nativeElement.querySelectorAll('.rail-saree-card'), {
-        y: 40,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: this.section.nativeElement,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      });
+      gsap.fromTo(
+        this.section.nativeElement.querySelectorAll('.rail-saree-card'),
+        { y: 20 },
+        { y: 0, stagger: 0.05, duration: 0.5, ease: 'power2.out' }
+      );
     } catch {
-      // Graceful fallback to CSS animations
+      // Fallback
     }
   }
 
