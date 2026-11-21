@@ -70,15 +70,6 @@ interface MegaMenuColumn {
                 <span>Home</span>
               </button>
 
-              <!-- Silk Studio Interactive Showcase Pill -->
-              <button
-                type="button"
-                (click)="scrollToSilkStudio(); closeMegaMenu()"
-                class="flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-[#8B1D2C]/30 bg-[#fff4f5] px-2.5 text-[11px] font-extrabold uppercase tracking-wide text-[#8B1D2C] shadow-xs transition hover:bg-[#8B1D2C] hover:text-white xl:px-3 xl:text-xs cursor-pointer">
-                <span class="inline-block h-2 w-2 rounded-full bg-[#8B1D2C] animate-pulse"></span>
-                <span>Silk Studio</span>
-              </button>
-
               <!-- 2. Categories Dropdown Trigger -->
               <button
                 type="button"
@@ -549,13 +540,6 @@ interface MegaMenuColumn {
                   <span>Artisans</span>
                 </button>
 
-                <button
-                  type="button"
-                  (click)="scrollToSilkStudio(); isMobileMenuOpen.set(false)"
-                  class="col-span-2 flex items-center justify-center gap-2 rounded-xl p-3 text-center text-xs font-bold uppercase tracking-wide border border-[#8B1D2C]/40 bg-[#fff4f5] text-[#8B1D2C] shadow-xs">
-                  <span class="inline-block h-2 w-2 rounded-full bg-[#8B1D2C] animate-pulse"></span>
-                  <span>✨ Explore Interactive Silk Studio & Rail</span>
-                </button>
               </div>
 
               <!-- Shop by Category Accordion Section -->
@@ -684,11 +668,6 @@ interface MegaMenuColumn {
 export class Header implements OnDestroy {
   readonly market = inject(MarketplaceService);
 
-  scrollToSilkStudio(): void {
-    this.market.setView('silk-studio');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   readonly isSearchOpen = signal(false);
   readonly isMobileMenuOpen = signal(false);
   readonly showSuggestions = signal(false);
@@ -791,6 +770,30 @@ export class Header implements OnDestroy {
           this.market.setSearchQuery('Diwali');
           this.market.setView('catalogue');
           this.market.showToast('Showing Festive Puja & Celebration Curations', 'info');
+        }
+      },
+      {
+        label: 'Silk Studio (Handloom Sarees)',
+        action: () => {
+          this.market.setView('silk-studio');
+        }
+      },
+      {
+        label: 'Honey Studio (Van Amrit)',
+        action: () => {
+          this.market.setView('honey-studio');
+        }
+      },
+      {
+        label: 'Pottery Studio (Mitti & Kiln)',
+        action: () => {
+          this.market.setView('pottery-studio');
+        }
+      },
+      {
+        label: 'Coconut Studio (Thenga & Palm)',
+        action: () => {
+          this.market.setView('coconut-studio');
         }
       },
       {

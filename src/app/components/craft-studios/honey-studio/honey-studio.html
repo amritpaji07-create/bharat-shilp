@@ -1,0 +1,411 @@
+<main class="honey-studio-page" aria-labelledby="honey-studio-heading">
+
+  <!-- ======================================================== -->
+  <!-- 1. STUDIO TOPBAR                                         -->
+  <!-- ======================================================== -->
+  <header class="studio-topbar">
+    <div class="topbar-left">
+      <button type="button" class="studio-back-button" (click)="market.setView('home')" aria-label="Back to Shreem Home">
+        <span aria-hidden="true">←</span>
+        Back to Shreem
+      </button>
+      <span class="studio-breadcrumb">
+        <span>Home</span>
+        <span class="breadcrumb-slash">/</span>
+        <strong>Van Amrit · Forest Honey Reserve & Studio</strong>
+      </span>
+    </div>
+
+    <!-- Quick Navigation Anchor Links -->
+    <nav class="studio-anchors" aria-label="Honey Studio sections">
+      <button type="button" (click)="scrollToSection('honey-archive-section')">Sacred Nectars</button>
+      <button type="button" (click)="scrollToSection('taste-the-flora-section')">Taste the Flora</button>
+      <button type="button" (click)="scrollToSection('pick-a-nectar-section')">Pick a Nectar</button>
+      <button type="button" (click)="scrollToSection('honey-cellar-section')">The Forest Cellar</button>
+      <button type="button" (click)="scrollToSection('honey-reels-section')">Gatherers in Motion</button>
+    </nav>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 2. SECTION: THE ARCHIVE · SIX NECTARS                    -->
+  <!-- ======================================================== -->
+  <section id="honey-archive-section" class="honey-archive-section">
+    <div class="archive-header">
+      <span class="archive-eyebrow">THE VAN AMRIT ARCHIVE · SACRED FORESTS</span>
+      <h1 id="honey-studio-heading" class="archive-title">
+        Six Nectars. <span class="gradient-amber">Untamed Forests</span>
+      </h1>
+      <p class="archive-tagline">Gathered by tribal elders, unheated & raw for a lifetime of wellness.</p>
+    </div>
+
+    <div class="archive-grid">
+      @for (cat of archiveCategories; track cat.id) {
+        <article class="archive-arch-card" [style.--accent]="cat.accent">
+          <div class="arch-window">
+            <div class="arch-finial" aria-hidden="true"></div>
+            <div class="arch-image-wrap">
+              <img [src]="cat.image" [alt]="cat.name" class="arch-img" loading="lazy" />
+              <div class="arch-overlay">
+                <span class="arch-badge">{{ cat.tag }}</span>
+                <span class="arch-region">{{ cat.region }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-details">
+            <span class="arch-subname">{{ cat.subName }}</span>
+            <h2 class="arch-name">{{ cat.name }}</h2>
+            <p class="arch-note">{{ cat.note }}</p>
+            <div class="arch-footer">
+              <span class="arch-price">₹{{ cat.price.toLocaleString('en-IN') }}</span>
+              <button
+                type="button"
+                class="btn-arch-add"
+                (click)="addShelfItem({
+                  id: cat.id,
+                  name: cat.name + ' Raw Honey 500g',
+                  price: cat.price,
+                  category: 'single-floral',
+                  categoryType: 'Raw Honey',
+                  image: cat.image,
+                  description: cat.note || '',
+                  origin: cat.region,
+                  artisanCluster: 'Certified Tribal Guild',
+                  specs: []
+                })">
+                + Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. SECTION: TASTE THE FLORA (TRY THE LOOK STYLE)         -->
+  <!-- ======================================================== -->
+  <section id="taste-the-flora-section" class="taste-flora-section" aria-labelledby="taste-flora-heading">
+    <div class="taste-flora-container">
+      
+      <!-- LEFT / STAGE SIDE -->
+      <div class="stage-side">
+        <!-- Section Header -->
+        <header class="look-header">
+          <span class="eyebrow">— PURE MEADOW & FOREST RITUALS</span>
+          <h2 id="taste-flora-heading" class="look-title">Taste the <span class="highlight-amber">Flora.</span></h2>
+          <p class="look-subtitle">Eight rare forest harvests, styled with brass & botanical accompaniments.</p>
+        </header>
+
+        <!-- Carousel Stage -->
+        <div class="models-carousel-wrapper">
+          <div #modelTrack class="models-track" (scroll)="onTrackScroll()">
+            @for (ens of ensembles; track ens.id; let index = $index) {
+              <div
+                #ensembleItem
+                class="model-item"
+                [class.is-active]="selectedIndex() === index"
+                [class.is-adjacent]="getDistance(index) === 1"
+                [class.is-far]="getDistance(index) >= 2"
+                (click)="selectEnsemble(index)">
+                <div class="model-visual-wrap">
+                  <img
+                    [src]="ens.image"
+                    [alt]="ens.name"
+                    class="model-photo"
+                    [loading]="index === 0 ? 'eager' : 'lazy'" />
+                  <div class="ground-shadow" aria-hidden="true"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Bottom Bar: Counter, Scrubber, Hint -->
+        <div class="stage-bottom-bar">
+          <div class="stage-counter">
+            {{ selectedIndex() + 1 }} of {{ ensembles.length }} &nbsp;·&nbsp; {{ activeEnsemble().name }}
+          </div>
+          <div class="stage-scrubber" aria-hidden="true">
+            <div class="scrub-line">
+              <div class="scrub-thumb" [style.left.%]="(selectedIndex() / (ensembles.length - 1)) * 100"></div>
+            </div>
+          </div>
+          <div class="stage-hint">
+            • Scroll or drag →
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR ("In this ritual") -->
+      <aside class="in-this-look-sidebar" aria-live="polite">
+        <h3 class="sidebar-title">In this ritual</h3>
+
+        <div class="pieces-stack">
+          @for (piece of activeEnsemble().pieces; track piece.name) {
+            <div class="piece-row">
+              <div class="piece-thumb-box">
+                <img [src]="piece.image" [alt]="piece.name" class="piece-img" />
+              </div>
+              <div class="piece-info">
+                <span class="piece-brand-tag">{{ piece.brand || 'VAN AMRIT' }} &nbsp;·&nbsp; {{ piece.type | uppercase }}</span>
+                <h4 class="piece-title">{{ piece.name }}</h4>
+                <span class="piece-price">₹{{ piece.price.toLocaleString('en-IN') }}</span>
+              </div>
+              <div class="piece-row-actions">
+                <button
+                  type="button"
+                  class="btn-icon-heart"
+                  [class.is-active]="isPieceLiked(piece.id)"
+                  [attr.aria-label]="'Wishlist ' + piece.name"
+                  (click)="toggleLikePiece(piece.id)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" [attr.fill]="isPieceLiked(piece.id) ? '#D4881A' : 'none'" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="btn-icon-plus"
+                  [attr.aria-label]="'Add ' + piece.name + ' to bag'"
+                  (click)="addIndividualPiece(piece, activeEnsemble())">
+                  +
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Bottom Complete Ritual Summary & CTAs -->
+        <div class="sidebar-bottom">
+          <div class="bundle-meta-row">
+            <div class="bundle-meta-text">
+              <h4 class="bundle-heading">Complete the ritual</h4>
+              <span class="bundle-subtext">Bundle all 6 pieces · save 15%</span>
+            </div>
+            <div class="bundle-pricing-wrap">
+              <span class="bundle-original-price">₹{{ activeEnsemble().totalPrice.toLocaleString('en-IN') }}</span>
+              <span class="bundle-final-price">₹{{ activeEnsemble().bundlePrice.toLocaleString('en-IN') }}</span>
+            </div>
+          </div>
+
+          <div class="sidebar-cta-row">
+            <button
+              type="button"
+              class="btn-add-full-look"
+              (click)="addEntireEnsemble(activeEnsemble())">
+              <span>Add full ritual to bag</span>
+              <span class="cart-circle-icon" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4881A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-look-wishlist"
+              [class.is-liked]="isEnsembleLiked(activeEnsemble().id)"
+              [attr.aria-label]="'Wishlist ' + activeEnsemble().name"
+              (click)="toggleEnsembleLike(activeEnsemble().id)">
+              <svg width="20" height="20" viewBox="0 0 24 24" [attr.fill]="isEnsembleLiked(activeEnsemble().id) ? '#D4881A' : 'none'" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. SECTION: PICK A NECTAR (FANNED 3D CARDS)              -->
+  <!-- ======================================================== -->
+  <section id="pick-a-nectar-section" class="pick-nectar-section">
+    <div class="pick-header">
+      <span class="pick-eyebrow">— SINGLE ORIGIN HARVESTS</span>
+      <h2 class="pick-title">Pick a <span class="highlight-amber">Nectar.</span></h2>
+      <p class="pick-subtitle">Fanned selection of pure single-floral honeys. Tilt a jar, savor the aroma.</p>
+    </div>
+
+    <div class="fanned-deck-wrapper">
+      <div class="fanned-deck">
+        @for (item of pickVarieties; track item.id; let idx = $index) {
+          <article class="fan-card" [style.--fan-rot]="(idx - 2) * 5 + 'deg'" [style.--fan-bg]="item.bg">
+            <h3 class="fan-giant-title">{{ item.title }}</h3>
+            <div class="fan-product-wrap">
+              <img [src]="item.image" [alt]="item.title" class="fan-img" loading="lazy" />
+            </div>
+            <div class="fan-card-footer">
+              <div class="fan-meta">
+                <span class="fan-subtitle">{{ item.subtitle }}</span>
+                <span class="fan-price">₹{{ item.price.toLocaleString('en-IN') }}</span>
+              </div>
+              <button
+                type="button"
+                class="btn-fan-plus"
+                [attr.aria-label]="'Add ' + item.title + ' to bag'"
+                (click)="addPickVariety(item)">
+                +
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. SECTION: THE FOREST CELLAR (PANTRY SHELF)             -->
+  <!-- ======================================================== -->
+  <section id="honey-cellar-section" class="honey-cellar-section">
+    <div class="cellar-header">
+      <span class="cellar-eyebrow">— THE FOREST CELLAR & PANTRY</span>
+      <h2 class="cellar-title">Every harvest, on the <span class="highlight-amber">shelf.</span></h2>
+      <p class="cellar-subtitle">Small-batch jars resting on seasoned timber. Filter by harvest profile.</p>
+
+      <!-- Filter Chips -->
+      <div class="shelf-filter-chips">
+        @for (f of shelfFilters; track f.id) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.is-active]="activeShelfFilter() === f.id"
+            (click)="activeShelfFilter.set(f.id)">
+            <span>{{ f.label }}</span>
+            <span class="chip-count">({{ f.count }})</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- The Wooden Pantry Shelf -->
+    <div class="pantry-shelf-wrapper">
+      <div class="timber-rail"></div>
+      <div class="shelf-products-grid">
+        @for (item of filteredShelfItems(); track item.id) {
+          <article class="shelf-product-card" (click)="openShelfModal(item)">
+            <div class="shelf-tag">
+              <span class="tag-pin"></span>
+              <span class="tag-text">{{ item.categoryLabel }}</span>
+            </div>
+            <div class="shelf-jar-box">
+              <img [src]="item.image" [alt]="item.name" class="shelf-jar-img" loading="lazy" />
+            </div>
+            <div class="shelf-product-details">
+              <span class="shelf-origin">{{ item.origin }}</span>
+              <h3 class="shelf-name">{{ item.name }}</h3>
+              <div class="shelf-price-row">
+                <span class="shelf-price">₹{{ item.price.toLocaleString('en-IN') }}</span>
+                <button
+                  type="button"
+                  class="btn-quick-inspect"
+                  (click)="$event.stopPropagation(); openShelfModal(item)">
+                  Inspect
+                </button>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+      <div class="timber-plank"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 6. SECTION: GATHERERS IN MOTION (REELS)                  -->
+  <!-- ======================================================== -->
+  <section id="honey-reels-section" class="honey-reels-section">
+    <div class="reels-header">
+      <span class="reels-eyebrow">— SACRED COMMUNION WITH NATURE</span>
+      <h2 class="reels-title">Harvest, in <span class="highlight-amber">motion.</span></h2>
+      <p class="reels-subtitle">Real tribal gatherers filmed in ancient Indian forest canopies.</p>
+    </div>
+
+    <div class="reels-cards-track">
+      @for (reel of reels; track reel.id) {
+        <article class="reel-card">
+          <div class="reel-poster-box">
+            <img [src]="reel.posterImage" [alt]="reel.title" class="reel-poster-img" loading="lazy" />
+            <div class="reel-top-badges">
+              <span class="reel-num-badge">{{ reel.reelNumber }}</span>
+              <span class="reel-duration-badge">{{ reel.duration }}</span>
+            </div>
+            <div class="reel-play-btn" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-type">{{ reel.craftType }} · {{ reel.location }}</span>
+            <h3 class="reel-title">{{ reel.title }}</h3>
+            <p class="reel-story">{{ reel.artisanStory }}</p>
+            <div class="reel-action-row">
+              <span class="reel-price">₹{{ reel.price.toLocaleString('en-IN') }}</span>
+              <button
+                type="button"
+                class="btn-reel-add"
+                (click)="addShelfItem({
+                  id: reel.id,
+                  name: reel.title + ' Harvest Reserve 500g',
+                  price: reel.price,
+                  category: 'single-floral',
+                  categoryType: 'Raw Honey',
+                  image: reel.posterImage,
+                  description: reel.artisanStory,
+                  origin: reel.location || 'India',
+                  artisanCluster: 'Tribal Honey Guild',
+                  specs: []
+                })">
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 7. MODAL: SHELF ITEM INSPECTION DETAIL                   -->
+  <!-- ======================================================== -->
+  @if (selectedShelfItem(); as item) {
+    <div class="shelf-modal-backdrop" (click)="closeShelfModal()">
+      <div class="shelf-modal-card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" [attr.aria-label]="item.name">
+        <button type="button" class="btn-close-modal" (click)="closeShelfModal()" aria-label="Close modal">×</button>
+        <div class="modal-grid">
+          <div class="modal-img-col">
+            <img [src]="item.image" [alt]="item.name" class="modal-product-img" />
+          </div>
+          <div class="modal-info-col">
+            <span class="modal-origin-tag">{{ item.origin }} · {{ item.artisanCluster }}</span>
+            <h3 class="modal-product-title">{{ item.name }}</h3>
+            <span class="modal-product-price">₹{{ item.price.toLocaleString('en-IN') }}</span>
+            <p class="modal-product-desc">{{ item.description }}</p>
+
+            <div class="modal-specs-list">
+              @for (spec of item.specs; track spec.label) {
+                <div class="spec-row">
+                  <span class="spec-label">{{ spec.label }}</span>
+                  <span class="spec-value">{{ spec.value }}</span>
+                </div>
+              }
+            </div>
+
+            <div class="modal-cta-row">
+              <button
+                type="button"
+                class="btn-modal-add"
+                (click)="addShelfItem(item); closeShelfModal()">
+                Add to Shopping Bag · ₹{{ item.price.toLocaleString('en-IN') }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</main>

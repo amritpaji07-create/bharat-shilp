@@ -21,6 +21,10 @@ import { MobileNav } from './components/mobile-nav/mobile-nav';
 import { ToastContainer } from './components/toast-container/toast-container';
 import { SupportModal } from './components/support-modal/support-modal';
 import { SilkStudioComponent } from './components/silk-experience/silk-studio/silk-studio';
+import { TryTheLookComponent } from './components/silk-experience/try-the-look/try-the-look';
+import { HoneyStudioComponent } from './components/craft-studios/honey-studio/honey-studio';
+import { PotteryStudioComponent } from './components/craft-studios/pottery-studio/pottery-studio';
+import { CoconutStudioComponent } from './components/craft-studios/coconut-studio/coconut-studio';
 import { MatIconModule } from '@angular/material/icon';
 import { BRASS_DHOKRA_IMAGE, HANDLOOM_IMAGE, HERO_IMAGE, ORGANIC_HONEY_IMAGE } from './data/mock-data';
 import { Product } from './models/marketplace.model';
@@ -49,6 +53,10 @@ import { Product } from './models/marketplace.model';
     ToastContainer,
     SupportModal,
     SilkStudioComponent,
+    TryTheLookComponent,
+    HoneyStudioComponent,
+    PotteryStudioComponent,
+    CoconutStudioComponent,
     MatIconModule
   ],
   templateUrl: './app.html',
@@ -258,8 +266,28 @@ export class App implements AfterViewInit, OnDestroy {
   openTreasure(id: string): void {
     if (id === 'handloom-sarees') {
       this.selectedTreasureId.set(null);
-      this.market.setView('silk-studio');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.market.setView('silk-studio', 'instant');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      });
+    } else if (id === 'forest-honey') {
+      this.selectedTreasureId.set(null);
+      this.market.setView('honey-studio', 'instant');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      });
+    } else if (id === 'traditional-pottery') {
+      this.selectedTreasureId.set(null);
+      this.market.setView('pottery-studio', 'instant');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      });
+    } else if (id === 'natural-coconut') {
+      this.selectedTreasureId.set(null);
+      this.market.setView('coconut-studio', 'instant');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      });
     } else {
       this.selectedTreasureId.set(id);
     }

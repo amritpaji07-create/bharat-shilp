@@ -1,23 +1,49 @@
-<section id="six-moods-section" class="six-moods-section" aria-labelledby="six-moods-title">
+<section #section id="six-moods-section" class="six-moods-section" aria-labelledby="silk-styles-title">
   <div class="moods-container">
     <header class="moods-header">
       <div class="moods-header-left">
-        <span class="moods-eyebrow">THE NOOLAM ARCHIVE</span>
-        <h2 id="six-moods-title" class="moods-title">
-          Six Moods. <span class="gradient-text">Timeless Drapes</span>
+        <span class="moods-eyebrow">SHREEM · VILLAGE-WOVEN HANDLOOMS</span>
+        <h2 id="silk-styles-title" class="moods-title">
+          Silk Sarees. <span class="gradient-text">Timeless Drapes</span>
         </h2>
       </div>
       <div class="moods-header-right">
-        <p class="moods-tagline">Woven by hand, worn for a lifetime.</p>
+        <p class="moods-tagline">Village-woven silks, crafted by India's artisan communities.</p>
       </div>
     </header>
 
-    <div class="moods-grid">
-      @for (mood of moods; track mood.id) {
-        <article class="mood-card">
-          <!-- Gopuram Arch Container with Finial -->
+    <div class="moods-controls">
+      <span class="moods-count" aria-live="polite">
+        {{ (activeIndex() + 1).toString().padStart(2, '0') }}
+        <i>/ {{ sarees.length.toString().padStart(2, '0') }}</i>
+      </span>
+      <div class="moods-arrows">
+        <button type="button" class="mood-arrow" aria-label="Previous sarees" (click)="previousPage()">←</button>
+        <button type="button" class="mood-arrow" aria-label="Next sarees" (click)="nextPage()">→</button>
+      </div>
+    </div>
+
+    <div
+      #sareeTrack
+      class="moods-grid"
+      role="region"
+      tabindex="0"
+      aria-label="Silk sarees with model images. Scroll horizontally to explore."
+      (wheel)="onTrackWheel($event)"
+      (scroll)="onTrackScroll()">
+      @for (saree of sarees; track saree.id) {
+        <article
+          #sareeCard
+          class="mood-card"
+          [class.is-active]="activeIndex() === $index"
+          role="button"
+          tabindex="0"
+          [attr.aria-pressed]="activeIndex() === $index"
+          [attr.aria-label]="'Select ' + saree.name"
+          (click)="selectSaree($index, sareeCard)"
+          (keydown.enter)="selectSaree($index, sareeCard)"
+          (keydown.space)="selectSaree($index, sareeCard); $event.preventDefault()">
           <div class="arch-frame">
-            <!-- Temple Finial Ornament -->
             <div class="arch-finial" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2L13.5 6H10.5L12 2Z" fill="#C9983A" />
@@ -27,19 +53,18 @@
               </svg>
             </div>
 
-            <!-- Golden Gopuram Arched Window -->
-            <div class="arch-window">
+            <div class="arch-window" [style.background-color]="saree.accent">
               <img
-                [src]="mood.image"
-                [alt]="mood.title"
+                [src]="saree.image"
+                [alt]="saree.name + ' model wearing silk'"
                 loading="lazy"
                 class="arch-img" />
               <div class="arch-overlay" aria-hidden="true"></div>
             </div>
           </div>
 
-          <h3 class="mood-label">{{ mood.title }}</h3>
-          <p class="mood-sub">{{ mood.subtitle }}</p>
+          <h3 class="mood-label">{{ saree.name }}</h3>
+          <p class="mood-sub">{{ saree.colorName }}</p>
         </article>
       }
     </div>

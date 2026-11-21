@@ -1,3 +1,18 @@
+<div class="try-the-look-page">
+  <nav class="look-page-nav" aria-label="Breadcrumb">
+    <button type="button" class="look-back-button" (click)="market.setView('silk-studio')">
+      <span aria-hidden="true">←</span>
+      Handloom Sarees
+    </button>
+    <div class="look-breadcrumb">
+      <span>Home</span>
+      <span aria-hidden="true">/</span>
+      <span>Handloom Sarees</span>
+      <span aria-hidden="true">/</span>
+      <strong>Try the Look</strong>
+    </div>
+    <span class="look-studio-label">SHREEM · VILLAGE HANDLOOMS</span>
+  </nav>
 <section id="try-the-look-section" class="try-the-look-section" aria-labelledby="try-the-look-heading">
   <div class="try-the-look-container">
     
@@ -6,7 +21,7 @@
       <!-- Section Header -->
       <header class="look-header">
         <span class="eyebrow">— STYLED HEAD TO TOE</span>
-        <h2 id="try-the-look-heading" class="look-title">Try the <span class="highlight-maroon">Look.</span></h2>
+        <h1 id="try-the-look-heading" class="look-title">Try the <span class="highlight-maroon">Look.</span></h1>
         <p class="look-subtitle">Eight looks, styled head to toe. Tap a look to see the pieces</p>
       </header>
 
@@ -15,6 +30,10 @@
         <div
           #modelTrack
           class="models-track"
+          role="region"
+          tabindex="0"
+          aria-label="Styled looks. Scroll horizontally to explore."
+          (wheel)="onTrackWheel($event)"
           (scroll)="onTrackScroll()">
           @for (look of looks; track look.id; let index = $index) {
             <div
@@ -29,7 +48,7 @@
                   [src]="look.image"
                   [alt]="look.name + ' styled look'"
                   class="model-photo"
-                  [loading]="index === 6 ? 'eager' : 'lazy'" />
+                  [loading]="index === 0 ? 'eager' : 'lazy'" />
                 <div class="ground-shadow" aria-hidden="true"></div>
               </div>
             </div>
@@ -48,7 +67,7 @@
           </div>
         </div>
         <div class="stage-hint">
-          • Scroll or drag →
+          • Scroll down or drag →
         </div>
       </div>
     </div>
@@ -64,7 +83,7 @@
               <img [src]="piece.image" [alt]="piece.name" class="piece-img" />
             </div>
             <div class="piece-info">
-              <span class="piece-brand-tag">{{ piece.brand || 'NOOLAM' }} &nbsp;·&nbsp; {{ piece.type | uppercase }}</span>
+              <span class="piece-brand-tag">{{ piece.brand || 'SHREEM' }} &nbsp;·&nbsp; {{ piece.type | uppercase }}</span>
               <h4 class="piece-title">{{ piece.name }}</h4>
               <span class="piece-price">₹{{ piece.price.toLocaleString('en-IN') }}</span>
             </div>
@@ -135,3 +154,4 @@
 
   </div>
 </section>
+</div>

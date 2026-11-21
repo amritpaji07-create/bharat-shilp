@@ -16,7 +16,9 @@ import {
 import { SILK_CATEGORIES, createSilkProduct } from '../../../data/silk-experience.data';
 import { SilkCategory } from '../../../models/silk-experience.model';
 import { MarketplaceService } from '../../../services/marketplace.service';
+import { animateSilkCardImage } from '../../../shared/silk-card-animation';
 import { loadSilkGsap, SilkGsapRuntime } from '../../../shared/silk-gsap';
+import { cancelSilkTrackScroll, smoothScrollSilkTrackBy } from '../../../shared/silk-track-scroll';
 
 @Component({
   selector: 'app-pick-a-silk',
@@ -39,6 +41,8 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private destroyed = false;
   private runtime?: SilkGsapRuntime;
+  private scrollFrame = 0;
+  private cardZoomAnimation?: Animation;
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
@@ -47,6 +51,11 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroyed = true;
+    if (this.scrollFrame) {
+      window.cancelAnimationFrame(this.scrollFrame);
+    }
+    cancelSilkTrackScroll(this.categoryTrack?.nativeElement);
+    this.cardZoomAnimation?.cancel();
   }
 
   private async initGsap(): Promise<void> {
@@ -69,14 +78,51 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
     const safeIndex = (index + total) % total;
     this.selectedIndex.set(safeIndex);
     this.scrollCategoryIntoView(safeIndex);
+    this.animateCategoryImage(safeIndex);
+  }
+
+  onCategoryWheel(event: WheelEvent): void {
+    const track = this.categoryTrack?.nativeElement;
+    if (!track) return;
+
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (!delta || !smoothScrollSilkTrackBy(track, delta)) return;
+
+    event.preventDefault();
+  }
+
+  onCategoryTrackScroll(): void {
+    const track = this.categoryTrack?.nativeElement;
+    const buttons = this.categoryButtons?.toArray();
+    if (!this.isBrowser || !track || !buttons?.length || this.scrollFrame) return;
+
+    this.scrollFrame = window.requestAnimationFrame(() => {
+      this.scrollFrame = 0;
+      const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      buttons.forEach((button, index) => {
+        const rect = button.nativeElement.getBoundingClientRect();
+        const distance = Math.abs(rect.left + rect.width / 2 - trackCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== this.selectedIndex()) {
+        this.selectedIndex.set(closestIndex);
+      }
+    });
   }
 
   previousCategory(): void {
-    this.selectCategory(this.selectedIndex() - 1);
+    this.scrollCategoryPage(-1);
   }
 
   nextCategory(): void {
-    this.selectCategory(this.selectedIndex() + 1);
+    this.scrollCategoryPage(1);
   }
 
   toggleLike(categoryId: string, event: MouseEvent): void {
@@ -126,12 +172,39 @@ export class PickASilkComponent implements AfterViewInit, OnDestroy {
 
   private scrollCategoryIntoView(index: number): void {
     const el = this.categoryButtons?.get(index)?.nativeElement;
-    if (el && this.categoryTrack?.nativeElement) {
+    const track = this.categoryTrack?.nativeElement;
+    if (el && track) {
+      cancelSilkTrackScroll(track);
       el.scrollIntoView({
         behavior: 'smooth',
-        inline: 'center',
+        inline: 'nearest',
         block: 'nearest'
       });
     }
+  }
+
+  private animateCategoryImage(index: number): void {
+    const image = this.categoryButtons?.get(index)?.nativeElement
+      .querySelector<HTMLElement>('.category-model-img');
+    this.cardZoomAnimation?.cancel();
+    this.cardZoomAnimation = animateSilkCardImage(image ?? null);
+  }
+
+  private scrollCategoryPage(direction: -1 | 1): void {
+    const track = this.categoryTrack?.nativeElement;
+    if (!track) return;
+    cancelSilkTrackScroll(track);
+
+    const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+    if (!maxScrollLeft) return;
+
+    const atBoundary = direction > 0
+      ? track.scrollLeft >= maxScrollLeft - 1
+      : track.scrollLeft <= 1;
+    const left = atBoundary
+      ? direction > 0 ? 0 : maxScrollLeft
+      : Math.max(0, Math.min(maxScrollLeft, track.scrollLeft + direction * track.clientWidth));
+
+    track.scrollTo({ left, behavior: 'smooth' });
   }
 }

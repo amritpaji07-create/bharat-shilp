@@ -370,6 +370,26 @@
       <app-silk-studio />
     }
 
+    <!-- VIEW: TRY THE LOOK (FULL PAGE) -->
+    @if (market.currentView() === 'try-the-look') {
+      <app-try-the-look />
+    }
+
+    <!-- VIEW: FOREST HONEY STUDIO (FULL PAGE) -->
+    @if (market.currentView() === 'honey-studio') {
+      <app-honey-studio />
+    }
+
+    <!-- VIEW: TRADITIONAL POTTERY STUDIO (FULL PAGE) -->
+    @if (market.currentView() === 'pottery-studio') {
+      <app-pottery-studio />
+    }
+
+    <!-- VIEW: COCONUT SHELL CRAFT STUDIO (FULL PAGE) -->
+    @if (market.currentView() === 'coconut-studio') {
+      <app-coconut-studio />
+    }
+
     <!-- VIEW: CRAFT MAP (FULL PAGE) -->
     @if (market.currentView() === 'craft-map') {
       <app-craft-map />

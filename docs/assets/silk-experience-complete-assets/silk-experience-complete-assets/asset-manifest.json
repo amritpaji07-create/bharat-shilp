@@ -1,0 +1,137 @@
+{
+  "note": "Demo visual assets for the three interactive silk sections. Product names, prices and weaving claims must be replaced with verified catalogue data.",
+  "models": [
+    {
+      "id": "look-01",
+      "name": "Royal Blue Silk",
+      "category": "Royal Blue",
+      "image": "/assets/silk-experience/try-the-look/models/look-01-royal-blue-silk.png"
+    },
+    {
+      "id": "look-02",
+      "name": "Purple Patola",
+      "category": "Patola",
+      "image": "/assets/silk-experience/try-the-look/models/look-02-purple-patola.png"
+    },
+    {
+      "id": "look-03",
+      "name": "Emerald Kanjivaram",
+      "category": "Kanjivaram",
+      "image": "/assets/silk-experience/try-the-look/models/look-03-emerald-kanjivaram.png"
+    },
+    {
+      "id": "look-04",
+      "name": "Red Banarasi",
+      "category": "Banarasi",
+      "image": "/assets/silk-experience/try-the-look/models/look-04-red-banarasi.png"
+    },
+    {
+      "id": "look-05",
+      "name": "Rose Pink Silk",
+      "category": "Silk",
+      "image": "/assets/silk-experience/try-the-look/models/look-05-rose-pink-silk.png"
+    },
+    {
+      "id": "look-06",
+      "name": "Golden Orange Silk",
+      "category": "Mysore Silk",
+      "image": "/assets/silk-experience/try-the-look/models/look-06-golden-orange-silk.png"
+    },
+    {
+      "id": "look-07",
+      "name": "Deep Green Banarasi",
+      "category": "Banarasi",
+      "image": "/assets/silk-experience/try-the-look/models/look-07-deep-green-banarasi.png"
+    },
+    {
+      "id": "look-08",
+      "name": "Maroon Banarasi",
+      "category": "Banarasi",
+      "image": "/assets/silk-experience/try-the-look/models/look-08-maroon-banarasi.png"
+    }
+  ],
+  "categories": [
+    {
+      "id": "royal-blue",
+      "name": "Royal Blue",
+      "image": "/assets/silk-experience/pick-a-silk/look-01-royal-blue-silk.png"
+    },
+    {
+      "id": "patola",
+      "name": "Patola",
+      "image": "/assets/silk-experience/pick-a-silk/look-02-purple-patola.png"
+    },
+    {
+      "id": "kanjivaram",
+      "name": "Kanjivaram",
+      "image": "/assets/silk-experience/pick-a-silk/look-03-emerald-kanjivaram.png"
+    },
+    {
+      "id": "banarasi",
+      "name": "Banarasi",
+      "image": "/assets/silk-experience/pick-a-silk/look-04-red-banarasi.png"
+    },
+    {
+      "id": "silk",
+      "name": "Silk",
+      "image": "/assets/silk-experience/pick-a-silk/look-05-rose-pink-silk.png"
+    },
+    {
+      "id": "mysore-silk",
+      "name": "Mysore Silk",
+      "image": "/assets/silk-experience/pick-a-silk/look-06-golden-orange-silk.png"
+    },
+    {
+      "id": "banarasi",
+      "name": "Banarasi",
+      "image": "/assets/silk-experience/pick-a-silk/look-07-deep-green-banarasi.png"
+    },
+    {
+      "id": "banarasi",
+      "name": "Banarasi",
+      "image": "/assets/silk-experience/pick-a-silk/look-08-maroon-banarasi.png"
+    }
+  ],
+  "railSarees": [
+    {
+      "id": "rail-01",
+      "name": "Saree 01 Royal Blue",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-01-royal-blue.png"
+    },
+    {
+      "id": "rail-02",
+      "name": "Saree 02 Red Banarasi",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-02-red-banarasi.png"
+    },
+    {
+      "id": "rail-03",
+      "name": "Saree 03 Emerald Green",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-03-emerald-green.png"
+    },
+    {
+      "id": "rail-04",
+      "name": "Saree 04 Purple Patola",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-04-purple-patola.png"
+    },
+    {
+      "id": "rail-05",
+      "name": "Saree 05 Rose Pink",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-05-rose-pink.png"
+    },
+    {
+      "id": "rail-06",
+      "name": "Saree 06 Golden Orange",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-06-golden-orange.png"
+    },
+    {
+      "id": "rail-07",
+      "name": "Saree 07 Teal Gold",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-07-teal-gold.png"
+    },
+    {
+      "id": "rail-08",
+      "name": "Saree 08 Magenta Peacock",
+      "image": "/assets/silk-experience/silk-rail/sarees/saree-08-magenta-peacock.png"
+    }
+  ]
+}

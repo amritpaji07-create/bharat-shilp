@@ -16,6 +16,7 @@ import {
 import { SILK_LOOKS, createSilkProduct } from '../../../data/silk-experience.data';
 import { SilkLook, SilkPiece } from '../../../models/silk-experience.model';
 import { MarketplaceService } from '../../../services/marketplace.service';
+import { cancelSilkTrackScroll, smoothScrollSilkTrackBy } from '../../../shared/silk-track-scroll';
 
 @Component({
   selector: 'app-try-the-look',
@@ -27,9 +28,8 @@ import { MarketplaceService } from '../../../services/marketplace.service';
 })
 export class TryTheLookComponent implements AfterViewInit, OnDestroy {
   readonly looks = SILK_LOOKS;
-  // Default to index 6 (Look 7: Ivory Elephant, matching exact screenshot)
-  readonly selectedIndex = signal<number>(6);
-  readonly activeLook = computed(() => this.looks[this.selectedIndex()] ?? this.looks[6]);
+  readonly selectedIndex = signal<number>(0);
+  readonly activeLook = computed(() => this.looks[this.selectedIndex()] ?? this.looks[0]);
   readonly likedPieces = signal<Set<string>>(new Set());
   readonly likedLooks = signal<Set<string>>(new Set());
   readonly market = inject(MarketplaceService);
@@ -44,9 +44,8 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
-    // Scroll to center Look 7 on initial load
     setTimeout(() => {
-      this.scrollModelIntoView(6, false);
+      this.scrollModelIntoView(0, false);
       setTimeout(() => {
         this.isInitialScroll = false;
       }, 400);
@@ -58,6 +57,7 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
     if (this.scrollFrame) {
       window.cancelAnimationFrame(this.scrollFrame);
     }
+    cancelSilkTrackScroll(this.modelTrack?.nativeElement);
   }
 
   getDistance(index: number): number {
@@ -78,6 +78,16 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
       this.scrollFrame = 0;
       this.updateSelectionFromScroll();
     });
+  }
+
+  onTrackWheel(event: WheelEvent): void {
+    const track = this.modelTrack?.nativeElement;
+    if (!track) return;
+
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (!delta || !smoothScrollSilkTrackBy(track, delta)) return;
+
+    event.preventDefault();
   }
 
   private updateSelectionFromScroll(): void {
@@ -116,6 +126,7 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
     const currentScroll = track.scrollLeft;
     const targetOffset = currentScroll + (itemRect.left - trackRect.left) - (track.clientWidth / 2 - itemRect.width / 2);
 
+    cancelSilkTrackScroll(track);
     track.scrollTo({
       left: targetOffset,
       behavior: smooth ? 'smooth' : 'auto'

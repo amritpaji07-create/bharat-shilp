@@ -18,6 +18,7 @@ import { RAIL_CATEGORIES, SILK_RAIL, createSilkProduct } from '../../../data/sil
 import { RailCategory, RailItem, RailSaree } from '../../../models/silk-experience.model';
 import { MarketplaceService } from '../../../services/marketplace.service';
 import { loadSilkGsap, SilkGsapRuntime } from '../../../shared/silk-gsap';
+import { cancelSilkTrackScroll, smoothScrollSilkTrackBy } from '../../../shared/silk-track-scroll';
 
 @Component({
   selector: 'app-silk-rail',
@@ -77,6 +78,7 @@ export class SilkRailComponent implements AfterViewInit, OnDestroy {
     if (this.scrollFrame) {
       window.cancelAnimationFrame(this.scrollFrame);
     }
+    cancelSilkTrackScroll(this.railTrack?.nativeElement);
   }
 
   @HostListener('window:keydown.escape')
@@ -197,29 +199,22 @@ export class SilkRailComponent implements AfterViewInit, OnDestroy {
       const track = this.railTrack?.nativeElement;
       if (!cardEl || !track) return;
 
-      const cardRect = cardEl.getBoundingClientRect();
-      const trackRect = track.getBoundingClientRect();
-      const centeredScrollLeft =
-        track.scrollLeft +
-        cardRect.left -
-        trackRect.left -
-        (track.clientWidth - cardRect.width) / 2;
-      track.scrollTo({
-        left: centeredScrollLeft,
-        behavior: 'smooth'
+      cancelSilkTrackScroll(track);
+      cardEl.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'nearest',
+        block: 'nearest'
       });
     });
   }
 
   onTrackWheel(event: WheelEvent): void {
     const track = this.railTrack?.nativeElement;
-    if (!track || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    if (!track) return;
 
-    const nextScrollLeft = track.scrollLeft + event.deltaY;
-    const maxScrollLeft = track.scrollWidth - track.clientWidth;
-    if (nextScrollLeft < 0 || nextScrollLeft > maxScrollLeft) return;
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (!delta || !smoothScrollSilkTrackBy(track, delta)) return;
 
     event.preventDefault();
-    track.scrollLeft = nextScrollLeft;
   }
 }

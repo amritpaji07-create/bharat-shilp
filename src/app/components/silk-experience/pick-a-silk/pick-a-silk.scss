@@ -1,5 +1,5 @@
 .pick-silk-section {
-  background-color: #ffffff;
+  background-color: #eaf1e8;
   padding: 5rem 1.5rem;
   color: #1a1a1a;
   position: relative;
@@ -12,6 +12,7 @@
 
   .silk-category-heading {
     margin-bottom: 2rem;
+    text-align: center;
 
     .silk-eyebrow {
       display: block;
@@ -24,6 +25,7 @@
     }
 
     .silk-main-title {
+      font-family: 'Outfit', sans-serif;
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.02em;
@@ -97,7 +99,8 @@
     display: flex;
     gap: 1.75rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 1rem;
     padding: 1.5rem 1rem 2.5rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -110,14 +113,14 @@
   /* Saree Card */
   .silk-category-card {
     position: relative;
-    flex: 0 0 290px;
+    flex: 0 0 calc(25% - 1.3125rem);
     height: 480px;
     border-radius: 20px;
     border: none;
     padding: 1.25rem;
     cursor: pointer;
     overflow: hidden;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     transform-style: preserve-3d;
@@ -127,6 +130,10 @@
 
     &:active {
       transform: scale(0.97);
+    }
+
+    &.is-active {
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.24);
     }
 
     /* Wishlist Heart Button */
@@ -260,6 +267,18 @@
           transform: scale(1.12);
         }
       }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .silk-category-card {
+      flex-basis: calc(50% - 0.875rem);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .silk-category-card {
+      flex-basis: 100%;
     }
   }
 

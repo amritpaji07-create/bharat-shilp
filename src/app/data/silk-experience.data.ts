@@ -5,7 +5,6 @@ import {
   RailSaree,
   SilkCategory,
   SilkLook,
-  SilkMood,
   SilkPiece,
   SilkReel,
   SilkSpool
@@ -18,48 +17,8 @@ const BLOUSE_ROOT = `${ASSET_ROOT}/silk-rail/blouses`;
 const PICK_ROOT = `${ASSET_ROOT}/pick-a-silk`;
 const MODEL_ROOT = `${ASSET_ROOT}/try-the-look/models`;
 const PIECE_ROOT = `${ASSET_ROOT}/try-the-look/pieces`;
-const MOOD_ROOT = `${ASSET_ROOT}/six-moods`;
 const BRIDAL_ROOT = `${ASSET_ROOT}/bridal`;
 const REEL_ROOT = `${ASSET_ROOT}/silk-reels`;
-
-export const SIX_MOODS: SilkMood[] = [
-  {
-    id: 'mood-01',
-    title: 'WEDDING EDIT',
-    subtitle: 'Woven for grand celebrations',
-    image: `${MOOD_ROOT}/mood-01-wedding-edit.png`
-  },
-  {
-    id: 'mood-02',
-    title: 'KANCHIPURAM ICONS',
-    subtitle: 'Classic korvai temple borders',
-    image: `${MOOD_ROOT}/mood-02-kanchipuram-icons.png`
-  },
-  {
-    id: 'mood-03',
-    title: 'BANARASI HEIRLOOMS',
-    subtitle: 'Authentic kadhwa gold jaal',
-    image: `${MOOD_ROOT}/mood-03-banarasi-heirlooms.png`
-  },
-  {
-    id: 'mood-04',
-    title: 'FESTIVE RADIANCE',
-    subtitle: 'Luminous dual-tone drapes',
-    image: `${MOOD_ROOT}/mood-04-festive-radiance.png`
-  },
-  {
-    id: 'mood-05',
-    title: 'ZARI SIGNATURES',
-    subtitle: 'Pure silver-core electroplated zari',
-    image: `${MOOD_ROOT}/mood-05-zari-signatures.png`
-  },
-  {
-    id: 'mood-06',
-    title: 'BRIDAL ÉLAN',
-    subtitle: 'Regal muhurtham masterpieces',
-    image: `${MOOD_ROOT}/mood-06-bridal-elan.png`
-  }
-];
 
 export const RAIL_CATEGORIES: RailCategory[] = [
   { id: 'all', label: 'All pieces', count: 25 },
@@ -72,31 +31,6 @@ export const RAIL_CATEGORIES: RailCategory[] = [
 ];
 
 export const SILK_RAIL: RailItem[] = [
-  {
-    id: 'rail-09',
-    name: 'NOOLAM TEMPLE GOLD BROCADE',
-    category: 'Silk Saree',
-    categoryType: 'silk-sarees',
-    categoryLabel: 'Silk Saree',
-    price: 32000,
-    image: `${RAIL_ROOT}/saree-09-temple-gold.png`,
-    description: 'Heirloom Kanchipuram silk woven with solid gold temple borders and intricate peacock motifs.',
-    sizes: [34, 36, 38, 40, 42],
-    catalogueProductId: 'prod-009',
-    lookId: 'look-07'
-  },
-  {
-    id: 'rail-blouse-01',
-    name: 'SAFFRON RAW SILK BLOUSE',
-    category: 'Half-Sleeve Blouse',
-    categoryType: 'half-blouses',
-    categoryLabel: 'Half-Sleeve Blouse',
-    price: 4800,
-    image: `${BLOUSE_ROOT}/blouse-01-saffron.png`,
-    description: 'Vibrant saffron raw silk blouse with hand-embroidered zardosi neckline and pearl-drop latkans.',
-    sizes: [34, 36, 38, 40, 42],
-    catalogueProductId: 'prod-blouse-01'
-  },
   {
     id: 'rail-01',
     name: 'Koorai Royal Blue Silk',
@@ -219,12 +153,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 58500,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Royal Blue Kanjivaram Saree', price: 28500, image: `${RAIL_ROOT}/saree-01-royal-blue.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Mustard Silk Embroidered Blouse', price: 4500, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'South Sea Pearl Choker', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Temple Bell Jhumkas', price: 4200, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Peacock Motif Waist Belt', price: 14800, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Antique Gold Kadas', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Royal Blue Kanjivaram Saree', price: 28500, image: `${RAIL_ROOT}/saree-01-royal-blue.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Mustard Silk Embroidered Blouse', price: 4500, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'South Sea Pearl Choker', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Temple Bell Jhumkas', price: 4200, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Peacock Motif Waist Belt', price: 14800, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Antique Gold Kadas', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
@@ -242,12 +176,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 59400,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Purple Patola Silk Saree', price: 29800, image: `${RAIL_ROOT}/saree-04-purple-patola.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Ruby Raw Silk Blouse Piece', price: 4200, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Kundan Navratan Choker', price: 9000, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Ruby Drop Jhumkas', price: 4400, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Filigree Gold Ottiyanam', price: 14600, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Ruby Studded Bangles', price: 4000, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Purple Patola Silk Saree', price: 29800, image: `${RAIL_ROOT}/saree-04-purple-patola.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Ruby Raw Silk Blouse Piece', price: 4200, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Kundan Navratan Choker', price: 9000, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Ruby Drop Jhumkas', price: 4400, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Filigree Gold Ottiyanam', price: 14600, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Ruby Studded Bangles', price: 4000, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
@@ -257,7 +191,7 @@ export const SILK_LOOKS: SilkLook[] = [
     title: 'Emerald Forest Temple Pattu',
     sareeTitle: 'Emerald Green Kanjivaram Saree',
     category: 'Kanjivaram',
-    image: `${MODEL_ROOT}/model-03-emerald-green.png`,
+    image: `${MODEL_ROOT}/look-03-emerald-kanjivaram.png`,
     productImage: `${RAIL_ROOT}/saree-03-emerald-green.png`,
     catalogueProductId: 'prod-003',
     description: 'Jewel emerald tone draped with heavy korvai zari borders and heirloom South Indian grace.',
@@ -265,12 +199,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 63900,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Emerald Green Kanjivaram Saree', price: 34500, image: `${RAIL_ROOT}/saree-03-emerald-green.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Gold Tissue Embroidered Blouse', price: 4900, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Emerald Mango Haar Choker', price: 9600, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Temple Emerald Jhumkas', price: 4600, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Temple Gopuram Ottiyanam', price: 13600, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Green Enamel Gold Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Emerald Green Kanjivaram Saree', price: 34500, image: `${RAIL_ROOT}/saree-03-emerald-green.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Gold Tissue Embroidered Blouse', price: 4900, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Emerald Mango Haar Choker', price: 9600, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Temple Emerald Jhumkas', price: 4600, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Temple Gopuram Ottiyanam', price: 13600, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Green Enamel Gold Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
@@ -288,12 +222,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 61200,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Sindoor Red Banarasi Saree', price: 32000, image: `${RAIL_ROOT}/saree-02-red-banarasi.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Emerald Brocade Custom Blouse', price: 4600, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Kundan Hasli Necklace Set', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Chandbali Pearl Drops', price: 4400, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Kundan Floral Kamarbandh', price: 14000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Polki Ruby Choodiyan', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Sindoor Red Banarasi Saree', price: 32000, image: `${RAIL_ROOT}/saree-02-red-banarasi.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Emerald Brocade Custom Blouse', price: 4600, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Kundan Hasli Necklace Set', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Chandbali Pearl Drops', price: 4400, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Kundan Floral Kamarbandh', price: 14000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Polki Ruby Choodiyan', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
@@ -311,12 +245,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 55800,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Rose Pink Soft Silk Saree', price: 26000, image: `${RAIL_ROOT}/saree-05-rose-pink.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Rose Gold Cutwork Blouse', price: 4200, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Pink Tourmaline Choker', price: 8900, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Silver Wash Drop Earrings', price: 4100, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Delicate Pearl Chain Vaddanam', price: 15000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Rose Quartz Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Rose Pink Soft Silk Saree', price: 26000, image: `${RAIL_ROOT}/saree-05-rose-pink.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Rose Gold Cutwork Blouse', price: 4200, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Pink Tourmaline Choker', price: 8900, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Silver Wash Drop Earrings', price: 4100, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Delicate Pearl Chain Vaddanam', price: 15000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Rose Quartz Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
@@ -326,7 +260,7 @@ export const SILK_LOOKS: SilkLook[] = [
     title: 'Surya Sunset Gold Brocade',
     sareeTitle: 'Golden Orange Sunset Silk Saree',
     category: 'Temple Weave',
-    image: `${MODEL_ROOT}/model-06-orange-rust.png`,
+    image: `${MODEL_ROOT}/look-06-golden-orange-silk.png`,
     productImage: `${RAIL_ROOT}/saree-06-golden-orange.png`,
     catalogueProductId: 'prod-006',
     description: 'An effervescent marigold orange body flanked with majestic antique zari pallu patterns.',
@@ -334,36 +268,36 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 57600,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Golden Orange Sunset Silk Saree', price: 27500, image: `${RAIL_ROOT}/saree-06-golden-orange.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Rani Pink Zari Blouse', price: 4300, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Temple Sun Motif Hasli', price: 9100, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Gilded Coin Jhumkas', price: 4300, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Sunburst Gold Ottiyanam', price: 15000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Textured Gold Valaiyal', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Golden Orange Sunset Silk Saree', price: 27500, image: `${RAIL_ROOT}/saree-06-golden-orange.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Rani Pink Zari Blouse', price: 4300, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Temple Sun Motif Hasli', price: 9100, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Gilded Coin Jhumkas', price: 4300, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Sunburst Gold Ottiyanam', price: 15000, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Textured Gold Valaiyal', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   },
   {
     id: 'look-07',
     index: 7,
-    name: 'Ivory Elephant',
-    title: 'Ivory Elephant Kanjivaram',
-    sareeTitle: 'Ivory Kanjivaram with Elephant Border',
-    category: 'Kanjivaram',
-    image: `${MODEL_ROOT}/model-07-ivory-elephant.png`,
-    productImage: `${PIECE_ROOT}/piece-01-saree.png`,
+    name: 'Deep Green Banarasi',
+    title: 'Deep Green Banarasi',
+    sareeTitle: 'Deep Green Banarasi Silk Saree',
+    category: 'Banarasi',
+    image: `${MODEL_ROOT}/look-07-deep-green-banarasi.png`,
+    productImage: `${RAIL_ROOT}/saree-07-teal-gold.png`,
     catalogueProductId: 'prod-007',
-    description: 'Heirloom ivory silk with antique temple motifs, styled with dusty rose accents and handcrafted temple jewelry.',
-    totalPrice: 69000,
-    bundlePrice: 62100,
+    description: 'Deep green Banarasi silk styled with rich zari accents and handcrafted temple jewelry.',
+    totalPrice: 68000,
+    bundlePrice: 61200,
     discountNote: 'Save 10%',
     pieces: [
       {
         id: 'p-1',
         type: 'Saree',
-        name: 'Ivory Kanjivaram with Elephant Border',
-        price: 32000,
-        image: `${PIECE_ROOT}/piece-01-saree.png`,
-        brand: 'NOOLAM'
+        name: 'Deep Green Banarasi Silk Saree',
+        price: 31000,
+        image: `${RAIL_ROOT}/saree-07-teal-gold.png`,
+        brand: 'SHREEM'
       },
       {
         id: 'p-2',
@@ -371,7 +305,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Dusty Rose Silk Blouse',
         price: 4200,
         image: `${PIECE_ROOT}/piece-02-blouse.png`,
-        brand: 'NOOLAM'
+        brand: 'SHREEM'
       },
       {
         id: 'p-3',
@@ -379,7 +313,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Pink Stone Temple Choker',
         price: 9400,
         image: `${PIECE_ROOT}/piece-03-choker.png`,
-        brand: 'NOOLAM'
+        brand: 'SHREEM'
       },
       {
         id: 'p-4',
@@ -387,7 +321,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Jhumkas with Pearl Drops',
         price: 4600,
         image: `${PIECE_ROOT}/piece-04-jhumkas.png`,
-        brand: 'NOOLAM'
+        brand: 'SHREEM'
       },
       {
         id: 'p-5',
@@ -395,7 +329,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Elephant Motif Ottiyanam',
         price: 15000,
         image: `${PIECE_ROOT}/piece-05-ottiyanam.png`,
-        brand: 'NOOLAM'
+        brand: 'SHREEM'
       },
       {
         id: 'p-6',
@@ -403,7 +337,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Gold and Dusty Rose Bangle Stack',
         price: 3800,
         image: `${PIECE_ROOT}/piece-06-bangles.png`,
-        brand: 'NOOLAM'
+        brand: 'SHREEM'
       }
     ]
   },
@@ -422,12 +356,12 @@ export const SILK_LOOKS: SilkLook[] = [
     bundlePrice: 60300,
     discountNote: 'Save 10%',
     pieces: [
-      { id: 'p-1', type: 'Saree', name: 'Magenta Rani Peacock Saree', price: 33500, image: `${RAIL_ROOT}/saree-08-magenta-peacock.png`, brand: 'NOOLAM' },
-      { id: 'p-2', type: 'Blouse', name: 'Gold Zari Brocade High-Neck Blouse', price: 4800, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'NOOLAM' },
-      { id: 'p-3', type: 'Choker', name: 'Heritage Temple Coin Malai', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-4', type: 'Jhumkas', name: 'Peacock Carved Jhumkas', price: 4500, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-5', type: 'Ottiyanam', name: 'Mayil Motif Ottiyanam', price: 11200, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'NOOLAM ARCHIVE' },
-      { id: 'p-6', type: 'Bangles', name: 'Kasu Zari Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'NOOLAM ARCHIVE' }
+      { id: 'p-1', type: 'Saree', name: 'Magenta Rani Peacock Saree', price: 33500, image: `${RAIL_ROOT}/saree-08-magenta-peacock.png`, brand: 'SHREEM' },
+      { id: 'p-2', type: 'Blouse', name: 'Gold Zari Brocade High-Neck Blouse', price: 4800, image: `${PIECE_ROOT}/piece-02-blouse.png`, brand: 'SHREEM' },
+      { id: 'p-3', type: 'Choker', name: 'Heritage Temple Coin Malai', price: 9200, image: `${PIECE_ROOT}/piece-03-choker.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-4', type: 'Jhumkas', name: 'Peacock Carved Jhumkas', price: 4500, image: `${PIECE_ROOT}/piece-04-jhumkas.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-5', type: 'Ottiyanam', name: 'Mayil Motif Ottiyanam', price: 11200, image: `${PIECE_ROOT}/piece-05-ottiyanam.png`, brand: 'SHREEM ARCHIVE' },
+      { id: 'p-6', type: 'Bangles', name: 'Kasu Zari Bangles', price: 3800, image: `${PIECE_ROOT}/piece-06-bangles.png`, brand: 'SHREEM ARCHIVE' }
     ]
   }
 ];
@@ -551,7 +485,7 @@ export const SILK_REELS: SilkReel[] = [
     title: 'Ponni Kanjivaram',
     location: 'Thanjavur Temple Courtyard',
     subtitle: 'Woven with gold zari and traditional Thanjavur motifs',
-    handle: '@noolamsilk',
+    handle: '@shreem',
     soundTrack: 'Temple Bells & Shehnai',
     videoUrl: 'assets/silk-experience/Women_weaving_saree_in_workshop_0b741d56_1080p.mp4',
     price: 34000,
@@ -565,7 +499,7 @@ export const SILK_REELS: SilkReel[] = [
     title: 'Marina Morning',
     location: 'Chennai Coastline',
     subtitle: 'Weightless sunrise drape caught in ocean breeze',
-    handle: '@noolamsilk',
+    handle: '@shreem',
     soundTrack: 'Ocean Waves & Flute',
     videoUrl: 'assets/silk-experience/Women_weaving_saree_in_workshop_0b741d56_1080p.mp4',
     price: 26500,
@@ -579,7 +513,7 @@ export const SILK_REELS: SilkReel[] = [
     title: 'Kaali Banarasi',
     location: 'Varanasi Ghats at Dusk',
     subtitle: 'Midnight black Katan silk glowing with antique gold jaal',
-    handle: '@noolamsilk',
+    handle: '@shreem',
     soundTrack: 'Ganga Aarti Acoustic',
     videoUrl: 'assets/silk-experience/Women_weaving_saree_in_workshop_0b741d56_1080p.mp4',
     price: 38000,
@@ -593,7 +527,7 @@ export const SILK_REELS: SilkReel[] = [
     title: 'Pachai Pattu',
     location: 'Chettinad Heritage Mansion',
     subtitle: 'Lustrous emerald green weave against vintage Chettinad tiles',
-    handle: '@noolamsilk',
+    handle: '@shreem',
     soundTrack: 'Carnatic Veena Strings',
     videoUrl: 'assets/silk-experience/Women_weaving_saree_in_workshop_0b741d56_1080p.mp4',
     price: 29000,
@@ -607,7 +541,7 @@ export const SILK_REELS: SilkReel[] = [
     title: 'Galli Sindoor',
     location: 'Kanchipuram Weaver Street',
     subtitle: 'Auspicious vermilion pattu draped along ancient weaver lanes',
-    handle: '@noolamsilk',
+    handle: '@shreem',
     soundTrack: 'Loom Rhythms & Nadaswaram',
     videoUrl: 'assets/silk-experience/Women_weaving_saree_in_workshop_0b741d56_1080p.mp4',
     price: 32000,

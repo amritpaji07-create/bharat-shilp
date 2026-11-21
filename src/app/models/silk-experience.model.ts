@@ -1,12 +1,5 @@
 export type { Product } from './marketplace.model';
 
-export interface SilkMood {
-  id: string;
-  title: string;
-  subtitle: string;
-  image: string;
-}
-
 export interface SilkPiece {
   id: string;
   type: string;

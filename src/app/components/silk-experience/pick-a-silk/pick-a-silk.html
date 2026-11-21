@@ -18,7 +18,14 @@
 
     <!-- 3D Fan Perspective Cards Deck on Curved Arc -->
     <div class="deck-perspective-stage">
-      <div #categoryTrack class="category-track" aria-label="Silk categories fan">
+      <div
+        #categoryTrack
+        class="category-track"
+        role="region"
+        tabindex="0"
+        aria-label="Silk categories. Scroll horizontally to explore."
+        (wheel)="onCategoryWheel($event)"
+        (scroll)="onCategoryTrackScroll()">
         @for (category of categories; track category.id; let index = $index) {
           <button
             #categoryButton
@@ -82,7 +89,7 @@
 
     <!-- Interaction Hint Line -->
     <p class="tilt-hint-line">
-      <span class="hint-sparkle">✦</span> Tilt a card, press it, poke the silk.
+      <span class="hint-sparkle">✦</span> Scroll down to explore, or tilt a card to feel the silk.
     </p>
 
     <!-- Selected Silk Note / Detail Bar -->
@@ -91,7 +98,7 @@
         <div class="note-info">
           <div class="note-kicker">
             <span class="dot-indicator" [style.background]="active.accent"></span>
-            <span>NOOLAM SILK ARCHIVE &nbsp;·&nbsp; {{ active.colorName }}</span>
+            <span>SHREEM SILK ARCHIVE &nbsp;·&nbsp; {{ active.colorName }}</span>
           </div>
           <h3 class="note-title">{{ active.name }}</h3>
           <p class="note-desc">{{ active.note }}</p>

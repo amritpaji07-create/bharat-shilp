@@ -1,5 +1,5 @@
 .silk-rail-section {
-  background-color: #ffffff;
+  background-color: #f4e7e4;
   padding: 5rem 1.5rem;
   color: #1a1a1a;
   position: relative;
@@ -12,6 +12,7 @@
 
   .rail-heading {
     margin-bottom: 2rem;
+    text-align: center;
 
     .silk-eyebrow {
       display: block;
@@ -24,6 +25,7 @@
     }
 
     .silk-main-title {
+      font-family: 'Outfit', sans-serif;
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.02em;
@@ -173,12 +175,11 @@
       right: 0;
       z-index: 2;
 
-      .chrome-rod {
-        height: 5px;
+      .rail-art {
+        display: block;
         width: 100%;
-        background: linear-gradient(180deg, #e5e5e5 0%, #ffffff 40%, #a0a0a0 70%, #d0d0d0 100%);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-        border-radius: 3px;
+        height: 56px;
+        object-fit: fill;
       }
     }
 
@@ -186,7 +187,8 @@
       display: flex;
       gap: 1.5rem;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
+      scroll-padding-inline: 1rem;
       padding: 1rem 1rem 3rem;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -194,23 +196,47 @@
       &::-webkit-scrollbar {
         display: none;
       }
+
+      &.is-hovering .rail-saree-slot:not(.is-focused) {
+        opacity: 0.48;
+        filter: blur(1px);
+      }
     }
 
     .rail-saree-slot {
-      flex: 0 0 200px;
-      scroll-snap-align: center;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.35s ease;
+      flex: 0 0 calc(16.666667% - 1.25rem);
+      scroll-snap-align: start;
+
+      transition: opacity 0.3s ease, filter 0.3s ease, z-index 0.3s ease;
       position: relative;
       z-index: 3;
 
-      &.is-focused,
-      &.is-active {
-        transform: scale(1.08) translateY(12px);
+      @media (max-width: 1200px) {
+        flex-basis: calc(20% - 1.2rem);
+      }
+
+      @media (max-width: 900px) {
+        flex-basis: calc(25% - 1.125rem);
+      }
+
+      @media (max-width: 640px) {
+        flex-basis: calc(50% - 0.75rem);
+      }
+
+      @media (max-width: 420px) {
+        flex-basis: 100%;
+      }
+
+      &.is-focused {
         z-index: 10;
 
         .saree-garment-img {
-          filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.18));
         }
+      }
+
+      &.is-active {
+        z-index: 4;
       }
 
       .rail-saree-card {
@@ -226,33 +252,10 @@
           flex-direction: column;
           align-items: center;
 
-          .wooden-hanger {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: -10px;
-            z-index: 4;
-
-            .hanger-hook {
-              width: 14px;
-              height: 22px;
-              border: 2.5px solid #a8a8a8;
-              border-bottom: none;
-              border-radius: 10px 10px 0 0;
-            }
-
-            .hanger-body {
-              width: 130px;
-              height: 8px;
-              background: linear-gradient(180deg, #d2a679 0%, #b88654 60%, #8c5b2a 100%);
-              border-radius: 4px;
-              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-          }
-
           .saree-garment-img {
             max-height: 480px;
             width: auto;
+            max-width: 100%;
             object-fit: contain;
             transition: filter 0.3s ease;
           }

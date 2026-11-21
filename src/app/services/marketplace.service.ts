@@ -231,9 +231,9 @@ export class MarketplaceService {
     this.highContrast.update(v => !v);
   }
 
-  setView(view: PageView) {
+  setView(view: PageView, scrollBehavior: ScrollBehavior = 'smooth') {
     this.currentView.set(view);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: scrollBehavior });
   }
 
   selectCategory(categorySlug: string) {

@@ -41,16 +41,17 @@
     <!-- The Chrome Rail & Hanging Garments -->
     <div class="rail-stage">
       <div class="rail-rod-container" aria-hidden="true">
-        <div class="chrome-rod"></div>
+        <img [src]="railImage" alt="" class="rail-art" />
       </div>
 
       <div
         #railTrack
         class="rail-track"
+        [class.is-hovering]="hoveredIndex() !== null"
         role="region"
         tabindex="0"
-        aria-label="Garments hanging on the rail. Scroll horizontally to explore."
-        (wheel)="onTrackWheel($event)">
+        (wheel)="onTrackWheel($event)"
+        aria-label="Garments hanging on the rail. Scroll horizontally to explore.">
         @for (saree of displayedSarees(); track saree.id; let index = $index) {
           <div
             class="rail-saree-slot"
@@ -67,10 +68,6 @@
               (click)="openModal(saree)">
               <!-- Wooden Hanger & Garment -->
               <div class="hanger-swing-wrapper">
-                <div class="wooden-hanger" aria-hidden="true">
-                  <div class="hanger-hook"></div>
-                  <div class="hanger-body"></div>
-                </div>
                 <img
                   [src]="saree.image"
                   [alt]="saree.name + ' hanging on rail'"
@@ -152,7 +149,7 @@
 
         <!-- Right Product Detail Panel -->
         <div class="modal-details-panel">
-          <span class="modal-brand-tag">NOOLAM &nbsp;·&nbsp; KANCHIPURAM</span>
+          <span class="modal-brand-tag">SHREEM &nbsp;·&nbsp; KANCHIPURAM</span>
           <h2 class="modal-product-name">{{ item.name }}</h2>
           <div class="modal-product-price">₹{{ item.price.toLocaleString('en-IN') }}.00</div>
           <p class="modal-description">{{ item.description }}</p>
