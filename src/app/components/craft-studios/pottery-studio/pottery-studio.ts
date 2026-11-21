@@ -1,34 +1,21 @@
 import { isPlatformBrowser, UpperCasePipe } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  OnDestroy,
-  PLATFORM_ID,
-  QueryList,
   ViewChild,
-  ViewChildren,
   computed,
   inject,
   signal
 } from '@angular/core';
 import {
   POTTERY_ARCHIVE_CATEGORIES,
-  POTTERY_ENSEMBLES,
   POTTERY_PICK_VARIETIES,
-  POTTERY_REELS,
   POTTERY_SHELF_FILTERS,
   POTTERY_SHELF_ITEMS,
   createCraftProduct
 } from '../../../data/craft-studios.data';
-import {
-  CraftArchiveCategory,
-  CraftEnsemble,
-  CraftPiece,
-  CraftReel,
-  CraftShelfItem
-} from '../../../models/craft-studio.model';
+import { CraftShelfItem } from '../../../models/craft-studio.model';
 import { MarketplaceService } from '../../../services/marketplace.service';
 
 @Component({
@@ -39,57 +26,36 @@ import { MarketplaceService } from '../../../services/marketplace.service';
   templateUrl: './pottery-studio.html',
   styleUrl: './pottery-studio.scss'
 })
-export class PotteryStudioComponent implements AfterViewInit, OnDestroy {
+export class PotteryStudioComponent {
   readonly market = inject(MarketplaceService);
 
   readonly archiveCategories = POTTERY_ARCHIVE_CATEGORIES;
-  readonly ensembles = POTTERY_ENSEMBLES;
   readonly pickVarieties = POTTERY_PICK_VARIETIES;
   readonly shelfFilters = POTTERY_SHELF_FILTERS;
   readonly shelfItems = POTTERY_SHELF_ITEMS;
-  readonly reels = POTTERY_REELS;
 
-  // Selected Ensemble in "Curate the Hearth"
-  readonly selectedIndex = signal<number>(0);
-  readonly activeEnsemble = computed(() => this.ensembles[this.selectedIndex()] ?? this.ensembles[0]);
+  // Section 1: Archive state
+  readonly archiveIndex = signal<number>(0);
 
-  // Shelf Filter & Modal
+  // Section 2: Pick an Earth state
+  readonly pickIndex = signal<number>(0);
+  readonly activePickVariety = computed(() => this.pickVarieties[this.pickIndex()] ?? this.pickVarieties[0]);
+  readonly likedPicks = signal<Set<string>>(new Set());
+
+  // Section 3: Kiln Shelf state
   readonly activeShelfFilter = signal<string>('all');
+  readonly shelfIndex = signal<number>(0);
   readonly filteredShelfItems = computed(() => {
     const f = this.activeShelfFilter();
     if (f === 'all') return this.shelfItems;
     return this.shelfItems.filter(item => item.category === f);
   });
+  readonly activeShelfItem = computed(() => this.filteredShelfItems()[this.shelfIndex()] ?? this.filteredShelfItems()[0]);
   readonly selectedShelfItem = signal<CraftShelfItem | null>(null);
 
-  // Likes
-  readonly likedPieces = signal<Set<string>>(new Set());
-  readonly likedEnsembles = signal<Set<string>>(new Set());
-
-  @ViewChild('modelTrack') private modelTrack?: ElementRef<HTMLElement>;
-  @ViewChildren('ensembleItem') private ensembleItems?: QueryList<ElementRef<HTMLElement>>;
-
-  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  private destroyed = false;
-  private scrollFrame = 0;
-  private isInitialScroll = true;
-
-  ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
-    setTimeout(() => {
-      this.scrollEnsembleIntoView(0, false);
-      setTimeout(() => {
-        this.isInitialScroll = false;
-      }, 300);
-    }, 150);
-  }
-
-  ngOnDestroy(): void {
-    this.destroyed = true;
-    if (this.scrollFrame) {
-      window.cancelAnimationFrame(this.scrollFrame);
-    }
-  }
+  @ViewChild('archiveTrack') private archiveTrack?: ElementRef<HTMLElement>;
+  @ViewChild('pickTrack') private pickTrack?: ElementRef<HTMLElement>;
+  @ViewChild('shelfTrack') private shelfTrack?: ElementRef<HTMLElement>;
 
   scrollToSection(sectionId: string): void {
     document.getElementById(sectionId)?.scrollIntoView({
@@ -98,83 +64,53 @@ export class PotteryStudioComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  getDistance(index: number): number {
-    return Math.abs(this.selectedIndex() - index);
+  // Section 1 Controls
+  prevArchive(): void {
+    const total = this.archiveCategories.length;
+    const nextIdx = (this.archiveIndex() - 1 + total) % total;
+    this.selectArchive(nextIdx);
   }
 
-  selectEnsemble(index: number): void {
-    const total = this.ensembles.length;
-    const safeIndex = (index + total) % total;
-    this.selectedIndex.set(safeIndex);
-    this.scrollEnsembleIntoView(safeIndex, true);
+  nextArchive(): void {
+    const total = this.archiveCategories.length;
+    const nextIdx = (this.archiveIndex() + 1) % total;
+    this.selectArchive(nextIdx);
   }
 
-  onTrackScroll(): void {
-    if (!this.isBrowser || this.isInitialScroll || this.scrollFrame) return;
-
-    this.scrollFrame = window.requestAnimationFrame(() => {
-      this.scrollFrame = 0;
-      this.updateSelectionFromScroll();
-    });
-  }
-
-  private updateSelectionFromScroll(): void {
-    const track = this.modelTrack?.nativeElement;
-    const items = this.ensembleItems?.toArray();
-    if (!track || !items?.length) return;
-
-    const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
-    let closestIndex = 0;
-    let closestDist = Number.POSITIVE_INFINITY;
-
-    items.forEach((itemRef, idx) => {
-      const rect = itemRef.nativeElement.getBoundingClientRect();
-      const itemCenter = rect.left + rect.width / 2;
-      const dist = Math.abs(itemCenter - trackCenter);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIndex = idx;
-      }
-    });
-
-    if (closestIndex !== this.selectedIndex()) {
-      this.selectedIndex.set(closestIndex);
+  selectArchive(idx: number): void {
+    this.archiveIndex.set(idx);
+    const track = this.archiveTrack?.nativeElement;
+    if (track) {
+      const card = track.children[idx] as HTMLElement;
+      card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   }
 
-  private scrollEnsembleIntoView(index: number, smooth: boolean): void {
-    const track = this.modelTrack?.nativeElement;
-    const items = this.ensembleItems?.toArray();
-    if (!track || !items || !items[index]) return;
-
-    const targetEl = items[index].nativeElement;
-    const trackRect = track.getBoundingClientRect();
-    const itemRect = targetEl.getBoundingClientRect();
-
-    const currentScroll = track.scrollLeft;
-    const targetOffset = currentScroll + (itemRect.left - trackRect.left) - (track.clientWidth / 2 - itemRect.width / 2);
-
-    track.scrollTo({
-      left: targetOffset,
-      behavior: smooth ? 'smooth' : 'auto'
-    });
+  // Section 2 Controls
+  prevPick(): void {
+    const total = this.pickVarieties.length;
+    const nextIdx = (this.pickIndex() - 1 + total) % total;
+    this.selectPick(nextIdx);
   }
 
-  toggleLikePiece(pieceId: string): void {
-    this.likedPieces.update(set => {
-      const next = new Set(set);
-      if (next.has(pieceId)) next.delete(pieceId);
-      else next.add(pieceId);
-      return next;
-    });
+  nextPick(): void {
+    const total = this.pickVarieties.length;
+    const nextIdx = (this.pickIndex() + 1) % total;
+    this.selectPick(nextIdx);
   }
 
-  isPieceLiked(pieceId: string): boolean {
-    return this.likedPieces().has(pieceId);
+  selectPick(idx: number): void {
+    this.pickIndex.set(idx);
+    const track = this.pickTrack?.nativeElement;
+    if (track) {
+      const card = track.children[idx] as HTMLElement;
+      card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   }
 
-  toggleEnsembleLike(id: string): void {
-    this.likedEnsembles.update(set => {
+  togglePickLike(id: string, event: Event): void {
+    event.stopPropagation();
+    this.likedPicks.update(set => {
       const next = new Set(set);
       if (next.has(id)) next.delete(id);
       else next.add(id);
@@ -182,46 +118,50 @@ export class PotteryStudioComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  isEnsembleLiked(id: string): boolean {
-    return this.likedEnsembles().has(id);
+  isPickLiked(id: string): boolean {
+    return this.likedPicks().has(id);
   }
 
-  addIndividualPiece(piece: CraftPiece, ensemble: CraftEnsemble): void {
-    const product = createCraftProduct({
-      id: `${ensemble.id}-${piece.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
-      name: piece.name,
-      price: piece.price,
-      image: piece.image,
-      category: 'Artisanal Pottery & Ceramics',
-      artisanName: piece.brand || 'KUMBH HERITAGE',
-      badge: 'Hand-thrown Ceramic'
-    });
-    this.market.addToCart(product, 1);
-  }
-
-  addEntireEnsemble(ensemble: CraftEnsemble): void {
-    const bundleProduct = createCraftProduct({
-      id: `${ensemble.id}-complete-ensemble`,
-      name: `${ensemble.name} (Full 6-Piece Table Set)`,
-      price: ensemble.bundlePrice,
-      originalPrice: ensemble.totalPrice,
-      image: ensemble.image,
-      category: 'Living Earth Kitchen Suite',
-      badge: 'Curated 6-Piece Pottery Set'
-    });
-    this.market.addToCart(bundleProduct, 1);
-  }
-
-  addPickVariety(variety: { id: string; title: string; price: number; image: string; subtitle: string }): void {
+  addPickVariety(variety: { id: string; title: string; price: number; image: string; subtitle: string }, event?: Event): void {
+    event?.stopPropagation();
     const product = createCraftProduct({
       id: variety.id,
-      name: `${variety.title} Ceramic Creation`,
+      name: `${variety.title} Ceramic Artisan Vessel`,
       price: variety.price,
       image: variety.image,
-      category: 'Regional Clay Craft',
+      category: 'Artisanal Studio Pottery',
       description: variety.subtitle
     });
     this.market.addToCart(product, 1);
+  }
+
+  // Section 3 Controls
+  setShelfFilter(filterId: string): void {
+    this.activeShelfFilter.set(filterId);
+    this.shelfIndex.set(0);
+  }
+
+  prevShelf(): void {
+    const total = this.filteredShelfItems().length;
+    if (total === 0) return;
+    const nextIdx = (this.shelfIndex() - 1 + total) % total;
+    this.selectShelfItem(nextIdx);
+  }
+
+  nextShelf(): void {
+    const total = this.filteredShelfItems().length;
+    if (total === 0) return;
+    const nextIdx = (this.shelfIndex() + 1) % total;
+    this.selectShelfItem(nextIdx);
+  }
+
+  selectShelfItem(idx: number): void {
+    this.shelfIndex.set(idx);
+    const track = this.shelfTrack?.nativeElement;
+    if (track) {
+      const card = track.children[idx] as HTMLElement;
+      card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   }
 
   addShelfItem(item: CraftShelfItem): void {
@@ -230,7 +170,7 @@ export class PotteryStudioComponent implements AfterViewInit, OnDestroy {
       name: item.name,
       price: item.price,
       image: item.image,
-      category: item.categoryLabel || 'Studio Pottery Ware',
+      category: item.categoryLabel || 'Pottery Studio Creation',
       description: item.description,
       state: item.origin
     });
