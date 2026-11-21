@@ -25,6 +25,7 @@ import { TryTheLookComponent } from './components/silk-experience/try-the-look/t
 import { HoneyStudioComponent } from './components/craft-studios/honey-studio/honey-studio';
 import { PotteryStudioComponent } from './components/craft-studios/pottery-studio/pottery-studio';
 import { CoconutStudioComponent } from './components/craft-studios/coconut-studio/coconut-studio';
+import { AgarbattiStudioComponent } from './components/craft-studios/agarbatti-studio/agarbatti-studio';
 import { MatIconModule } from '@angular/material/icon';
 import { BRASS_DHOKRA_IMAGE, HANDLOOM_IMAGE, HERO_IMAGE, ORGANIC_HONEY_IMAGE } from './data/mock-data';
 import { Product } from './models/marketplace.model';
@@ -57,6 +58,7 @@ import { Product } from './models/marketplace.model';
     HoneyStudioComponent,
     PotteryStudioComponent,
     CoconutStudioComponent,
+    AgarbattiStudioComponent,
     MatIconModule
   ],
   templateUrl: './app.html',

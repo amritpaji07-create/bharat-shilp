@@ -225,3 +225,92 @@ app-try-the-look .look-details .look-product-image img {
   }
 }
 
+/* ======================================================== */
+/* ALL CRAFT STUDIOS & MARKETPLACE SWITCHER RIBBON          */
+/* ======================================================== */
+.marketplace-studios-ribbon {
+  background: linear-gradient(90deg, #fbf7ee 0%, #f6ede0 50%, #fbf7ee 100%);
+  border-bottom: 1px solid #e6d3bf;
+  padding: 0.65rem 1.5rem;
+}
+
+.marketplace-studios-ribbon .ribbon-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.marketplace-studios-ribbon .ribbon-container::-webkit-scrollbar {
+  display: none;
+}
+
+.marketplace-studios-ribbon .ribbon-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a653f;
+  white-space: nowrap;
+}
+
+.marketplace-studios-ribbon .ribbon-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.marketplace-studios-ribbon .studio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #dfc7ab;
+  background: #ffffff;
+  color: #4a3422;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.marketplace-studios-ribbon .studio-pill:hover {
+  border-color: #7a481f;
+  color: #7a481f;
+  transform: translateY(-1px);
+}
+
+.marketplace-studios-ribbon .studio-pill.is-active {
+  background: #7a481f;
+  border-color: #7a481f;
+  color: #ffffff;
+}
+
+.marketplace-studios-ribbon .studio-pill.is-active .pill-dot {
+  background: #f5d491;
+}
+
+.marketplace-studios-ribbon .studio-pill.pill-all {
+  background: #193c2c;
+  border-color: #193c2c;
+  color: #ffffff;
+}
+
+.marketplace-studios-ribbon .studio-pill.pill-all:hover {
+  background: #11291e;
+}
+
+.marketplace-studios-ribbon .pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7a481f;
+}
+
+

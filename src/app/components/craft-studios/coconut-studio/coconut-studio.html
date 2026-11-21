@@ -26,6 +26,34 @@
     </nav>
   </header>
 
+  <!-- ALL CRAFT STUDIOS & MARKETPLACES SWITCHER RIBBON -->
+  <div class="marketplace-studios-ribbon" aria-label="Switch between artisan studios">
+    <div class="ribbon-container">
+      <span class="ribbon-label">EXPLORE ALL CRAFT STUDIOS:</span>
+      <div class="ribbon-links">
+        <button type="button" class="studio-pill is-active" aria-current="page">
+          <span class="pill-dot"></span>
+          <span>🥥 Coconut Studio (Thenga Craft)</span>
+        </button>
+        <button type="button" class="studio-pill" (click)="market.setView('silk-studio')">
+          <span>🥻 Silk Studio (Handloom Sarees)</span>
+        </button>
+        <button type="button" class="studio-pill" (click)="market.setView('honey-studio')">
+          <span>🍯 Honey Studio (Van Amrit)</span>
+        </button>
+        <button type="button" class="studio-pill" (click)="market.setView('pottery-studio')">
+          <span>🏺 Pottery Studio (Mitti & Kiln)</span>
+        </button>
+        <button type="button" class="studio-pill" (click)="market.setView('agarbatti-studio')">
+          <span>🪔 Sacred Incense (Sugandh & Dhoop)</span>
+        </button>
+        <button type="button" class="studio-pill pill-all" (click)="market.setView('catalogue')">
+          <span>🛍️ Browse All Products →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ======================================================== -->
   <!-- 2. SECTION: THE ARCHIVE · SIX COASTAL FORMS              -->
   <!-- ======================================================== -->

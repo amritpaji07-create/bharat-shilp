@@ -2341,3 +2341,477 @@ export const COCONUT_REELS: CraftReel[] = [
     artisanStory: 'Using fine hardened steel chisels, master carver Sasi creates intricate pierced geometric jaalis that turn discarded coconut shells into glowing lamps.'
   }
 ];
+
+
+/* ==================================================================== */
+/* 4. AGARBATTI & INCENSE STUDIO DATA                                   */
+/* ==================================================================== */
+export const AGARBATTI_ASSETS = {
+  hero: 'assets/images/craft-studios/agarbatti/incense-hero.jpg',
+  video: 'assets/images/Agarbatti.mp4',
+  chandan: 'assets/images/craft-studios/agarbatti/aroma-01-chandan.jpg',
+  rose: 'assets/images/craft-studios/agarbatti/aroma-02-rose.jpg',
+  sambrani: 'assets/images/craft-studios/agarbatti/aroma-03-sambrani.jpg',
+  mogra: 'assets/images/craft-studios/agarbatti/aroma-04-mogra.jpg',
+  loban: 'assets/images/craft-studios/agarbatti/aroma-05-loban.jpg',
+  vetiver: 'assets/images/craft-studios/agarbatti/aroma-06-vetiver.jpg',
+  pieces: {
+    sticks: 'assets/images/craft-studios/agarbatti/piece-01-sticks.jpg',
+    burner: 'assets/images/craft-studios/agarbatti/piece-02-burner.jpg',
+    dhoop: 'assets/images/craft-studios/agarbatti/piece-03-dhoop.jpg',
+    camphor: 'assets/images/craft-studios/agarbatti/piece-04-camphor.jpg',
+    stand: 'assets/images/craft-studios/agarbatti/piece-05-stand.jpg',
+    resin: 'assets/images/craft-studios/agarbatti/piece-06-resin.jpg'
+  }
+};
+
+export const AGARBATTI_ARCHIVE_CATEGORIES: CraftArchiveCategory[] = [
+  {
+    id: 'arch-ag-1',
+    name: 'Mysore Sandalwood Pure Flora',
+    subName: 'GI Certified Chandan Agarbatti',
+    region: 'Mysuru, Karnataka',
+    colorName: 'Warm Sandalwood Gold',
+    accent: '#B8860B',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.chandan,
+    price: 350,
+    note: 'Ground genuine Santalum album heartwood with natural jigat binder. Slow 60-minute burning bamboo-less core.',
+    tag: 'Royal Mysore Heritage'
+  },
+  {
+    id: 'arch-ag-2',
+    name: 'Kannauj Damask Rose Dhoop',
+    subName: 'Distilled Desi Gulab Essence',
+    region: 'Kannauj, Uttar Pradesh',
+    colorName: 'Rose Petal Amber',
+    accent: '#8B263E',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.rose,
+    price: 280,
+    note: 'Hand-blended with sun-dried Kannauj rose petals, edible camphor, and pure cow ghee. Zero chemical perfumes.',
+    tag: 'Attar Capital Distillate'
+  },
+  {
+    id: 'arch-ag-3',
+    name: 'Temple Sambrani Benzoin Cups',
+    subName: 'Vedic Loban Purification',
+    region: 'Tirupati, Andhra Pradesh',
+    colorName: 'Smoky Charcoal Resin',
+    accent: '#4A3525',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.sambrani,
+    price: 320,
+    note: 'Pure Styrax benzoin resin cast inside cow dung charcoal cups with havan samagri. Dispels airborne microbes.',
+    tag: 'Temple Sanctum Resin'
+  },
+  {
+    id: 'arch-ag-4',
+    name: 'Madurai Wild Mogra Jasmine',
+    subName: 'Twilight Blossom Flora Sticks',
+    region: 'Madurai, Tamil Nadu',
+    colorName: 'Jasmine Moon White',
+    accent: '#2D5A46',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.mogra,
+    price: 290,
+    note: 'Hand-picked pre-dawn jasmine petals crushed with halmaddi resin on slender bamboo splints for serene clarity.',
+    tag: 'GI Madurai Malli'
+  },
+  {
+    id: 'arch-ag-5',
+    name: 'Sacred Forest Loban & Guggul',
+    subName: 'Tribal Foraged Tree Resin',
+    region: 'Bastar, Chhattisgarh',
+    colorName: 'Amber Balsam Gold',
+    accent: '#7A481F',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.loban,
+    price: 380,
+    note: 'Ethically tapped Boswellia serrata resin hand-kneaded with dried neem and basil leaf for sacred cleansing.',
+    tag: 'Tribal Forest Harvest'
+  },
+  {
+    id: 'arch-ag-6',
+    name: 'Alwar Cooling Vetiver Khus',
+    subName: 'Earthy Rain Monsoon Dhoop',
+    region: 'Alwar, Rajasthan',
+    colorName: 'Deep Earth Olive',
+    accent: '#3E5638',
+    textColor: '#FFFFFF',
+    image: AGARBATTI_ASSETS.vetiver,
+    price: 310,
+    note: 'Sun-dried Chrysopogon zizanioides root fibers blended with powdered cedarwood for cooling meditative calm.',
+    tag: 'Desert Earth Coolant'
+  }
+];
+
+export const AGARBATTI_ENSEMBLES: CraftEnsemble[] = [
+  {
+    id: 'ag-look-01',
+    index: 1,
+    name: 'The Mysore Sandalwood Sanctum',
+    title: 'Chandan Meditation & Prayer Sanctuary',
+    subtitle: 'Pure royal sandalwood incense paired with hand-cast brass temple hardware',
+    category: 'Meditation Ritual Suite',
+    image: AGARBATTI_ASSETS.hero,
+    description: 'A calming temple sanctuary centered around pure Mysore sandalwood heartwood, hand-rolled with organic jigat binder on slender bamboo splints.',
+    totalPrice: 2450,
+    bundlePrice: 2080,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Karnataka Royal Guild',
+    tastingOrCraftNote: 'Warm golden sandalwood, creamy amber, dry cedar undertone',
+    pieces: [
+      { id: 'ap-11', type: 'Incense Sticks', name: 'Mysore Pure Chandan Agarbatti (Pack of 50)', price: 380, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-12', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-13', type: 'Dhoop Cones', name: 'Bamboo-Free Sandalwood Dhoop Cones (30 Pcs)', price: 290, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-14', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-15', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-16', type: 'Sacred Resin', name: 'Raw Mysore Sandalwood Paste & Resin 50g', price: 400, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-02',
+    index: 2,
+    name: 'The Kannauj Rose Twilight Edit',
+    title: 'Desi Gulab Evening Serenity',
+    subtitle: 'Steam-distilled Damask rose petals blended into soothing aromatic dhoop',
+    category: 'Floral Sanctuary Suite',
+    image: AGARBATTI_ASSETS.rose,
+    description: 'Crafted using the ancient Deg-Bhapka hydro-distillation method in Kannauj, balancing wild rose petals with organic cow ghee.',
+    totalPrice: 2360,
+    bundlePrice: 2000,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Kannauj Attar Guild',
+    tastingOrCraftNote: 'Sweet morning rose, honey nectar, damp petal warmth',
+    pieces: [
+      { id: 'ap-21', type: 'Incense Sticks', name: 'Kannauj Desi Gulab Flora Agarbatti (50 Sticks)', price: 320, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-22', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-23', type: 'Dhoop Cones', name: 'Bamboo-Free Rose Dhoop Cones (30 Pcs)', price: 280, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-24', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-25', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-26', type: 'Sacred Resin', name: 'Damask Rose Petal Dhoop Resin Blend 50g', price: 380, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-03',
+    index: 3,
+    name: 'The Temple Sambrani Havan',
+    title: 'Vedic Benzoin Cleansing Ritual',
+    subtitle: 'Traditional resin cups releasing antimicrobial aromatic smoke',
+    category: 'Purification Suite',
+    image: AGARBATTI_ASSETS.sambrani,
+    description: 'Harvested from wild Styrax trees, blended with camphor, cloves, and havan herbs to dispel negative vibrations and purify the home atmosphere.',
+    totalPrice: 2540,
+    bundlePrice: 2150,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Tirupati Sacred Woods',
+    tastingOrCraftNote: 'Balsamic benzoin, burnt vanilla, temple charcoal depth',
+    pieces: [
+      { id: 'ap-31', type: 'Incense Sticks', name: 'Temple Benzoin Sambrani Incense (50 Sticks)', price: 360, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-32', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-33', type: 'Dhoop Cones', name: 'Sambrani Resin Charcoal Cups (Pack of 20)', price: 350, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-34', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-35', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-36', type: 'Sacred Resin', name: 'Raw Forest Benzoin Resin Crystals 100g', price: 450, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-04',
+    index: 4,
+    name: 'The Vedic Nag Champa Meditation',
+    title: 'Sacred Plumeria Temple Sticks',
+    subtitle: 'Golden floral nectar blended with halmaddi resin for deep breathwork',
+    category: 'Vedic Meditation Suite',
+    image: AGARBATTI_ASSETS.mogra,
+    description: 'Slow-rolled by women artisan cooperatives using wild frangipani blossoms, Mysore sandalwood powder, and sacred resins.',
+    totalPrice: 2380,
+    bundlePrice: 2020,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Varanasi Ashram Reserve',
+    tastingOrCraftNote: 'Creamy champaca flower, earthy patchouli, resinous halmaddi',
+    pieces: [
+      { id: 'ap-41', type: 'Incense Sticks', name: 'Handmade Vedic Nag Champa Agarbatti (50 Sticks)', price: 310, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-42', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-43', type: 'Dhoop Cones', name: 'Slow-Smolder Champa Dhoop Cones (30 Pcs)', price: 290, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-44', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-45', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-46', type: 'Sacred Resin', name: 'Natural Halmaddi Tree Resin Gum 50g', price: 400, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-05',
+    index: 5,
+    name: 'The Vetiver & Khus Twilight Sanctuary',
+    title: 'Cooling Earth Root Incense',
+    subtitle: 'Sun-dried wild vetiver grass roots bringing rainy earth fragrance',
+    category: 'Cooling Meditation Suite',
+    image: AGARBATTI_ASSETS.vetiver,
+    description: 'Harvested after seasonal monsoon showers, the fibrous aromatic roots are dried and stone-ground without charcoal.',
+    totalPrice: 2320,
+    bundlePrice: 1970,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Rajasthan Dune Valley',
+    tastingOrCraftNote: 'Petrichor damp earth, green rootiness, wild grass sweetness',
+    pieces: [
+      { id: 'ap-51', type: 'Incense Sticks', name: 'Alwar Wild Vetiver Khus Agarbatti (50 Sticks)', price: 300, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-52', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-53', type: 'Dhoop Cones', name: 'Charcoal-Free Khus Dhoop Cones (30 Pcs)', price: 270, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-54', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-55', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-56', type: 'Sacred Resin', name: 'Wild Vetiver Root Aromatic Bundle 100g', price: 370, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-06',
+    index: 6,
+    name: 'The Bastar Loban & Frankincense',
+    title: 'Tribal Foraged Amber Resin',
+    subtitle: 'Wild harvested sal tree resin for sanctum air purification',
+    category: 'Ancient Forest Suite',
+    image: AGARBATTI_ASSETS.loban,
+    description: 'Gathered by tribal forest foragers in Chhattisgarh, dried in mountain air and blended with camphor and natural dried herbs.',
+    totalPrice: 2470,
+    bundlePrice: 2090,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Bastar Tribal Collective',
+    tastingOrCraftNote: 'Balsamic pine, warm golden amber, peppery incense note',
+    pieces: [
+      { id: 'ap-61', type: 'Incense Sticks', name: 'Bastar Forest Loban Agarbatti (50 Sticks)', price: 350, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-62', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-63', type: 'Dhoop Cones', name: 'Pure Loban Resin Dhoop Cones (30 Pcs)', price: 310, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-64', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-65', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-66', type: 'Sacred Resin', name: 'Raw Forest Boswellia Frankincense Tears 100g', price: 430, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-07',
+    index: 7,
+    name: 'The Madurai Mogra Dawn Bloom',
+    title: 'Pre-Dawn Jasmine Petal Sticks',
+    subtitle: 'Fresh floral dew distilled into soothing daily prayer incense',
+    category: 'Morning Prayer Suite',
+    image: AGARBATTI_ASSETS.mogra,
+    description: 'Handcrafted in Tamil Nadu using Madurai GI-tagged jasmine blossoms, cooling sandalwood powder, and zero synthetic dip oils.',
+    totalPrice: 2310,
+    bundlePrice: 1960,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Madurai Temple Guild',
+    tastingOrCraftNote: 'Heady night jasmine, green stem, delicate honeyed floral',
+    pieces: [
+      { id: 'ap-71', type: 'Incense Sticks', name: 'Madurai Mogra Hand-Rolled Agarbatti (50 Sticks)', price: 290, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-72', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-73', type: 'Dhoop Cones', name: 'Floral Jasmine Dhoop Cones (30 Pcs)', price: 260, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-74', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-75', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-76', type: 'Sacred Resin', name: 'Crushed Jasmine Flower Petal Dhoop 50g', price: 380, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  },
+  {
+    id: 'ag-look-08',
+    index: 8,
+    name: 'The Himalayan Deodar Pine Sanctum',
+    title: 'Cedar Mountain Air Incense',
+    subtitle: 'High-altitude pine needle resin with wild mountain lavender',
+    category: 'Highland Sanctuary Suite',
+    image: AGARBATTI_ASSETS.hero,
+    description: 'Sourced from the cedar slopes of Himachal Pradesh, bringing the crisp, sacred resin aroma of ancient Deodar groves into mindful living spaces.',
+    totalPrice: 2420,
+    bundlePrice: 2050,
+    discountNote: 'Bundle all 6 pieces · save 15%',
+    originBadge: 'Himachal Pine Cooperative',
+    tastingOrCraftNote: 'Crisp Deodar cedar, mountain pine sap, cool mist undertones',
+    pieces: [
+      { id: 'ap-81', type: 'Incense Sticks', name: 'Himalayan Deodar Cedar Agarbatti (50 Sticks)', price: 340, image: AGARBATTI_ASSETS.pieces.sticks, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-82', type: 'Brass Stand', name: 'Hand-Cast Brass Diya & Agarbatti Tower', price: 650, image: AGARBATTI_ASSETS.pieces.burner, brand: 'TEMPLE GUILD' },
+      { id: 'ap-83', type: 'Dhoop Cones', name: 'Charcoal-Free Pine Dhoop Cones (30 Pcs)', price: 290, image: AGARBATTI_ASSETS.pieces.dhoop, brand: 'SUGANDH SHREEM' },
+      { id: 'ap-84', type: 'Bhimseni Camphor', name: 'Pure White Bhimseni Camphor Tablets 100g', price: 340, image: AGARBATTI_ASSETS.pieces.camphor, brand: 'VEDIC PURITY' },
+      { id: 'ap-85', type: 'Ash Catcher', name: 'Carved Sheesham Wood Floral Incense Tray', price: 390, image: AGARBATTI_ASSETS.pieces.stand, brand: 'SHREEM ATELIER' },
+      { id: 'ap-86', type: 'Sacred Resin', name: 'Deodar Pine Tree Balsam Resin 50g', price: 410, image: AGARBATTI_ASSETS.pieces.resin, brand: 'HERITAGE AROMA' }
+    ]
+  }
+];
+
+export const AGARBATTI_PICK_VARIETIES = [
+  { id: 'pick-ag-1', title: 'MYSORE CHANDAN', subtitle: 'Ground Pure Sandalwood Heartwood', price: 350, image: AGARBATTI_ASSETS.chandan, bg: '#5C3E14' },
+  { id: 'pick-ag-2', title: 'KANNAUJ GULAB', subtitle: 'Damask Rose Steam Distillate', price: 280, image: AGARBATTI_ASSETS.rose, bg: '#6A1B29' },
+  { id: 'pick-ag-3', title: 'TEMPLE SAMBRANI', subtitle: 'Purifying Benzoin Resin Charcoal Cup', price: 320, image: AGARBATTI_ASSETS.sambrani, bg: '#2B221B' },
+  { id: 'pick-ag-4', title: 'BASTAR LOBAN', subtitle: 'Tribal Foraged Tree Resin Crystals', price: 380, image: AGARBATTI_ASSETS.loban, bg: '#4A2A0C' },
+  { id: 'pick-ag-5', title: 'COOLING KHUS', subtitle: 'Alwar Wild Vetiver Monsoon Root', price: 310, image: AGARBATTI_ASSETS.vetiver, bg: '#223824' }
+];
+
+export const AGARBATTI_SHELF_FILTERS: CraftShelfFilter[] = [
+  { id: 'all', label: 'All Aromas', count: 8 },
+  { id: 'dhoop', label: 'Bamboo-Free Dhoop', count: 3 },
+  { id: 'flora', label: 'Hand-Rolled Flora', count: 3 },
+  { id: 'resins', label: 'Sacred Resins & Cups', count: 2 }
+];
+
+export const AGARBATTI_SHELF_ITEMS: CraftShelfItem[] = [
+  {
+    id: 'shelf-ag-1',
+    name: 'Royal Mysore Sandalwood Agarbatti Box (50 Sticks)',
+    price: 350,
+    category: 'flora',
+    categoryType: 'Flora Sticks',
+    categoryLabel: 'Hand-Rolled Flora',
+    image: AGARBATTI_ASSETS.chandan,
+    description: 'Ground Santalum album heartwood paste hand-rolled onto fine bamboo splints with pure organic halmaddi binder.',
+    origin: 'Mysuru, Karnataka',
+    artisanCluster: 'Mysore Incense Artisans Guild',
+    specs: [
+      { label: 'Burn Duration', value: '55 - 60 minutes per stick' },
+      { label: 'Primary Wood', value: '100% Genuine Mysore Sandalwood' },
+      { label: 'Chemicals', value: '0% DEP, 0% Synthetic Phthalates' }
+    ]
+  },
+  {
+    id: 'shelf-ag-2',
+    name: 'Kannauj Desi Gulab Cow Dung Dhoop Cones (30 Pcs)',
+    price: 280,
+    category: 'dhoop',
+    categoryType: 'Dhoop Cone',
+    categoryLabel: 'Bamboo-Free Dhoop',
+    image: AGARBATTI_ASSETS.rose,
+    description: 'Charcoal-free cones made from desi cow dung, rose petal powder, camphor, and pure desi cow ghee for serene puja rituals.',
+    origin: 'Kannauj, Uttar Pradesh',
+    artisanCluster: 'Kannauj Flower Distillers Cooperative',
+    specs: [
+      { label: 'Form', value: 'Solid charcoal-free dhoop cones' },
+      { label: 'Burn Time', value: '35 minutes with continuous fragrance' },
+      { label: 'Fragrance', value: 'Sweet Damask Rose & Desi Ghee' }
+    ]
+  },
+  {
+    id: 'shelf-ag-3',
+    name: 'Vedic Sambrani Charcoal Dhoop Cups (Pack of 12)',
+    price: 320,
+    category: 'resins',
+    categoryType: 'Resin Cups',
+    categoryLabel: 'Sacred Resins & Cups',
+    image: AGARBATTI_ASSETS.sambrani,
+    description: 'Styrax benzoin tears hand-poured inside dried herbal charcoal cups. Creates dense aromatic white smoke that purifies room air.',
+    origin: 'Tirupati, Andhra Pradesh',
+    artisanCluster: 'Sri Kalahasti Traditional Resin Cooperative',
+    specs: [
+      { label: 'Ingredients', value: 'Natural Sambrani Resin, Cow Dung Charcoal' },
+      { label: 'Purpose', value: 'Daily evening arti & atmospheric cleansing' },
+      { label: 'Includes', value: 'Ceramic mini burner plate' }
+    ]
+  },
+  {
+    id: 'shelf-ag-4',
+    name: 'Madurai Mogra Flora Agarbatti Box (50 Sticks)',
+    price: 290,
+    category: 'flora',
+    categoryType: 'Flora Sticks',
+    categoryLabel: 'Hand-Rolled Flora',
+    image: AGARBATTI_ASSETS.mogra,
+    description: 'Pre-dawn Arabian Jasmine petals crushed into wood dust and hand-rolled by women artisans in Tamil Nadu.',
+    origin: 'Madurai, Tamil Nadu',
+    artisanCluster: 'Madurai Malli Women Cooperative',
+    specs: [
+      { label: 'Floral Source', value: 'GI-Tagged Madurai Malli' },
+      { label: 'Binder', value: 'Natural Jigat bark powder' },
+      { label: 'Stick Count', value: '50 Sticks' }
+    ]
+  },
+  {
+    id: 'shelf-ag-5',
+    name: 'Bastar Forest Loban & Camphor Resin Granules 150g',
+    price: 380,
+    category: 'resins',
+    categoryType: 'Raw Resin',
+    categoryLabel: 'Sacred Resins & Cups',
+    image: AGARBATTI_ASSETS.loban,
+    description: 'Golden crystalline tears tapped from wild sal trees in deep Bastar rainforests, blended with crushed white camphor crystals.',
+    origin: 'Bastar, Chhattisgarh',
+    artisanCluster: 'Van Dhan Vikas Kendra Collective',
+    specs: [
+      { label: 'Harvesting', value: '100% Ethical non-destructive tree tapping' },
+      { label: 'Application', value: 'Burn on charcoal or electric dhoop burner' },
+      { label: 'Net Weight', value: '150g Glass Jar' }
+    ]
+  },
+  {
+    id: 'shelf-ag-6',
+    name: 'Cooling Alwar Vetiver Khus Dhoop Sticks (40 Pcs)',
+    price: 310,
+    category: 'dhoop',
+    categoryType: 'Bamboo-Free',
+    categoryLabel: 'Bamboo-Free Dhoop',
+    image: AGARBATTI_ASSETS.vetiver,
+    description: 'Heavy vetiver roots dried after rain showers and pressed into smooth solid sticks that smell like first rain on parched red soil.',
+    origin: 'Alwar, Rajasthan',
+    artisanCluster: 'Aravalli Herbal Foragers Group',
+    specs: [
+      { label: 'Core', value: 'Bamboo-less solid extruded dhoop' },
+      { label: 'Smell Profile', value: 'Petrichor, wet roots, cool earth' },
+      { label: 'Burn Duration', value: '45 minutes' }
+    ]
+  },
+  {
+    id: 'shelf-ag-7',
+    name: 'Varanasi Nag Champa Ashram Reserve (50 Sticks)',
+    price: 330,
+    category: 'flora',
+    categoryType: 'Flora Sticks',
+    categoryLabel: 'Hand-Rolled Flora',
+    image: AGARBATTI_ASSETS.mogra,
+    description: 'Classic plumeria blossom extract blended with halmaddi resin and aged sandalwood powder according to 300-year-old ashram formulas.',
+    origin: 'Varanasi, Uttar Pradesh',
+    artisanCluster: 'Kashi Vedic Perfumers Guild',
+    specs: [
+      { label: 'Tradition', value: 'Authentic Ashram Vedic Recipe' },
+      { label: 'Packaging', value: 'Biodegradable handmade paper tube' },
+      { label: 'Length', value: '9 inch slow-burning sticks' }
+    ]
+  },
+  {
+    id: 'shelf-ag-8',
+    name: 'Hand-Cast Pure Brass Peacock Dhoop Dani',
+    price: 790,
+    category: 'dhoop',
+    categoryType: 'Brass Ware',
+    categoryLabel: 'Bamboo-Free Dhoop',
+    image: AGARBATTI_ASSETS.hero,
+    description: 'Heavy solid brass ceremonial incense burner with perforated lid, wooden handle, and peacock finial for diffusing dhoop smoke.',
+    origin: 'Moradabad, Uttar Pradesh',
+    artisanCluster: 'Moradabad Master Brass Guild',
+    specs: [
+      { label: 'Metal', value: '100% Solid Brass with wooden handle' },
+      { label: 'Weight', value: '420 grams' },
+      { label: 'Finish', value: 'Traditional golden antique lacquer' }
+    ]
+  }
+];
+
+export const AGARBATTI_REELS: CraftReel[] = [
+  {
+    id: 'reel-ag-1',
+    reelNumber: 'REEL 01',
+    duration: '0:38',
+    craftType: 'FLORA ROLLING',
+    title: 'The Rhythm of Hand-Rolling Mysore Chandan',
+    location: 'Mysuru, Karnataka',
+    posterImage: AGARBATTI_ASSETS.chandan,
+    price: 350,
+    handle: '@sugandhshreem',
+    soundTrack: 'Temple Bells & Gentle Chants',
+    artisanStory: 'Master artisan Lakshmi rolls each bamboo splint with steady precision through pure sandalwood dough, rolling over 1,000 sticks every morning.'
+  },
+  {
+    id: 'reel-ag-2',
+    reelNumber: 'REEL 02',
+    duration: '0:42',
+    craftType: 'RESIN CASTING',
+    title: 'Filling Benzoin Sambrani Cups for Temple Aarti',
+    location: 'Tirupati, Andhra Pradesh',
+    posterImage: AGARBATTI_ASSETS.sambrani,
+    price: 320,
+    handle: '@vedicincense',
+    soundTrack: 'Sacred Sanskrit Havan Chants',
+    artisanStory: 'Molten Styrax tree resin is hand-poured into natural charcoal cups, sealing pure botanical purity for evening prayer rituals.'
+  }
+];

@@ -237,6 +237,15 @@
                 <span class="rounded-full border border-[#D8C8A6] bg-[#FBF7EC] px-4 py-2 text-xs font-bold text-[#526148]">Handmade by artisans</span>
                 <span class="rounded-full border border-[#D8C8A6] bg-[#FBF7EC] px-4 py-2 text-xs font-bold text-[#526148]">For prayer &amp; quiet moments</span>
               </div>
+              <div class="mt-6 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+                <button
+                  type="button"
+                  (click)="market.setView('agarbatti-studio')"
+                  class="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#173F2E] via-[#1F543D] to-[#123325] px-7 py-3.5 text-xs font-black uppercase tracking-[0.14em] text-[#FFF9EE] shadow-[0_12px_28px_rgba(23,63,46,0.32)] transition-all hover:scale-105 hover:shadow-[0_16px_32px_rgba(23,63,46,0.4)] cursor-pointer">
+                  <span>Explore Agarbatti Products</span>
+                  <mat-icon class="!h-4 !w-4 !text-[18px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</mat-icon>
+                </button>
+              </div>
               <div class="mt-8 flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#8B7655] md:justify-start">
                 <span class="h-px w-10 bg-[#B99A68]"></span>
                 <span>Crafted slowly. Shared with care.</span>
@@ -388,6 +397,11 @@
     <!-- VIEW: COCONUT SHELL CRAFT STUDIO (FULL PAGE) -->
     @if (market.currentView() === 'coconut-studio') {
       <app-coconut-studio />
+    }
+
+    <!-- VIEW: AGARBATTI & INCENSE STUDIO (FULL PAGE) -->
+    @if (market.currentView() === 'agarbatti-studio') {
+      <app-agarbatti-studio />
     }
 
     <!-- VIEW: CRAFT MAP (FULL PAGE) -->

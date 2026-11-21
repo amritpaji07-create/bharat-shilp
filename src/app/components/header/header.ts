@@ -797,6 +797,12 @@ export class Header implements OnDestroy {
         }
       },
       {
+        label: 'Agarbatti Studio (Sugandh & Dhoop)',
+        action: () => {
+          this.market.setView('agarbatti-studio');
+        }
+      },
+      {
         label: 'Wedding Collection',
         action: () => {
           this.market.resetFilters();
