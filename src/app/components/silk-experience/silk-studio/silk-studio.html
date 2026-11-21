@@ -1,109 +1,16 @@
-<main class="silk-studio-page" aria-labelledby="silk-studio-title">
-  <!-- NOOLAM Full-Bleed Grand Showroom Hero (Prompt 1) -->
-  <section class="noolam-hero-section">
-    <!-- Full-bleed background image -->
-    <div class="hero-bg-container" aria-hidden="true">
-      <img
-        [src]="heroImage"
-        alt="Grand Kanchipuram silk saree showroom with mannequins and silk-stacked shelves"
-        class="hero-bg-img" />
-      <div class="hero-overlay"></div>
-    </div>
-
-    <!-- Glass Pill Navbar -->
-    <div class="hero-glass-navbar">
-      <button type="button" class="nav-back-shreem" (click)="market.setView('home')">
-        <span class="back-arrow">←</span> Shreem
-      </button>
-
-      <div class="nav-center-links">
-        <span class="noolam-logo-brand">NOOLAM</span>
-        <button type="button" class="nav-link-btn" (click)="scrollToSection('six-moods-section')">Archive</button>
-        <button type="button" class="nav-link-btn" (click)="scrollToSection('try-the-look-section')">Try the Look</button>
-        <button type="button" class="nav-link-btn" (click)="scrollToSection('pick-a-silk-section')">Pick a Silk</button>
-        <button type="button" class="nav-link-btn" (click)="scrollToSection('silk-rail-section')">The Rack</button>
-        <button type="button" class="nav-link-btn" (click)="scrollToSection('silk-reels-section')">Reels</button>
-      </div>
-
-      <div class="nav-right-actions">
-        <button type="button" class="nav-action-pill" (click)="market.setView('wishlist')" aria-label="Wishlist">
-          Wishlist ({{ market.wishlistIds().length }})
-        </button>
-        <button type="button" class="nav-action-pill pill-primary" (click)="market.toggleCartDrawer(true)" aria-label="Bag">
-          Bag ({{ market.cartCount() }})
-        </button>
-        <button type="button" class="nav-action-btn store-btn" (click)="market.setView('craft-map')">
-          Visit the Store ↗
-        </button>
-      </div>
-    </div>
-
-    <!-- Center Hero Typography & CTAs -->
-    <div class="hero-center-content">
-      <span class="hero-brand-subtitle">KANCHIPURAM SILK & HERITAGE WEAVING</span>
-      <h1 id="silk-studio-title" class="hero-title">
-        Woven for the Divine.
-      </h1>
-      <p class="hero-tagline">
-        Handcrafted on authentic temple pit-looms with pure silver-core electroplated zari and three-ply mulberry silk.
-      </p>
-
-      <div class="hero-cta-buttons">
-        <button type="button" class="hero-btn-maroon" (click)="scrollToSection('try-the-look-section')">
-          Try the Look <span class="btn-arrow" aria-hidden="true">→</span>
-        </button>
-        <button type="button" class="hero-btn-white" (click)="scrollToSection('silk-rail-section')">
-          Browse the Rack <span class="btn-arrow" aria-hidden="true">↓</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Marquee Gold Ticker Strip (Scrolling gold section names on maroon) -->
-    <div class="noolam-ticker-strip" aria-label="Featured highlights">
-      <div class="ticker-track">
-        <div class="ticker-content">
-          <span>TRY THE LOOK &nbsp;Eight Kanjivaram looks, styled head to toe</span>
-          <span class="ticker-diamond">◆</span>
-          <span>PURE ZARI &nbsp;Silver-core zari woven into every temple border</span>
-          <span class="ticker-diamond">◆</span>
-          <span>THE RACK &nbsp;Browse the full rail of silks</span>
-          <span class="ticker-diamond">◆</span>
-          <span>BRIDAL &nbsp;Heirloom bridal silks for the day that matters</span>
-          <span class="ticker-diamond">◆</span>
-          <span>THE LOOMS &nbsp;Handwoven in Kanchipuram, one saree at a time</span>
-          <span class="ticker-diamond">◆</span>
-        </div>
-        <div class="ticker-content" aria-hidden="true">
-          <span>TRY THE LOOK &nbsp;Eight Kanjivaram looks, styled head to toe</span>
-          <span class="ticker-diamond">◆</span>
-          <span>PURE ZARI &nbsp;Silver-core zari woven into every temple border</span>
-          <span class="ticker-diamond">◆</span>
-          <span>THE RACK &nbsp;Browse the full rail of silks</span>
-          <span class="ticker-diamond">◆</span>
-          <span>BRIDAL &nbsp;Heirloom bridal silks for the day that matters</span>
-          <span class="ticker-diamond">◆</span>
-          <span>THE LOOMS &nbsp;Handwoven in Kanchipuram, one saree at a time</span>
-          <span class="ticker-diamond">◆</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Six Moods: The NOOLAM Archive -->
-  <app-six-moods />
-
-  <!-- 3. Try the Look: 8 Styled Looks with 6-piece ensemble -->
+<main class="silk-studio-page" aria-labelledby="try-the-look-heading">
+  <!-- 1. Try the Look: 8 Styled Looks with 6-piece ensemble -->
   <app-try-the-look />
 
-  <!-- 4. Pick a Silk: Fanned cards with giant condensed title -->
+  <!-- 2. Pick a Silk: Fanned cards with giant condensed typography -->
   <app-pick-a-silk />
 
-  <!-- 5. Every silk, on the rail: Clothes rail with Rack Detail Modal -->
+  <!-- 3. Every silk, on the rail: Clothes rail with Rack Detail Modal -->
   <app-silk-rail />
 
-  <!-- 6. Silk, in motion: Reels on 3D curved arc -->
+  <!-- 4. Silk, in motion: Reels on 3D curved arc -->
   <app-silk-reels />
 
-  <!-- 7. Three Silks Weave: Interactive Loom / Craft Weave -->
+  <!-- 5. Three Silks Weave: Interactive Loom / Craft Weave -->
   <app-silk-weave />
 </main>

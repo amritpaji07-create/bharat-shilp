@@ -257,7 +257,7 @@ export const SILK_LOOKS: SilkLook[] = [
     title: 'Emerald Forest Temple Pattu',
     sareeTitle: 'Emerald Green Kanjivaram Saree',
     category: 'Kanjivaram',
-    image: `${MODEL_ROOT}/look-03-emerald-kanjivaram.png`,
+    image: `${MODEL_ROOT}/model-03-emerald-green.png`,
     productImage: `${RAIL_ROOT}/saree-03-emerald-green.png`,
     catalogueProductId: 'prod-003',
     description: 'Jewel emerald tone draped with heavy korvai zari borders and heirloom South Indian grace.',
@@ -326,7 +326,7 @@ export const SILK_LOOKS: SilkLook[] = [
     title: 'Surya Sunset Gold Brocade',
     sareeTitle: 'Golden Orange Sunset Silk Saree',
     category: 'Temple Weave',
-    image: `${MODEL_ROOT}/look-06-golden-orange-silk.png`,
+    image: `${MODEL_ROOT}/model-06-orange-rust.png`,
     productImage: `${RAIL_ROOT}/saree-06-golden-orange.png`,
     catalogueProductId: 'prod-006',
     description: 'An effervescent marigold orange body flanked with majestic antique zari pallu patterns.',
@@ -347,9 +347,9 @@ export const SILK_LOOKS: SilkLook[] = [
     index: 7,
     name: 'Ivory Elephant',
     title: 'Ivory Elephant Kanjivaram',
-    sareeTitle: 'Ivory Kanjivaram Saree',
+    sareeTitle: 'Ivory Kanjivaram with Elephant Border',
     category: 'Kanjivaram',
-    image: `${MODEL_ROOT}/look-07-deep-green-banarasi.png`,
+    image: `${MODEL_ROOT}/model-07-ivory-elephant.png`,
     productImage: `${PIECE_ROOT}/piece-01-saree.png`,
     catalogueProductId: 'prod-007',
     description: 'Heirloom ivory silk with antique temple motifs, styled with dusty rose accents and handcrafted temple jewelry.',
@@ -360,7 +360,7 @@ export const SILK_LOOKS: SilkLook[] = [
       {
         id: 'p-1',
         type: 'Saree',
-        name: 'Ivory Kanjivaram Saree',
+        name: 'Ivory Kanjivaram with Elephant Border',
         price: 32000,
         image: `${PIECE_ROOT}/piece-01-saree.png`,
         brand: 'NOOLAM'
@@ -379,7 +379,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Pink Stone Temple Choker',
         price: 9400,
         image: `${PIECE_ROOT}/piece-03-choker.png`,
-        brand: 'NOOLAM ARCHIVE'
+        brand: 'NOOLAM'
       },
       {
         id: 'p-4',
@@ -387,7 +387,7 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Jhumkas with Pearl Drops',
         price: 4600,
         image: `${PIECE_ROOT}/piece-04-jhumkas.png`,
-        brand: 'NOOLAM ARCHIVE'
+        brand: 'NOOLAM'
       },
       {
         id: 'p-5',
@@ -395,15 +395,15 @@ export const SILK_LOOKS: SilkLook[] = [
         name: 'Elephant Motif Ottiyanam',
         price: 15000,
         image: `${PIECE_ROOT}/piece-05-ottiyanam.png`,
-        brand: 'NOOLAM ARCHIVE'
+        brand: 'NOOLAM'
       },
       {
         id: 'p-6',
         type: 'Bangles',
-        name: 'Gold and Dusty Rose Bangles',
+        name: 'Gold and Dusty Rose Bangle Stack',
         price: 3800,
         image: `${PIECE_ROOT}/piece-06-bangles.png`,
-        brand: 'NOOLAM ARCHIVE'
+        brand: 'NOOLAM'
       }
     ]
   },
