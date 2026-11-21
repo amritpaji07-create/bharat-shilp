@@ -40,13 +40,17 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private destroyed = false;
   private scrollFrame = 0;
+  private isInitialScroll = true;
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
     // Scroll to center Look 7 on initial load
     setTimeout(() => {
       this.scrollModelIntoView(6, false);
-    }, 100);
+      setTimeout(() => {
+        this.isInitialScroll = false;
+      }, 400);
+    }, 150);
   }
 
   ngOnDestroy(): void {
@@ -68,7 +72,7 @@ export class TryTheLookComponent implements AfterViewInit, OnDestroy {
   }
 
   onTrackScroll(): void {
-    if (!this.isBrowser || this.scrollFrame) return;
+    if (!this.isBrowser || this.isInitialScroll || this.scrollFrame) return;
 
     this.scrollFrame = window.requestAnimationFrame(() => {
       this.scrollFrame = 0;
