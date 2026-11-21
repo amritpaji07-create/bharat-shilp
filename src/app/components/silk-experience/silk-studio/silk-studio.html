@@ -1,16 +1,44 @@
-<main class="silk-studio-page" aria-labelledby="try-the-look-heading">
-  <!-- 1. Try the Look: 8 Styled Looks with 6-piece ensemble -->
+<main class="silk-studio-page" aria-labelledby="silk-studio-main-title">
+  <!-- Clean Professional Top Bar & Breadcrumb -->
+  <div class="studio-topbar">
+    <div class="topbar-left">
+      <button type="button" class="studio-back-button" (click)="market.setView('home')" aria-label="Back to Shreem Home">
+        <span aria-hidden="true">←</span>
+        Back to Shreem
+      </button>
+      <span class="studio-breadcrumb">
+        <span>Home</span>
+        <span class="breadcrumb-slash">/</span>
+        <strong>Handloom Sarees · NOOLAM Silk Studio</strong>
+      </span>
+    </div>
+
+    <!-- Quick Navigation Anchor Links -->
+    <nav class="studio-anchors" aria-label="Silk Studio sections">
+      <button type="button" (click)="scrollToSection('six-moods-section')">Six Moods</button>
+      <button type="button" (click)="scrollToSection('try-the-look-section')">Try the Look</button>
+      <button type="button" (click)="scrollToSection('pick-a-silk-section')">Pick a Silk</button>
+      <button type="button" (click)="scrollToSection('silk-rail-section')">The Rack</button>
+      <button type="button" (click)="scrollToSection('silk-reels-section')">Reels</button>
+      <button type="button" (click)="scrollToSection('bridal-section')">Bridal</button>
+    </nav>
+  </div>
+
+  <!-- 1. The NOOLAM Archive: Six Moods. Timeless Drapes -->
+  <app-six-moods />
+
+  <!-- 2. Try the Look: 8 Styled Looks with 6-piece ensemble -->
   <app-try-the-look />
 
-  <!-- 2. Pick a Silk: Fanned cards with giant condensed typography -->
+  <!-- 3. Pick a Silk: Fanned cards with giant condensed title -->
   <app-pick-a-silk />
 
-  <!-- 3. Every silk, on the rail: Clothes rail with Rack Detail Modal -->
+  <!-- 4. Every silk, on the rail: Clothes rail with Rack Detail Modal -->
   <app-silk-rail />
 
-  <!-- 4. Silk, in motion: Reels on 3D curved arc -->
+  <!-- 5. Silk, in motion: Reels on 3D curved arc -->
   <app-silk-reels />
 
-  <!-- 5. Three Silks Weave: Interactive Loom / Craft Weave -->
-  <app-silk-weave />
+  <!-- 6. The Bridal Collection: Arch-topped cards on curved carousel -->
+  <app-bridal-collection />
 </main>

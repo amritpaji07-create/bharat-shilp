@@ -1,0 +1,80 @@
+<section id="bridal-section" class="bridal-collection-section" aria-labelledby="bridal-heading">
+  <div class="bridal-shell">
+    <header class="bridal-header">
+      <span class="bridal-eyebrow">HEIRLOOM WEDDING SILKS</span>
+      <h2 id="bridal-heading" class="bridal-title">The Bridal Collection</h2>
+      <p class="bridal-tagline">For the muhurtham and every vow after</p>
+    </header>
+
+    <!-- Curved Carousel of Arch-Topped Cards -->
+    <div class="bridal-carousel-stage">
+      <div class="bridal-cards-track">
+        @for (saree of sarees; track saree.id; let index = $index) {
+          <div
+            class="bridal-card-wrap"
+            [class.is-center]="selectedIndex() === index"
+            [class.is-left]="selectedIndex() === index + 1 || (selectedIndex() === 0 && index === sarees.length - 1)"
+            [class.is-right]="selectedIndex() === index - 1 || (selectedIndex() === sarees.length - 1 && index === 0)"
+            (click)="selectSaree(index)">
+            
+            <div class="bridal-arch-card">
+              @if (saree.tag) {
+                <span class="bridal-discount-tag">{{ saree.tag }}</span>
+              }
+
+              <img
+                [src]="saree.image"
+                [alt]="saree.name"
+                class="bridal-card-img" />
+              <div class="bridal-card-overlay"></div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Prev / Next Navigation Arrows -->
+      <button
+        type="button"
+        class="bridal-arrow arrow-prev"
+        aria-label="Previous bridal saree"
+        (click)="previousSaree()">
+        ‹
+      </button>
+      <button
+        type="button"
+        class="bridal-arrow arrow-next"
+        aria-label="Next bridal saree"
+        (click)="nextSaree()">
+        ›
+      </button>
+    </div>
+
+    <!-- Active Center Card Details & Actions -->
+    @if (activeSaree(); as active) {
+      <div class="bridal-active-details" aria-live="polite">
+        <h3 class="active-saree-name">{{ active.name }}</h3>
+        <p class="active-saree-note">{{ active.fabric }} &nbsp;·&nbsp; {{ active.palluNote }}</p>
+        <div class="active-saree-price">₹{{ active.price.toLocaleString('en-IN') }}.00</div>
+
+        <div class="bridal-actions-row">
+          <button
+            type="button"
+            class="bridal-btn-add"
+            (click)="addToCart(active)">
+            Add to cart →
+          </button>
+          <button
+            type="button"
+            class="bridal-btn-heart"
+            [class.is-liked]="isLiked(active.id)"
+            [attr.aria-label]="'Save ' + active.name + ' to wishlist'"
+            (click)="toggleLike(active.id)">
+            <svg width="20" height="20" viewBox="0 0 24 24" [attr.fill]="isLiked(active.id) ? '#7a1c28' : 'none'" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</section>

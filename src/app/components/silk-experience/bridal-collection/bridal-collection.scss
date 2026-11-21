@@ -1,0 +1,245 @@
+.bridal-collection-section {
+  background-color: #ffffff;
+  padding: 5rem 1.5rem;
+  color: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+
+  .bridal-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bridal-header {
+    margin-bottom: 3.5rem;
+
+    .bridal-eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #7a1c28;
+      margin-bottom: 0.5rem;
+    }
+
+    .bridal-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      margin: 0 0 0.5rem;
+    }
+
+    .bridal-tagline {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #666666;
+      margin: 0;
+    }
+  }
+
+  /* Curved Carousel Stage */
+  .bridal-carousel-stage {
+    position: relative;
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+    perspective: 1000px;
+  }
+
+  .bridal-cards-track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 520px;
+  }
+
+  .bridal-card-wrap {
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.is-center {
+      z-index: 10;
+      transform: scale(1.08) translateZ(50px);
+
+      .bridal-arch-card {
+        border: 2px solid #c9983a;
+        box-shadow: 0 20px 45px rgba(201, 152, 58, 0.28);
+      }
+    }
+
+    &.is-left {
+      z-index: 5;
+      transform: scale(0.9) rotateY(15deg) translateZ(-40px);
+      opacity: 0.65;
+      filter: blur(1px);
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &.is-right {
+      z-index: 5;
+      transform: scale(0.9) rotateY(-15deg) translateZ(-40px);
+      opacity: 0.65;
+      filter: blur(1px);
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    .bridal-arch-card {
+      position: relative;
+      width: 320px;
+      height: 480px;
+      border-radius: 160px 160px 12px 12px;
+      overflow: hidden;
+      background: #fbf9f5;
+      border: 1px solid #ebd8c8;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+
+      .bridal-discount-tag {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: #7a1c28;
+        color: #ffffff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        z-index: 3;
+        box-shadow: 0 2px 8px rgba(122, 28, 40, 0.3);
+      }
+
+      .bridal-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      .bridal-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+      }
+    }
+  }
+
+  /* Navigation Arrows */
+  .bridal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ebd8c8;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-size: 1.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    z-index: 15;
+
+    &:hover {
+      background: #7a1c28;
+      border-color: #7a1c28;
+      color: #ffffff;
+    }
+
+    &.arrow-prev {
+      left: 1rem;
+    }
+
+    &.arrow-next {
+      right: 1rem;
+    }
+  }
+
+  /* Active Card Details & Actions */
+  .bridal-active-details {
+    max-width: 600px;
+    margin: 0 auto;
+
+    .active-saree-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin: 0 0 0.35rem;
+    }
+
+    .active-saree-note {
+      font-size: 0.88rem;
+      color: #666666;
+      margin: 0 0 0.75rem;
+    }
+
+    .active-saree-price {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #c9983a;
+      margin-bottom: 1.5rem;
+    }
+
+    .bridal-actions-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      .bridal-btn-add {
+        background: #7a1c28;
+        color: #ffffff;
+        border: none;
+        border-radius: 999px;
+        padding: 0.85rem 2.25rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+          background: #5d141e;
+          transform: translateY(-2px);
+        }
+      }
+
+      .bridal-btn-heart {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid #ebd8c8;
+        background: #ffffff;
+        color: #666666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          border-color: #7a1c28;
+          color: #7a1c28;
+        }
+
+        &.is-liked {
+          color: #7a1c28;
+        }
+      }
+    }
+  }
+}

@@ -21,11 +21,6 @@ import { MobileNav } from './components/mobile-nav/mobile-nav';
 import { ToastContainer } from './components/toast-container/toast-container';
 import { SupportModal } from './components/support-modal/support-modal';
 import { SilkStudioComponent } from './components/silk-experience/silk-studio/silk-studio';
-import { TryTheLookComponent } from './components/silk-experience/try-the-look/try-the-look';
-import { PickASilkComponent } from './components/silk-experience/pick-a-silk/pick-a-silk';
-import { SilkRailComponent } from './components/silk-experience/silk-rail/silk-rail';
-import { SilkReelsComponent } from './components/silk-experience/silk-reels/silk-reels';
-import { SilkWeaveComponent } from './components/silk-experience/silk-weave/silk-weave';
 import { MatIconModule } from '@angular/material/icon';
 import { BRASS_DHOKRA_IMAGE, HANDLOOM_IMAGE, HERO_IMAGE, ORGANIC_HONEY_IMAGE } from './data/mock-data';
 import { Product } from './models/marketplace.model';
@@ -54,11 +49,6 @@ import { Product } from './models/marketplace.model';
     ToastContainer,
     SupportModal,
     SilkStudioComponent,
-    TryTheLookComponent,
-    PickASilkComponent,
-    SilkRailComponent,
-    SilkReelsComponent,
-    SilkWeaveComponent,
     MatIconModule
   ],
   templateUrl: './app.html',
@@ -268,11 +258,8 @@ export class App implements AfterViewInit, OnDestroy {
   openTreasure(id: string): void {
     if (id === 'handloom-sarees') {
       this.selectedTreasureId.set(null);
-      this.market.setView('home');
-      setTimeout(() => {
-        const el = document.getElementById('try-the-look-section') || document.getElementById('silk-experience-sections');
-        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+      this.market.setView('silk-studio');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       this.selectedTreasureId.set(id);
     }
