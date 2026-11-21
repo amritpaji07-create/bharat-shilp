@@ -61,7 +61,7 @@ export function createCraftProduct(params: {
 /* 1. HONEY STUDIO DATA                                                 */
 /* ==================================================================== */
 export const HONEY_ASSETS = {
-  hero: 'assets/images/craft-studios/honey/pure_meadow_honey_user.jpg',
+  hero: 'assets/images/craft-studios/honey/van_amrit_forest_honey_hero.jpg',
   forestHero: 'assets/images/craft-studios/honey/van_amrit_forest_honey_hero.jpg',
   sundarbans: 'assets/images/craft-studios/honey/nectar-01-sundarbans.jpg',
   acacia: 'assets/images/craft-studios/honey/nectar-02-acacia.jpg',
@@ -70,7 +70,7 @@ export const HONEY_ASSETS = {
   cliff: 'assets/images/craft-studios/honey/nectar-05-cliff.jpg',
   coffee: 'assets/images/craft-studios/honey/nectar-06-coffee.jpg',
   pieces: {
-    jar: 'assets/images/craft-studios/honey/pure_meadow_honey_user.jpg',
+    jar: 'assets/images/category_organic_honey_1793447459115.jpg',
     dipper: 'assets/images/craft-studios/honey/piece-02-dipper.jpg',
     drizzler: 'assets/images/craft-studios/honey/piece-03-drizzler.jpg',
     pollen: 'assets/images/craft-studios/honey/piece-04-pollen.jpg',
@@ -1602,10 +1602,10 @@ export const POTTERY_REELS: CraftReel[] = [
 /* ==================================================================== */
 export const COCONUT_ASSETS = {
   hero: 'assets/images/craft-studios/coconut/handcrafted_coconut_shell_hero.jpg',
-  bowl: 'assets/images/craft-studios/coconut/coastal-01-bowl.jpg',
+  bowl: 'assets/images/craft-studios/coconut/crop_coconut_snack_bowls.jpg',
   lantern: 'assets/images/craft-studios/coconut/coastal-02-lantern.jpg',
   chalice: 'assets/images/craft-studios/coconut/coastal-03-chalice.jpg',
-  cutlery: 'assets/images/craft-studios/coconut/coastal-04-cutlery.jpg',
+  cutlery: 'assets/images/craft-studios/coconut/crop_coconut_bowl_spoon.jpg',
   planter: 'assets/images/craft-studios/coconut/coastal-05-planter.jpg',
   candle: 'assets/images/craft-studios/coconut/coastal-06-candle.jpg',
   pieces: {
