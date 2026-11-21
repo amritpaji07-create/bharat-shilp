@@ -61,16 +61,52 @@ export function createCraftProduct(params: {
 /* 1. HONEY STUDIO DATA                                                 */
 /* ==================================================================== */
 export const HONEY_ASSETS = {
-  hero: 'assets/images/craft-studios/honey/van_amrit_forest_honey_hero.jpg',
+  hero: 'assets/honey-experience/honey-rail/jars/wild-forest-honey.png',
   forestHero: 'assets/images/craft-studios/honey/van_amrit_forest_honey_hero.jpg',
-  sundarbans: 'assets/images/craft-studios/honey/nectar-01-sundarbans.jpg',
-  acacia: 'assets/images/craft-studios/honey/nectar-02-acacia.jpg',
-  jamun: 'assets/images/craft-studios/honey/nectar-03-jamun.jpg',
-  nilgiri: 'assets/images/craft-studios/honey/nectar-04-nilgiri.jpg',
-  cliff: 'assets/images/craft-studios/honey/nectar-05-cliff.jpg',
-  coffee: 'assets/images/craft-studios/honey/nectar-06-coffee.jpg',
+
+  // Section 1: Arched category artwork tiles (pick-a-honey)
+  arches: {
+    wildForest: 'assets/honey-experience/pick-a-honey/wild-forest-honey.png',
+    jamun: 'assets/honey-experience/pick-a-honey/jamun-honey.png',
+    multifloral: 'assets/honey-experience/pick-a-honey/multifloral-honey.png',
+    neem: 'assets/honey-experience/pick-a-honey/neem-honey.png',
+    raw: 'assets/honey-experience/pick-a-honey/raw-honey.png',
+    tulsi: 'assets/honey-experience/pick-a-honey/tulsi-honey.png',
+    eucalyptus: 'assets/honey-experience/pick-a-honey/eucalyptus-honey.png'
+  },
+
+  // Section 2: Transparent jar cutouts on wooden base (honey-rail/jars)
+  jars: {
+    wildForest: 'assets/honey-experience/honey-rail/jars/wild-forest-honey.png',
+    jamun: 'assets/honey-experience/honey-rail/jars/jamun-honey.png',
+    multifloral: 'assets/honey-experience/honey-rail/jars/multifloral-honey.png',
+    neem: 'assets/honey-experience/honey-rail/jars/neem-honey.png',
+    raw: 'assets/honey-experience/honey-rail/jars/raw-honey.png',
+    tulsi: 'assets/honey-experience/honey-rail/jars/tulsi-honey.png',
+    eucalyptus: 'assets/honey-experience/honey-rail/jars/eucalyptus-honey.png'
+  },
+
+  // Section 3: Product card artwork (honey-cards/products)
+  cards: {
+    wildForest: 'assets/honey-experience/honey-cards/products/wild-forest-honey-card.png',
+    jamun: 'assets/honey-experience/honey-cards/products/jamun-honey-card.png',
+    multifloral: 'assets/honey-experience/honey-cards/products/multifloral-honey-card.png',
+    neem: 'assets/honey-experience/honey-cards/products/neem-honey-card.png',
+    raw: 'assets/honey-experience/honey-cards/products/raw-honey-card.png',
+    tulsi: 'assets/honey-experience/honey-cards/products/tulsi-honey-card.png',
+    eucalyptus: 'assets/honey-experience/honey-cards/products/eucalyptus-honey-card.png'
+  },
+
+  // Backward-compatible keys
+  sundarbans: 'assets/honey-experience/pick-a-honey/wild-forest-honey.png',
+  acacia: 'assets/honey-experience/pick-a-honey/raw-honey.png',
+  jamun: 'assets/honey-experience/pick-a-honey/jamun-honey.png',
+  nilgiri: 'assets/honey-experience/pick-a-honey/multifloral-honey.png',
+  cliff: 'assets/honey-experience/pick-a-honey/wild-forest-honey.png',
+  coffee: 'assets/honey-experience/pick-a-honey/eucalyptus-honey.png',
+
   pieces: {
-    jar: 'assets/images/category_organic_honey_1793447459115.jpg',
+    jar: 'assets/honey-experience/honey-rail/jars/raw-honey.png',
     dipper: 'assets/images/craft-studios/honey/piece-02-dipper.jpg',
     drizzler: 'assets/images/craft-studios/honey/piece-03-drizzler.jpg',
     pollen: 'assets/images/craft-studios/honey/piece-04-pollen.jpg',
@@ -81,635 +117,198 @@ export const HONEY_ASSETS = {
 
 export const HONEY_ARCHIVE_CATEGORIES: CraftArchiveCategory[] = [
   {
-    id: 'sundarbans-wild',
-    name: 'Sundarbans Mangrove',
-    subName: 'Sundari Blossom Wild Harvest',
-    region: 'Sundarbans Biosphere, West Bengal',
-    colorName: 'Deep Mahogany Amber',
-    accent: '#8C430B',
+    id: 'wild-forest-arch',
+    name: 'Wild Forest Reserve',
+    subName: 'Sundarbans & Satpura Wild Canopy',
+    region: 'Sundarbans Biosphere & Satpura, MP',
+    colorName: 'Lush Emerald Amber',
+    accent: '#183827',
     textColor: '#FFFFFF',
-    image: HONEY_ASSETS.sundarbans,
-    price: 640,
-    note: 'Deeply aromatic with complex salty-sweet notes from pristine tidal mangrove floral blooms.',
-    tag: 'GI Tagged · Wild Forest'
+    image: HONEY_ASSETS.arches.wildForest,
+    price: 699,
+    note: 'Deeply aromatic with complex herbal-sweet notes from pristine virgin forest canopies.',
+    tag: 'GI Tagged · Tribal Wild Harvest'
   },
   {
-    id: 'kashmir-acacia',
-    name: 'Kashmir White Acacia',
-    subName: 'High-Altitude Robinia Nectar',
-    region: 'Pahalgam Valley, Kashmir',
-    colorName: 'Lustrous Pale Platinum Gold',
-    accent: '#B08832',
-    textColor: '#FFFFFF',
-    image: HONEY_ASSETS.acacia,
-    price: 780,
-    note: 'Water-clear single-source blossom honey with delicate vanillic undertones and zero crystallization.',
-    tag: 'Single Floral · Pure Raw'
-  },
-  {
-    id: 'western-jamun',
+    id: 'jamun-arch',
     name: 'Western Ghats Jamun',
     subName: 'Syzygium Cumini Blossom',
     region: 'Bhimashankar Ridge, Maharashtra',
     colorName: 'Rich Bitter-Sweet Dark Port',
-    accent: '#5E2028',
+    accent: '#3D141E',
     textColor: '#FFFFFF',
-    image: HONEY_ASSETS.jamun,
-    price: 520,
-    note: 'Known in Ayurveda for its low glycemic index, robust tannic notes, and active antioxidant enzymes.',
-    tag: 'Ayurvedic Reserve'
+    image: HONEY_ASSETS.arches.jamun,
+    price: 749,
+    note: 'Revered in Ayurveda for its low glycemic index, robust tannic depth, and active enzymes.',
+    tag: 'Ayurvedic Low GI · Antioxidant'
   },
   {
-    id: 'nilgiri-multiflora',
+    id: 'multifloral-arch',
     name: 'Nilgiri Multi-Flora',
-    subName: 'Blue Mountain Shola Forest',
+    subName: 'Blue Mountain Shola Wildflowers',
     region: 'Nilgiris Biosphere, Tamil Nadu',
-    colorName: 'Warm Golden Topaz',
-    accent: '#C27C17',
+    colorName: 'Warm Blossom Rose Topaz',
+    accent: '#692318',
     textColor: '#FFFFFF',
-    image: HONEY_ASSETS.nilgiri,
-    price: 490,
-    note: 'Sustainably gathered by Kurumba honey hunters from over 40 species of wild mountain wildflowers.',
-    tag: 'Tribal Gathered'
+    image: HONEY_ASSETS.arches.multifloral,
+    price: 649,
+    note: 'Sustainably gathered by indigenous honey gatherers from over 40 species of wild mountain flora.',
+    tag: 'Kurumba Gatherers Guild'
   },
   {
-    id: 'himalayan-cliff',
-    name: 'Himalayan Cliff Honey',
-    subName: 'Apis Laboriosa Rock Harvest',
-    region: 'Nanda Devi Foothills, Uttarakhand',
-    colorName: 'Reddish Smoky Amber',
-    accent: '#9C3A16',
+    id: 'neem-arch',
+    name: 'Deccan Neem Blossom',
+    subName: 'Azadirachta Indica Bitter-Sweet Bloom',
+    region: 'Deccan Plateau, Karnataka',
+    colorName: 'Midnight Sapphire Amber',
+    accent: '#0E1E38',
     textColor: '#FFFFFF',
-    image: HONEY_ASSETS.cliff,
-    price: 950,
-    note: 'Extremely rare cliff honey rich in wild rhododendron nectar, revered by hill communities.',
-    tag: 'Limited Annual Batch'
+    image: HONEY_ASSETS.arches.neem,
+    price: 599,
+    note: 'Intensely therapeutic single-floral neem bloom nectar with purifying medicinal attributes.',
+    tag: 'Medicinal Reserve · Raw'
   },
   {
-    id: 'coorg-coffee',
-    name: 'Coorg Coffee Blossom',
-    subName: 'Arabica & Robusta Bloom',
-    region: 'Madikeri Canopy, Karnataka',
-    colorName: 'Velvety Spiced Caramel',
-    accent: '#6E4522',
+    id: 'raw-arch',
+    name: 'Pure Meadow Raw',
+    subName: 'Unheated Himalayan Foothills',
+    region: 'Kangra Valley, Himachal Pradesh',
+    colorName: 'Raw Sunlit Gold',
+    accent: '#4A3515',
     textColor: '#FFFFFF',
-    image: HONEY_ASSETS.coffee,
-    price: 560,
-    note: 'Harvested during the fleeting 4-day monsoon blossom season; notes of roasted cocoa and white petals.',
-    tag: 'Estate Reserve'
-  }
-];
-
-export const HONEY_ENSEMBLES: CraftEnsemble[] = [
-  {
-    id: 'honey-look-01',
-    index: 1,
-    name: 'Pure Meadow Morning Ritual',
-    title: 'Pure Meadow Honey Ensemble',
-    subtitle: 'Golden Wildflower Honey paired with hand-hewn brass and mountain pollen',
-    category: 'Wildflower Harvest',
-    image: HONEY_ASSETS.hero,
-    description: 'Raw, unheated meadow wildflower honey in a classic embossed glass jar, styled with handcrafted serving brass and wellness accompaniments.',
-    totalPrice: 3300,
-    bundlePrice: 2800,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'High Valley Meadow',
-    tastingOrCraftNote: 'Delicate floral bouquet, sunlit notes of clover and chamomile',
-    pieces: [
-      {
-        id: 'hp-1',
-        type: 'Honey Jar',
-        name: 'Pure Meadow Raw Wildflower Honey 500g',
-        price: 580,
-        image: HONEY_ASSETS.hero,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-2',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-3',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-4',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-5',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-6',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
+    image: HONEY_ASSETS.arches.raw,
+    price: 599,
+    note: 'Bottled straight from the comb with zero heat, preserving active diastase enzymes and natural pollen.',
+    tag: 'Zero Heat · Live Enzymes'
   },
   {
-    id: 'honey-look-02',
-    index: 2,
-    name: 'Sundarbans Mangrove Reserve',
-    title: 'Tidal Mangrove Wild Harvest',
-    subtitle: 'Smoky, mineral-rich wild forest honey collected from deep mangrove canopy',
-    category: 'Mangrove Nectar',
-    image: HONEY_ASSETS.sundarbans,
-    description: 'Gathered by licensed Mouli forest collectors from Apis Dorsata combs in the tidal mangrove sanctuaries of the Bengal delta.',
-    totalPrice: 3450,
-    bundlePrice: 2950,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Sundarbans Biosphere',
-    tastingOrCraftNote: 'Tannic, bold, rich salinity and dark treacle finish',
-    pieces: [
-      {
-        id: 'hp-21',
-        type: 'Honey Jar',
-        name: 'Sundarbans Deep Wild Forest Honey 500g',
-        price: 640,
-        image: HONEY_ASSETS.sundarbans,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-22',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-23',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-24',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-25',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-26',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
+    id: 'tulsi-arch',
+    name: 'Sacred Temple Tulsi',
+    subName: 'Holy Basil Floral Essence',
+    region: 'Braj & Shivalik Foothills',
+    colorName: 'Sacred Royal Plum',
+    accent: '#441838',
+    textColor: '#FFFFFF',
+    image: HONEY_ASSETS.arches.tulsi,
+    price: 629,
+    note: 'Infused naturally with sacred Ocimum Sanctum floral nectar; renowned for natural respiratory immunity.',
+    tag: 'Sacred Aroma · Immunity'
   },
   {
-    id: 'honey-look-03',
-    index: 3,
-    name: 'Kashmir Valley White Acacia',
-    title: 'High-Altitude Acacia Blossom',
-    subtitle: 'Pale crystalline nectar from pristine mountain forests',
-    category: 'Single Floral',
-    image: HONEY_ASSETS.acacia,
-    description: 'Rare white acacia honey with zero processing, offering an ultra-light texture, silky finish, and pure floral clarity.',
-    totalPrice: 3600,
-    bundlePrice: 3050,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Pahalgam, Kashmir',
-    tastingOrCraftNote: 'Silky smooth, gentle hints of vanilla and spring blossoms',
-    pieces: [
-      {
-        id: 'hp-31',
-        type: 'Honey Jar',
-        name: 'Kashmir Acacia Raw White Honey 500g',
-        price: 780,
-        image: HONEY_ASSETS.acacia,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-32',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-33',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-34',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-35',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-36',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
-  },
-  {
-    id: 'honey-look-04',
-    index: 4,
-    name: 'Bhimashankar Wild Jamun',
-    title: 'Medicinal Jamun Berry Nectar',
-    subtitle: 'Deep antioxidant harvest from the Sahyadri mountains',
-    category: 'Ayurvedic Reserve',
-    image: HONEY_ASSETS.jamun,
-    description: 'Harvested exclusively when the black plum trees burst into blossom across the Western Ghats wildlife sanctuary.',
-    totalPrice: 3200,
-    bundlePrice: 2720,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Western Ghats Ridge',
-    tastingOrCraftNote: 'Tart berry undertone, full-bodied warmth, lingering herbal finish',
-    pieces: [
-      {
-        id: 'hp-41',
-        type: 'Honey Jar',
-        name: 'Western Ghats Jamun Flower Honey 500g',
-        price: 520,
-        image: HONEY_ASSETS.jamun,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-42',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-43',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-44',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-45',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-46',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
-  },
-  {
-    id: 'honey-look-05',
-    index: 5,
-    name: 'Nilgiri Kurumba Multi-Flora',
-    title: 'Blue Mountain Forest Flora',
-    subtitle: 'Wild medicinal harvest from sacred Shola rainforest groves',
-    category: 'Tribal Harvest',
-    image: HONEY_ASSETS.nilgiri,
-    description: 'Cold-settled by indigenous Kurumba gatherers using bamboo strainers, preserving all natural pollen and active propolis.',
-    totalPrice: 3180,
-    bundlePrice: 2700,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Nilgiri Biosphere',
-    tastingOrCraftNote: 'Multi-layered wildflower notes, forest eucalyptus and crushed mint',
-    pieces: [
-      {
-        id: 'hp-51',
-        type: 'Honey Jar',
-        name: 'Nilgiri Shola Forest Multi-Flora Honey 500g',
-        price: 490,
-        image: HONEY_ASSETS.nilgiri,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-52',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-53',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-54',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-55',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-56',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
-  },
-  {
-    id: 'honey-look-06',
-    index: 6,
-    name: 'Himalayan Rock Cliff Reserve',
-    title: 'Apis Laboriosa Rock Harvest',
-    subtitle: 'Pristine raw honey gathered from towering high-altitude granite cliffs',
-    category: 'Rare Cliff Honey',
-    image: HONEY_ASSETS.cliff,
-    description: 'Gathered on rope ladders over 8,000 feet up in the Garhwal Himalayas from giant rock bees feeding on wild rhododendrons.',
-    totalPrice: 3800,
-    bundlePrice: 3200,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Garhwal Himalayas',
-    tastingOrCraftNote: 'Intense smoky aromatics, deep molasses resonance and warming spice',
-    pieces: [
-      {
-        id: 'hp-61',
-        type: 'Honey Jar',
-        name: 'Himalayan Cliff Raw Honey 500g',
-        price: 950,
-        image: HONEY_ASSETS.cliff,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-62',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-63',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-64',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-65',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-66',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
-  },
-  {
-    id: 'honey-look-07',
-    index: 7,
-    name: 'Coorg Estate Blossom Reserve',
-    title: 'Rainforest Coffee & Cardamom Bloom',
-    subtitle: 'Gourmet plantation honey with notes of roasted cocoa and white spice',
-    category: 'Estate Harvest',
-    image: HONEY_ASSETS.coffee,
-    description: 'Single estate honey harvested during the annual four-day coffee bloom across shade-grown biodiversity estates in Madikeri.',
-    totalPrice: 3280,
-    bundlePrice: 2790,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Madikeri, Coorg',
-    tastingOrCraftNote: 'Mellow caramel sweetness, soft floral undertones of jasmine and roasted bean',
-    pieces: [
-      {
-        id: 'hp-71',
-        type: 'Honey Jar',
-        name: 'Coorg Coffee Blossom Honey 500g',
-        price: 560,
-        image: HONEY_ASSETS.coffee,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-72',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-73',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-74',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-75',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-76',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
-  },
-  {
-    id: 'honey-look-08',
-    index: 8,
-    name: 'Van Amrit Master Reserve',
-    title: 'The Royal Forest Apiary Edit',
-    subtitle: 'Triple-blended raw forest nectar sealed with handmade botanical label',
-    category: 'Master Collection',
-    image: HONEY_ASSETS.forestHero,
-    description: 'An extraordinary reserve jar showcasing the ultimate purity of untamed Indian forest floral nectars, unpasteurised and zero-filtered.',
-    totalPrice: 3400,
-    bundlePrice: 2890,
-    discountNote: 'Bundle all 6 pieces · save 15%',
-    originBadge: 'Madhya Pradesh Central Reserve',
-    tastingOrCraftNote: 'Complex honey notes with wild thyme, mahua flower, and forest moss',
-    pieces: [
-      {
-        id: 'hp-81',
-        type: 'Honey Jar',
-        name: 'Van Amrit Wild Forest Master Reserve 500g',
-        price: 680,
-        image: HONEY_ASSETS.forestHero,
-        brand: 'VAN AMRIT'
-      },
-      {
-        id: 'hp-82',
-        type: 'Dipper',
-        name: 'Hand-Cast Pure Brass Honey Dipper',
-        price: 450,
-        image: HONEY_ASSETS.pieces.dipper,
-        brand: 'SHREEM BRASS'
-      },
-      {
-        id: 'hp-83',
-        type: 'Pot',
-        name: 'Hand-Thrown Ceramic Drizzler Jar with Cork',
-        price: 650,
-        image: HONEY_ASSETS.pieces.drizzler,
-        brand: 'MITTI ATELIER'
-      },
-      {
-        id: 'hp-84',
-        type: 'Bee Pollen',
-        name: 'Sun-Dried Golden Bee Pollen Granules 100g',
-        price: 380,
-        image: HONEY_ASSETS.pieces.pollen,
-        brand: 'FOREST NECTAR'
-      },
-      {
-        id: 'hp-85',
-        type: 'Honeycomb',
-        name: 'Intact Raw Forest Honeycomb Slab 200g',
-        price: 550,
-        image: HONEY_ASSETS.pieces.comb,
-        brand: 'WILD COMB'
-      },
-      {
-        id: 'hp-86',
-        type: 'Spiced Nuts',
-        name: 'Honey Glazed Himalayan Walnuts 250g',
-        price: 690,
-        image: HONEY_ASSETS.pieces.walnuts,
-        brand: 'PAHALGAM EDITS'
-      }
-    ]
+    id: 'eucalyptus-arch',
+    name: 'Nilgiri Eucalyptus',
+    subName: 'Highland Eucalyptus Grove Harvest',
+    region: 'Ooty & Coonoor Ridges, Tamil Nadu',
+    colorName: 'Spiced Caramel Amber',
+    accent: '#5E3310',
+    textColor: '#FFFFFF',
+    image: HONEY_ASSETS.arches.eucalyptus,
+    price: 699,
+    note: 'Crisp mentholic undertone with rich, buttery body harvested from highland montane trees.',
+    tag: 'Herbal Infusion · Respiratory'
   }
 ];
 
 export const HONEY_PICK_VARIETIES = [
-  { id: 'pick-h-1', title: 'SUNDARBANS', subtitle: 'Tidal Mangrove Wild Flora', price: 640, image: HONEY_ASSETS.sundarbans, bg: '#3D1D09' },
-  { id: 'pick-h-2', title: 'ACACIA', subtitle: 'Pahalgam Pale White Bloom', price: 780, image: HONEY_ASSETS.acacia, bg: '#7A5B18' },
-  { id: 'pick-h-3', title: 'JAMUN', subtitle: 'Western Ghats Antioxidant', price: 520, image: HONEY_ASSETS.jamun, bg: '#42161E' },
-  { id: 'pick-h-4', title: 'NILGIRI', subtitle: 'Shola Wildflower Rainforest', price: 490, image: HONEY_ASSETS.nilgiri, bg: '#6B4210' },
-  { id: 'pick-h-5', title: 'CLIFF ROCK', subtitle: 'Himalayan Giant Rock Bee', price: 950, image: HONEY_ASSETS.cliff, bg: '#54210C' }
+  { id: 'pick-h-1', title: 'WILD FOREST', subtitle: 'Sundarbans & Satpura Canopy', price: 699, image: HONEY_ASSETS.jars.wildForest, bg: '#183827' },
+  { id: 'pick-h-2', title: 'JAMUN', subtitle: 'Western Ghats Antioxidant', price: 749, image: HONEY_ASSETS.jars.jamun, bg: '#3D141E' },
+  { id: 'pick-h-3', title: 'MULTI FLORAL', subtitle: 'Nilgiri Shola Rainforest', price: 649, image: HONEY_ASSETS.jars.multifloral, bg: '#692318' },
+  { id: 'pick-h-4', title: 'NEEM BLOSSOM', subtitle: 'Deccan Plateau Bitter-Sweet', price: 599, image: HONEY_ASSETS.jars.neem, bg: '#0E1E38' },
+  { id: 'pick-h-5', title: 'RAW MEADOW', subtitle: 'Unheated Pristine Reserve', price: 599, image: HONEY_ASSETS.jars.raw, bg: '#4A3515' },
+  { id: 'pick-h-6', title: 'SACRED TULSI', subtitle: 'Vrindavan Holy Basil Flora', price: 629, image: HONEY_ASSETS.jars.tulsi, bg: '#441838' },
+  { id: 'pick-h-7', title: 'EUCALYPTUS', subtitle: 'Blue Mountain Forest Breeze', price: 699, image: HONEY_ASSETS.jars.eucalyptus, bg: '#5E3310' }
 ];
 
 export const HONEY_SHELF_FILTERS: CraftShelfFilter[] = [
-  { id: 'all', label: 'All Harvests', count: 12 },
-  { id: 'single-floral', label: 'Single Floral', count: 4 },
-  { id: 'wild-comb', label: 'Raw Honeycombs', count: 3 },
-  { id: 'medicinal', label: 'Ayurvedic Reserve', count: 3 },
-  { id: 'estate', label: 'Estate Harvests', count: 2 }
+  { id: 'all', label: 'All Harvests', count: 7 },
+  { id: 'single-floral', label: 'Single Floral', count: 3 },
+  { id: 'multi-floral', label: 'Multi-Floral', count: 2 },
+  { id: 'medicinal', label: 'Medicinal & Ayurvedic', count: 2 }
 ];
 
 export const HONEY_SHELF_ITEMS: CraftShelfItem[] = [
   {
     id: 'hs-1',
+    name: 'Wild Forest Raw Tribal Honey 500g',
+    price: 699,
+    category: 'multi-floral',
+    categoryType: 'Wild Honey',
+    categoryLabel: 'Wild Harvest',
+    image: HONEY_ASSETS.jars.wildForest,
+    description: 'Pristine raw forest honey gathered by tribal honey gatherers from untamed canopy blossoms with zero processing.',
+    origin: 'Sundarbans & Satpura',
+    artisanCluster: 'Van Samiti Tribal Cooperative',
+    specs: [
+      { label: 'Moisture', value: '17.0% (Pure Grade A)' },
+      { label: 'Pollen Count', value: 'High Multifocal' },
+      { label: 'Processing', value: 'Zero Heat / Unfiltered' },
+      { label: 'Certification', value: 'GI Tagged · Organic' }
+    ]
+  },
+  {
+    id: 'hs-2',
+    name: 'Western Ghats Dark Jamun Honey 500g',
+    price: 749,
+    category: 'single-floral',
+    categoryType: 'Single Floral',
+    categoryLabel: 'Ayurvedic Reserve',
+    image: HONEY_ASSETS.jars.jamun,
+    description: 'Rare single-origin dark port honey harvested from blooming Syzygium Cumini groves, celebrated for low glycemic index.',
+    origin: 'Bhimashankar, Maharashtra',
+    artisanCluster: 'Sahyadri Honey Guild',
+    specs: [
+      { label: 'Source', value: '100% Wild Jamun Blossom' },
+      { label: 'Antioxidants', value: 'Phenolic Rich 84mg/kg' },
+      { label: 'Color', value: 'Rich Bitter-Sweet Dark Port' },
+      { label: 'Certification', value: 'Lab Certified Raw' }
+    ]
+  },
+  {
+    id: 'hs-3',
+    name: 'Nilgiri Multi-Floral Shola Honey 500g',
+    price: 649,
+    category: 'multi-floral',
+    categoryType: 'Wild Honey',
+    categoryLabel: 'Multi-Floral',
+    image: HONEY_ASSETS.jars.multifloral,
+    description: 'Gathered by indigenous Kurumba honey hunters from over forty varieties of endemic Blue Mountain shola wildflowers.',
+    origin: 'Nilgiris Biosphere',
+    artisanCluster: 'Kurumba Honey Hunters Guild',
+    specs: [
+      { label: 'Flora', value: '40+ Endemic Wild Species' },
+      { label: 'Taste', value: 'Floral with herbal undertones' },
+      { label: 'Extraction', value: 'Traditional cold-pressed' },
+      { label: 'Certification', value: 'Tribal Harvest Verified' }
+    ]
+  },
+  {
+    id: 'hs-4',
+    name: 'Deccan Neem Blossom Medicinal Honey 500g',
+    price: 599,
+    category: 'medicinal',
+    categoryType: 'Medicinal Honey',
+    categoryLabel: 'Medicinal Reserve',
+    image: HONEY_ASSETS.jars.neem,
+    description: 'Single-floral bitter-sweet nectar gathered during the summer neem canopy flowering season across the Deccan plateau.',
+    origin: 'Deccan Plateau, Karnataka',
+    artisanCluster: 'Deccan Organic Apiary',
+    specs: [
+      { label: 'Source', value: 'Azadirachta Indica Bloom' },
+      { label: 'Therapeutic', value: 'Antibacterial & purifying' },
+      { label: 'Sugar Profile', value: 'Natural Fructose dominant' },
+      { label: 'Certification', value: 'Ayush Certified' }
+    ]
+  },
+  {
+    id: 'hs-5',
     name: 'Pure Meadow Raw Wildflower Honey 500g',
-    price: 580,
+    price: 599,
     category: 'single-floral',
     categoryType: 'Raw Honey',
     categoryLabel: 'Single Floral',
-    image: HONEY_ASSETS.hero,
-    description: 'Raw meadow flower nectar bottled fresh without heat, preserving active diastase enzymes and delicate pollen notes.',
-    origin: 'Himachal Meadows',
+    image: HONEY_ASSETS.jars.raw,
+    description: 'Raw mountain meadow flower nectar bottled fresh without heat, preserving active diastase enzymes and delicate floral notes.',
+    origin: 'Kangra Valley, Himachal Pradesh',
     artisanCluster: 'Kangra Beekeeping Cooperative',
     specs: [
       { label: 'Moisture', value: '17.2% (Pure Grade A)' },
@@ -719,140 +318,46 @@ export const HONEY_SHELF_ITEMS: CraftShelfItem[] = [
     ]
   },
   {
-    id: 'hs-2',
-    name: 'Sundarbans Wild Mangrove Honey 500g',
-    price: 640,
-    category: 'medicinal',
-    categoryType: 'Wild Honey',
-    categoryLabel: 'Ayurvedic Reserve',
-    image: HONEY_ASSETS.sundarbans,
-    description: 'Harvested deep inside the mangrove delta by traditional Mouli honey gatherers. Naturally dense, dark amber, and rich in natural bio-flavonoids.',
-    origin: 'Sundarbans, West Bengal',
-    artisanCluster: 'Mouli Tribal Forest Federation',
-    specs: [
-      { label: 'Moisture', value: '18.1%' },
-      { label: 'Source', value: 'Wild Khalsi & Goran Bloom' },
-      { label: 'Processing', value: 'Cold-Filtered' },
-      { label: 'Harvest Date', value: 'Spring 2026' }
-    ]
-  },
-  {
-    id: 'hs-3',
-    name: 'Kashmir White Acacia Honey 500g',
-    price: 780,
-    category: 'single-floral',
-    categoryType: 'Blossom Honey',
-    categoryLabel: 'Single Floral',
-    image: HONEY_ASSETS.acacia,
-    description: 'Exquisite water-white raw honey from high-altitude Kashmiri valleys. Low sucrose, delightfully sweet with floral clarity.',
-    origin: 'Pahalgam, Jammu & Kashmir',
-    artisanCluster: 'Valley Beekeepers Guild',
-    specs: [
-      { label: 'Moisture', value: '16.5%' },
-      { label: 'Color', value: 'Extra White / Platinum' },
-      { label: 'Crystallization', value: 'Ultra-Slow (Pure Fructose)' },
-      { label: 'Enzymes', value: 'Active Invertase' }
-    ]
-  },
-  {
-    id: 'hs-4',
-    name: 'Wild Forest Intact Honeycomb Slab 350g',
-    price: 690,
-    category: 'wild-comb',
-    categoryType: 'Honeycomb',
-    categoryLabel: 'Raw Honeycombs',
-    image: HONEY_ASSETS.pieces.comb,
-    description: '100% edible natural honeycomb cut straight from the forest hive box. Chewable pure beeswax filled with raw aromatic honey.',
-    origin: 'Western Ghats, Maharashtra',
-    artisanCluster: 'Sahyadri Tribal Apiculture Guild',
-    specs: [
-      { label: 'Beeswax', value: '100% Natural Organic' },
-      { label: 'Purity', value: 'Direct from Hive' },
-      { label: 'Storage', value: 'Room Temp / Dark' },
-      { label: 'Best Paired', value: 'Artisan Cheeses / Warm Toast' }
-    ]
-  },
-  {
-    id: 'hs-5',
-    name: 'Western Ghats Dark Jamun Honey 500g',
-    price: 520,
+    id: 'hs-6',
+    name: 'Sacred Temple Tulsi Honey 500g',
+    price: 629,
     category: 'medicinal',
     categoryType: 'Medicinal Honey',
     categoryLabel: 'Ayurvedic Reserve',
-    image: HONEY_ASSETS.jamun,
-    description: 'Gathered during the annual wild jamun blossoming. Deep burgundy amber with a distinct herbal tang, traditionally recommended in Ayurveda.',
-    origin: 'Bhimashankar, Maharashtra',
-    artisanCluster: 'Mahadeo Koli Gatherers Group',
+    image: HONEY_ASSETS.jars.tulsi,
+    description: 'Revered holy basil blossom nectar hand-harvested around sacred heritage temple sanctums for respiratory wellness.',
+    origin: 'Braj & Shivalik Hills',
+    artisanCluster: 'Vrindavan Herb Collective',
     specs: [
-      { label: 'Floral Source', value: 'Syzygium Cumini (Jamun)' },
-      { label: 'Glycemic Index', value: 'Naturally Low' },
-      { label: 'Antioxidants', value: 'Very High Polyphenols' },
-      { label: 'Harvest', value: 'Wild Forest Reserve' }
+      { label: 'Source', value: 'Ocimum Sanctum (Krishna Tulsi)' },
+      { label: 'Aroma', value: 'Warm aromatic camphoraceous' },
+      { label: 'Benefits', value: 'Respiratory immunity & adaptogen' },
+      { label: 'Certification', value: '100% Pure Organic' }
     ]
   },
   {
-    id: 'hs-6',
-    name: 'Coorg Estate Coffee Blossom Honey 500g',
-    price: 560,
-    category: 'estate',
-    categoryType: 'Estate Honey',
-    categoryLabel: 'Estate Harvests',
-    image: HONEY_ASSETS.coffee,
-    description: 'Single-estate gourmet honey produced during the fragrant 4-day coffee blooming season across misty canopy plantations.',
-    origin: 'Coorg, Karnataka',
-    artisanCluster: 'Kodagu Coffee Planters Collective',
+    id: 'hs-7',
+    name: 'Nilgiri Highland Eucalyptus Honey 500g',
+    price: 699,
+    category: 'single-floral',
+    categoryType: 'Single Floral',
+    categoryLabel: 'Single Floral',
+    image: HONEY_ASSETS.jars.eucalyptus,
+    description: 'Crisp menthol-undertone honey with a buttery spiced caramel finish, collected from highland blue gum forest canopies.',
+    origin: 'Coonoor & Ooty, Nilgiris',
+    artisanCluster: 'Highland Beekeepers Guild',
     specs: [
-      { label: 'Aroma', value: 'White Jasmine & Roasted Cocoa' },
-      { label: 'Harvest Window', value: '4 Days Only (Annual)' },
-      { label: 'Texture', value: 'Creamy Velvety' },
-      { label: 'Pairs With', value: 'Espresso / Pancakes / Granola' }
+      { label: 'Source', value: 'Eucalyptus Globulus Bloom' },
+      { label: 'Texture', value: 'Smooth velvety crystallization' },
+      { label: 'Aroma', value: 'Refreshing woody herbal' },
+      { label: 'Certification', value: 'Nilgiris Biosphere Certified' }
     ]
   }
 ];
 
-export const HONEY_REELS: CraftReel[] = [
-  {
-    id: 'reel-h-1',
-    reelNumber: 'REEL 01',
-    duration: '0:38',
-    craftType: 'TRIBAL CLIMB',
-    title: 'The Honey Hunters of Biligiriranga Hills',
-    location: 'BR Hills, Karnataka',
-    posterImage: HONEY_ASSETS.nilgiri,
-    price: 490,
-    handle: '@vanamrit',
-    soundTrack: 'Forest Canopy Birds & Bamboo Flute',
-    artisanStory: 'Soliga tribal elders climb 60-foot jungle trees barefoot with natural smoke torches to harvest honey sustainably without harming the bee colonies.'
-  },
-  {
-    id: 'reel-h-2',
-    reelNumber: 'REEL 02',
-    duration: '0:45',
-    craftType: 'MANGROVE DAWN',
-    title: 'Mouli Gatherers in the Tiger Forest',
-    location: 'Sundarbans Delta, West Bengal',
-    posterImage: HONEY_ASSETS.sundarbans,
-    price: 640,
-    handle: '@moulitribal',
-    soundTrack: 'Tidal Waves & Mangrove Crickets',
-    artisanStory: 'Braving mud flats and mangrove tides at low dawn, licensed Mouli gatherers harvest wild honeycombs under strict forest conservation quotas.'
-  },
-  {
-    id: 'reel-h-3',
-    reelNumber: 'REEL 03',
-    duration: '0:32',
-    craftType: 'ALPINE BLOOM',
-    title: 'Acacia Blossom Gathering at Pahalgam',
-    location: 'Lidder Valley, Kashmir',
-    posterImage: HONEY_ASSETS.acacia,
-    price: 780,
-    handle: '@valleyhoney',
-    soundTrack: 'Kashmiri Santoor & River Stream',
-    artisanStory: 'High in the alpine pine meadows, white acacia blooms for just three weeks, yielding the purest water-clear honey in the world.'
-  }
-];
+export const HONEY_ENSEMBLES: CraftEnsemble[] = [];
+export const HONEY_REELS: CraftReel[] = [];
 
-/* ==================================================================== */
 /* 2. POTTERY & TERRACOTTA STUDIO DATA                                  */
 /* ==================================================================== */
 export const POTTERY_ASSETS = {

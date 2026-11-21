@@ -1,0 +1,28 @@
+{
+  "title": "Honey Experience PNG Asset Pack",
+  "format": "PNG",
+  "sections": {
+    "pick-a-honey": {
+      "count": 7,
+      "purpose": "Tall arched category artwork for the honey selection rail."
+    },
+    "honey-rail/jars": {
+      "count": 7,
+      "purpose": "Honey jar product imagery for a horizontal product rail."
+    },
+    "honey-cards/products": {
+      "count": 7,
+      "purpose": "Decorative product card artwork. Replace baked sample text/prices with live HTML/Angular content."
+    }
+  },
+  "items": [
+    "wild-forest-honey",
+    "multifloral-honey",
+    "neem-honey",
+    "tulsi-honey",
+    "jamun-honey",
+    "eucalyptus-honey",
+    "raw-honey"
+  ],
+  "note": "Generated visual assets. Product labels and prices are illustrative; use real product data in the application."
+}
