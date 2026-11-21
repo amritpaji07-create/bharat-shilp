@@ -171,25 +171,25 @@ export class App implements AfterViewInit, OnDestroy {
     {
       title: 'Source to Table',
       description: 'Direct relationships with coastal coconut artisan clusters, crafting polished tableware by hand.',
-      image: 'assets/images/craft-studios/coconut/handcrafted_coconut_shell_hero.jpg',
+      image: 'assets/images/coconut.png',
       alt: 'Handcrafted coconut shell crafts'
     },
     {
       title: 'Time-Honored Techniques',
       description: 'Slow quartz-stone grinding, traditional hand-shaping, and authentic cobalt blue firing.',
-      image: 'assets/images/craft-studios/pottery/artisanal_pottery_hero.jpg',
+      image: 'assets/images/pot.png',
       alt: 'Jaipur Blue Pottery workbench'
     },
     {
       title: 'Unwavering Purity',
       description: 'Raw, unheated wild forest honey gathered sustainably from pristine forest sanctuaries.',
-      image: 'assets/images/category_organic_honey_1793447459115.jpg',
+      image: 'assets/images/honey.png',
       alt: 'Pure wild forest honey and herbs'
     },
     {
       title: 'Commitment to Community',
       description: 'Direct support to handloom weavers, safeguarding GI-tagged Chanderi weaving clusters.',
-      image: 'assets/images/category_handloom_saree_1793447459310.jpg',
+      image: 'assets/images/saree.jpg',
       alt: 'Royal Blue Chanderi handloom saree'
     }
   ];
@@ -200,7 +200,7 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Handloom Sarees',
       hindiTitle: 'हथकरघा साड़ियां',
       eyebrow: '100% Authentic Weave',
-      image: 'assets/images/category_handloom_saree_1793447459310.jpg',
+      image: 'assets/images/saree.jpg',
       video: 'assets/images/saree video.mp4',
       description: 'Pure handwoven sarees from traditional Indian weaving clusters, with natural fibres and GI-backed provenance.',
       accent: '#7A1F45',
@@ -216,7 +216,7 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Traditional Pottery',
       hindiTitle: 'पारंपरिक मिट्टी के बर्तन',
       eyebrow: 'Hand-shaped & Natural',
-      image: 'assets/images/craft-studios/pottery/artisanal_pottery_hero.jpg',
+      image: 'assets/images/pot.png',
       video: 'assets/images/pot video.mp4',
       description: 'Hand-shaped clay and blue pottery crafted by regional artisans using traditional techniques and mineral pigments.',
       accent: '#1D5A6F',
@@ -232,7 +232,7 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Forest Honey',
       hindiTitle: 'वन शहद',
       eyebrow: 'Pure & Naturally Harvested',
-      image: 'assets/images/craft-studios/honey/van_amrit_forest_honey_hero.jpg',
+      image: 'assets/images/honey.png',
       video: 'assets/images/honey video.mp4',
       description: 'Raw, unheated forest honey gathered sustainably by tribal communities and packed without artificial additives.',
       accent: '#A66A18',
@@ -248,7 +248,7 @@ export class App implements AfterViewInit, OnDestroy {
       title: 'Natural Coconut',
       hindiTitle: 'प्राकृतिक नारियल',
       eyebrow: 'Farm Fresh & 100% Natural',
-      image: 'assets/images/craft-studios/coconut/handcrafted_coconut_shell_hero.jpg',
+      image: 'assets/images/coconut.png',
       video: 'assets/images/coconut video.mp4',
       description: 'Fresh, farm-sourced coconut and coconut products made naturally in small batches by coastal producer groups.',
       accent: '#4B7134',
