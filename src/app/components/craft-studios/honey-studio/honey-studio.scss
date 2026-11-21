@@ -507,7 +507,7 @@
         font-weight: 900;
         letter-spacing: -0.04em;
         line-height: 0.9;
-        color: rgba(166, 106, 24, 0.13);
+        color: rgba(255, 255, 255, 0.14);
         text-transform: uppercase;
         user-select: none;
         pointer-events: none;
@@ -528,7 +528,7 @@
           max-height: 190px;
           max-width: 85%;
           object-fit: contain;
-          mix-blend-mode: multiply;
+          
           filter: drop-shadow(0 10px 16px rgba(120, 80, 20, 0.2));
           transition: transform 0.4s ease;
         }
@@ -926,7 +926,7 @@
               max-height: 155px;
               max-width: 90%;
               object-fit: contain;
-              mix-blend-mode: multiply;
+              
               transition: transform 0.4s ease;
             }
           }
